@@ -20,6 +20,16 @@ module SovrenRest
       response = RestClient.post(endpoint, body(body_params).to_json, headers)
     end
 
+    def parse_html(rawFile)
+      endpoint = build_url(PARSE_RESUME)
+      body_params =
+        {
+          inputFile: rawFile,
+          outputHtml: true
+        }
+      response = RestClient.post(endpoint, body(body_params).to_json, headers)
+    end
+
     private
 
     def headers
