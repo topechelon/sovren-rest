@@ -16,19 +16,18 @@ Juwelier::Tasks.new do |gem|
   gem.name = "sovren-rest"
   gem.homepage = "http://github.com/SynergyDataSystems/sovren-rest"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "mgruesen7@gmail.com"
-  gem.authors = ["Michael Gruesen"]
+  gem.summary = %Q{Sovren 9.0 Rest}
+  gem.description = %Q{Interfaces with the Sovren 9.0 REST API}
+  gem.email = "tendevsv3@patriotsoftware.com"
+  gem.authors = ["TEN Devs V3"]
 
   # dependencies defined in Gemfile
 end
 Juwelier::RubygemsDotOrgTasks.new
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |test|
+  test.pattern = 'spec/**/*_spec.rb'
+  test.rspec_opts = "--color --require spec_helper"
 end
 
 desc "Code coverage detail"
@@ -37,7 +36,7 @@ task :simplecov do
   Rake::Task['test'].execute
 end
 
-task :default => :test
+task :default => :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
