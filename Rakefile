@@ -27,7 +27,7 @@ Juwelier::RubygemsDotOrgTasks.new
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |test|
   test.pattern = 'spec/**/*_spec.rb'
-  test.rspec_opts = "--color --require spec_helper"
+  test.rspec_opts = "--color --require spec_helper --format documentation"
 end
 
 desc "Code coverage detail"
