@@ -8,6 +8,7 @@ module SovrenRest
       @baseUrl = options[:baseUrl]
       @accountId = options[:accountId] || '12345678'
       @serviceKey = options[:serviceKey] || 'thiscanbeanything,whyrequireit?'
+      @configuration = options[:configuration]
     end
 
     def parse(rawFile)
@@ -17,7 +18,7 @@ module SovrenRest
           inputFile: rawFile,
           outputHtml: false
         }
-      response = RestClient.post(endpoint, body(body_params).to_json, headers)
+      RestClient.post(endpoint, body(body_params).to_json, headers).body
     end
 
     def parse_html(rawFile)
@@ -27,7 +28,7 @@ module SovrenRest
           inputFile: rawFile,
           outputHtml: true
         }
-      response = RestClient.post(endpoint, body(body_params).to_json, headers)
+      RestClient.post(endpoint, body(body_params).to_json, headers).body
     end
 
     private
@@ -44,7 +45,8 @@ module SovrenRest
     def body(params={})
       {
         "DocumentAsBase64String" => file_as_base64(params[:inputFile]),
-        "OutputHtml" => params[:outputHtml]
+        "OutputHtml" => params[:outputHtml],
+        "Configuration" => params[:configuration]
       }
     end
 
