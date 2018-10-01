@@ -4,8 +4,8 @@ pipeline {
     stage('Setup') {
       steps {
         sh '''
-          bundle install
           sudo apt update && sudo apt -y install build-essential patch ruby-dev zlib1g-dev liblzma-dev
+          bundle install
         '''
       }
     }
