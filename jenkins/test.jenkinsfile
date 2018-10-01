@@ -1,9 +1,19 @@
 pipeline {
   agent { node { label 'ruby' } }
   stages {
+    stage('Setup') {
+      steps {
+        sh 'bundle install'
+      }
+    }
     stage('RSpec') {
       steps {
         sh 'rake'
+      }
+    }
+    stage('Cleanup') {
+      steps {
+        sh 'bundle clean --force'
       }
     }
   }
