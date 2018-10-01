@@ -1,0 +1,10 @@
+pipeline {
+  agent { node { label 'ruby' } }
+  stages {
+    stage('RSpec') {
+      steps {
+        sh 'rake'
+      }
+    }
+  }
+}
