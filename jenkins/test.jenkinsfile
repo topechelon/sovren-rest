@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh 'bundle install'
+        sh '''
+          bundle install
+          sudo apt update && sudo apt -y install build-essential patch ruby-dev zlib1g-dev liblzma-dev
+        '''
       }
     }
     stage('RSpec') {
