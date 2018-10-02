@@ -2,7 +2,7 @@ require 'contact_info.rb'
 
 
 RSpec.describe SovrenRest::ContactInfo do
-  before do
+  before :all do
     @first_name = "Johan"
     @middle_name = "Von"
     @last_name = "Testingstonly"
