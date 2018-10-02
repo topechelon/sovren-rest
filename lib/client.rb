@@ -8,7 +8,7 @@ module SovrenRest
       @baseUrl = options[:baseUrl]
       @accountId = options[:accountId] || '12345678'
       @serviceKey = options[:serviceKey] || 'thiscanbeanything,whyrequireit?'
-      @configuration = options[:configuration]
+      @configuration = options[:configuration] || ''
     end
 
     def parse(rawFile)
@@ -46,7 +46,7 @@ module SovrenRest
       {
         "DocumentAsBase64String" => file_as_base64(params[:inputFile]),
         "OutputHtml" => params[:outputHtml],
-        "Configuration" => params[:configuration]
+        "Configuration" => @configuration
       }
     end
 
