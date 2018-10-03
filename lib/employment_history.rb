@@ -23,16 +23,15 @@ module SovrenRest
       @employer = data[:EmployerOrgName]
     end
 
-    # rubocop:disable Layout/IndentationConsistency, Lint/Void
+    # rubocop:disable Metrics/LineLength
     def parse_location(history = {})
       location = history.find { |h| h[:OrgInfo] }[:OrgInfo]
-                        .find { |info| info[:PositionLocation] }
-                        [:PositionLocation]
+                        .find { |info| info[:PositionLocation] }[:PositionLocation]
 
       @city = location[:Municipality]
       @state = location[:Region][0]
     end
-    # rubocop:enable Layout/IndentationConsistency, Lint/Void
+    # rubocop:enable Metrics/LineLength
 
     def parse_description(history = {})
       @description = history.find { |h| h[:Description] }[:Description]
