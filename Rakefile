@@ -8,6 +8,7 @@ rescue Bundler::BundlerError => e
   warn 'Run `bundle install` to install missing gems'
   exit e.status_code
 end
+
 require 'rake'
 require 'juwelier'
 Juwelier::Tasks.new do |gem|
@@ -24,26 +25,36 @@ Juwelier::Tasks.new do |gem|
   # dependencies defined in Gemfile
 end
 Juwelier::RubygemsDotOrgTasks.new
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec) do |test|
-  test.pattern = 'spec/**/*_spec.rb'
-  test.rspec_opts = '--color --require spec_helper --format documentation'
+
+namespace :rspec do
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:test) do |test|
+    test.pattern = 'spec/**/*_spec.rb'
+    test.rspec_opts = '--color --require spec_helper --format documentation'
+  end
+
+  RSpec::Core::RakeTask.new(:regression) do |test|
+    test.pattern = 'spec/**/*_spec.rb'
+    test.rspec_opts = '--require spec_helper --bisect'
+  end
 end
 
-require 'rubocop/rake_task'
-RuboCop::RakeTask.new(:rubocop) {}
+namespace :rubocop do
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new(:lint) {}
 
-RuboCop::RakeTask.new(:rubocopfix) do |t|
-  t.options = ['-a']
+  RuboCop::RakeTask.new(:fix) do |t|
+    t.options = ['-a']
+  end
 end
 
 desc 'Code coverage detail'
 task :simplecov do
-  ENV['COVERAGE'] = 'true'
+
   Rake::Task['test'].execute
 end
 
-task default: :spec
+task default: [ 'rspec:test' ]
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
