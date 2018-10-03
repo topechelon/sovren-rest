@@ -22,6 +22,15 @@ pipeline {
       steps {
         sh 'rake'
       }
+      post {
+        success {
+          rcov {
+            reportDirectory('coverage/rcov')
+            totalCoverage(90, 0, 0)
+            codeCoverage(90, 0, 0)
+          }
+        }
+      }
     }
   }
 }

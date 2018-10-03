@@ -1,3 +1,10 @@
+require 'simplecov'
+require 'simplecov-rcov'
+SimpleCov.formatters = [
+  SimpleCov::Formatter::RcovFormatter
+]
+SimpleCov.start { add_filter '.vendor' }
+
 APP_ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 $LOAD_PATH << File.join(APP_ROOT, 'lib/sovren-rest')
 require 'bundler/setup'

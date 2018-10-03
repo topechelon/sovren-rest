@@ -15,4 +15,5 @@ group :development do
   gem 'rspec'
   gem 'rubocop'
   gem 'simplecov', '>= 0'
+  gem 'simplecov-rcov'
 end

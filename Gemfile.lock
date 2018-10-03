@@ -96,6 +96,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     thread_safe (0.3.6)
     unf (0.1.4)
       unf_ext
@@ -115,6 +117,7 @@ DEPENDENCIES
   rspec
   rubocop
   simplecov
+  simplecov-rcov
 
 BUNDLED WITH
    1.16.2
