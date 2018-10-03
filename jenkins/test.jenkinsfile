@@ -13,6 +13,11 @@ pipeline {
         '''
       }
     }
+    stage('RuboCop') {
+      steps {
+        sh 'rake rubocop'
+      }
+    }
     stage('RSpec') {
       steps {
         sh 'rake'

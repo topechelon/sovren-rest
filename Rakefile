@@ -11,7 +11,8 @@ end
 require 'rake'
 require 'juwelier'
 Juwelier::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
+  # gem is a Gem::Specification... see
+  # http://guides.rubygems.org/specification-reference/ for more options
   gem.name = 'sovren-rest'
   gem.homepage = 'http://github.com/SynergyDataSystems/sovren-rest'
   gem.license = 'MIT'

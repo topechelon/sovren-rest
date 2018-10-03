@@ -1,10 +1,9 @@
 module SovrenRest
+  # Top level resume class.
   class Resume
-    def initialize(response, withHtml = false)
+    def initialize(response, with_html = false)
       @response = response
-      @withHtml = withHtml
+      @with_html = with_html
     end
-
-    private
   end
 end

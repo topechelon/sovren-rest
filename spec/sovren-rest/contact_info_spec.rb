@@ -18,8 +18,8 @@ RSpec.describe SovrenRest::ContactInfo do
       [
         '330-867-5309'
       ]
-    @address_line_1 = '123 Test St'
-    @address_line_2 = 'APT # 123'
+    @address_line1 = '123 Test St'
+    @address_line2 = 'APT # 123'
     @city = 'North Canton'
     @state = 'Ohio'
     @country = 'US'
@@ -48,8 +48,8 @@ RSpec.describe SovrenRest::ContactInfo do
               {
                 'AddressLine' =>
                 [
-                  @address_line_1,
-                  @address_line_2
+                  @address_line1,
+                  @address_line2
                 ]
               }
             }
@@ -107,12 +107,12 @@ RSpec.describe SovrenRest::ContactInfo do
     expect(@contact_info.phone_numbers).to eq(@phone_numbers)
   end
 
-  it 'should extract address_line_1' do
-    expect(@contact_info.address_line_1).to eq(@address_line_1)
+  it 'should extract address_line1' do
+    expect(@contact_info.address_line1).to eq(@address_line1)
   end
 
-  it 'should extract address_line_2' do
-    expect(@contact_info.address_line_2).to eq(@address_line_2)
+  it 'should extract address_line2' do
+    expect(@contact_info.address_line2).to eq(@address_line2)
   end
 
   it 'should extract city' do
