@@ -31,7 +31,9 @@ RSpec::Core::RakeTask.new(:spec) do |test|
 end
 
 require 'rubocop/rake_task'
-RuboCop::RakeTask.new(:rubocop) do |t|
+RuboCop::RakeTask.new(:rubocop) {}
+
+RuboCop::RakeTask.new(:rubocopfix) do |t|
   t.options = ['-a']
 end
 
