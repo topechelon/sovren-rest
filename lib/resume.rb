@@ -6,6 +6,5 @@ module SovrenRest
     end
 
     private
-
   end
 end

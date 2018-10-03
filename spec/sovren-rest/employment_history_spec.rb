@@ -3,125 +3,116 @@ require 'employment_history.rb'
 RSpec.describe SovrenRest::EmploymentHistory do
   before :all do
     @employer = "Stuff N' Things"
-    @state = "Ohio"
-    @city = "Canton"
-    @description = "Doing stuff, making things"
-    @start_date = "2018-05"
-    @end_date = "current"
-    @title = "Stuff-Thinger"
+    @state = 'Ohio'
+    @city = 'Canton'
+    @description = 'Doing stuff, making things'
+    @start_date = '2018-05'
+    @end_date = 'current'
+    @title = 'Stuff-Thinger'
     input =
-    {
-      :EmployerOrgName=>@employer,
-      :PositionHistory=>
-      [
-        {
-          :@currentEmployer=>"true",
-          :OrgName=>
+      {
+        EmployerOrgName: @employer,
+        PositionHistory:         [
           {
-            :OrganizationName=>@employer
-          },
-          :OrgInfo=>
-          [
+            :@currentEmployer => 'true',
+            :OrgName =>
             {
-              :PositionLocation=>
+              OrganizationName: @employer
+            },
+            :OrgInfo =>
+            [
               {
-                :CountryCode=>"US",
-                :Region=>[@state],
-                :Municipality=>@city
+                PositionLocation:                 {
+                  CountryCode: 'US',
+                  Region: [@state],
+                  Municipality: @city
+                }
+              }
+            ],
+            :Description => @description,
+            :StartDate =>
+            {
+              YearMonth: @start_date
+            },
+            :EndDate =>
+            {
+              StringDate: @end_date
+            },
+            :JobCategory =>
+            [
+              {
+                TaxonomyName: 'Skills taxonomy',
+                CategoryCode: 'Information Technology → Programming',
+                Comments: 'Information Technology describes 91% of this job'
+              },
+              {
+                TaxonomyName: 'Job Level',
+                CategoryCode: 'Senior (more than 5 years experience)'
+              }
+            ],
+            :UserArea =>
+            {
+              "sov:PositionHistoryUserArea":               {
+                "sov:Id": 'POS-1',
+                "sov:CompanyNameProbabilityInterpretation":                 {
+                  :@internalUseOnly => 'BM',
+                  :"#text" => 'Confident'
+                },
+                "sov:NormalizedOrganizationName": @employer
               }
             }
-          ],
-          :Description=>@description,
-          :StartDate=>
-          {
-            :YearMonth=>@start_date
           },
-          :EndDate=>
           {
-            :StringDate=>@end_date
-          },
-          :JobCategory=>
-          [
+            :@positionType => 'directHire',
+            :Title => @title,
+            :OrgName =>
             {
-              :TaxonomyName=>"Skills taxonomy",
-              :CategoryCode=>"Information Technology → Programming",
-              :Comments=>"Information Technology describes 91% of this job"
+              OrganizationName: 'Payroll and Accounting SaaS'
             },
+            :Description => 'C#, .NET MVC, MSSql, Postgres, AWS, Teamcity, Jenkins',
+            :StartDate =>
             {
-              :TaxonomyName=>"Job Level",
-              :CategoryCode=>"Senior (more than 5 years experience)"
-            }
-          ],
-          :UserArea=>
-          {
-            :"sov:PositionHistoryUserArea"=>
+              YearMonth: '2016-06'
+            },
+            :EndDate =>
             {
-              :"sov:Id"=>"POS-1",
-              :"sov:CompanyNameProbabilityInterpretation"=>
+              YearMonth: '2018-04'
+            },
+            :JobCategory =>
+            [
               {
-                :@internalUseOnly=>"BM",
-                :"#text"=>"Confident"
+                TaxonomyName: 'Skills taxonomy',
+                CategoryCode: 'Stuff → Things',
+                Comments: 'Stuff describes 100% of this job'
               },
-              :"sov:NormalizedOrganizationName"=>@employer
+              {
+                TaxonomyName: 'Job Level',
+                CategoryCode: 'Senior (more than 5 years experience)'
+              }
+            ],
+            :UserArea =>
+            {
+              "sov:PositionHistoryUserArea":               {
+                "sov:Id": 'POS-2',
+                "sov:CompanyNameProbabilityInterpretation":                 {
+                  :@internalUseOnly => 'BM',
+                  :"#text" => 'Confident'
+                },
+                "sov:PositionTitleProbabilityInterpretation":                 {
+                  :@internalUseOnly => 'TT', :"#text" => 'Confident'\
+                },
+                "sov:NormalizedOrganizationName": @employer,
+                "sov:NormalizedTitle": @title
+              }
             }
           }
-        },
-        {
-          :@positionType=>"directHire",
-          :Title=>@title,
-          :OrgName=>
-          {
-            :OrganizationName=>"Payroll and Accounting SaaS"
-          },
-          :Description=>"C#, .NET MVC, MSSql, Postgres, AWS, Teamcity, Jenkins",
-          :StartDate=>
-          {
-            :YearMonth=>"2016-06"
-          },
-          :EndDate=>
-          {
-            :YearMonth=>"2018-04"
-          },
-          :JobCategory=>
-          [
-            {
-              :TaxonomyName=>"Skills taxonomy",
-              :CategoryCode=>"Stuff → Things",
-              :Comments=>"Stuff describes 100% of this job"
-            },
-            {
-              :TaxonomyName=>"Job Level",
-              :CategoryCode=>"Senior (more than 5 years experience)"
-            }
-          ],
-          :UserArea=>
-          {
-            :"sov:PositionHistoryUserArea"=>
-            {
-              :"sov:Id"=>"POS-2",
-              :"sov:CompanyNameProbabilityInterpretation"=>
-              {
-                :@internalUseOnly=>"BM",
-                :"#text"=>"Confident"
-              },
-              :"sov:PositionTitleProbabilityInterpretation"=>
-              {
-                :@internalUseOnly=>"TT", :"#text"=>"Confident"\
-              },
-              :"sov:NormalizedOrganizationName"=>@employer,
-              :"sov:NormalizedTitle"=>@title
-            }
+        ],
+        UserArea:         {
+          "sov:EmployerOrgUserArea":           {
+            "sov:NormalizedEmployerOrgName": @employer
           }
-        }
-      ],
-      :UserArea=>
-      {
-        :"sov:EmployerOrgUserArea"=>
-        {
-          :"sov:NormalizedEmployerOrgName"=>@employer
         }
       }
-    }
 
     @employment_history = SovrenRest::EmploymentHistory.new(input)
   end

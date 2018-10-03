@@ -4,6 +4,6 @@ module SovrenRest
       yield self
       true
     end
-  require_relative "client"
+    require_relative 'client'
   end
 end

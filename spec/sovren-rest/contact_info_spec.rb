@@ -1,86 +1,85 @@
 require 'contact_info.rb'
 
-
 RSpec.describe SovrenRest::ContactInfo do
   before :all do
-    @first_name = "Johan"
-    @middle_name = "Von"
-    @last_name = "Testingstonly"
+    @first_name = 'Johan'
+    @middle_name = 'Von'
+    @last_name = 'Testingstonly'
     @email_addresses =
-    [
-      "jtestingstonly@gmail.com"
-    ]
+      [
+        'jtestingstonly@gmail.com'
+      ]
     @websites =
-    [
-      "https://github.com/jtestingstonly",
-      "https://www.linkedin.com/in/jtestingstonly"
-    ]
+      [
+        'https://github.com/jtestingstonly',
+        'https://www.linkedin.com/in/jtestingstonly'
+      ]
     @phone_numbers =
-    [
-      "330-867-5309"
-    ]
-    @address_line_1 = "123 Test St"
-    @address_line_2 = "APT # 123"
-    @city = "North Canton"
-    @state = "Ohio"
-    @country = "US"
-    @postal_code = "44720"
+      [
+        '330-867-5309'
+      ]
+    @address_line_1 = '123 Test St'
+    @address_line_2 = 'APT # 123'
+    @city = 'North Canton'
+    @state = 'Ohio'
+    @country = 'US'
+    @postal_code = '44720'
 
     input =
-    {
-      "PersonName"=>
       {
-        "FormattedName"=>"#{@first_name} #{@middle_name} #{@last_name}",
-        "GivenName"=>@first_name,
-        "MiddleName"=>@middle_name,
-        "FamilyName"=>@last_name
-      },
-      "ContactMethod"=>
-      [
+        'PersonName' =>
         {
-          "WhenAvailable"=>"anytime",
-          "PostalAddress"=>
+          'FormattedName' => "#{@first_name} #{@middle_name} #{@last_name}",
+          'GivenName' => @first_name,
+          'MiddleName' => @middle_name,
+          'FamilyName' => @last_name
+        },
+        'ContactMethod' =>
+        [
           {
-            "CountryCode"=>@country,
-            "PostalCode"=>@postal_code,
-            "Region"=>[@state],
-            "Municipality"=>@city,
-            "DeliveryAddress"=>
+            'WhenAvailable' => 'anytime',
+            'PostalAddress' =>
             {
-              "AddressLine"=>
-              [
-                @address_line_1,
-                @address_line_2
-              ]
+              'CountryCode' => @country,
+              'PostalCode' => @postal_code,
+              'Region' => [@state],
+              'Municipality' => @city,
+              'DeliveryAddress' =>
+              {
+                'AddressLine' =>
+                [
+                  @address_line_1,
+                  @address_line_2
+                ]
+              }
             }
-          }
-        },
-        {
-          "Telephone"=>
+          },
           {
-            "FormattedNumber"=>@phone_numbers[0]
+            'Telephone' =>
+            {
+              'FormattedNumber' => @phone_numbers[0]
+            }
+          },
+          {
+            'Use' => 'personal',
+            'Location' => 'onPerson',
+            'WhenAvailable' => 'anytime',
+            'InternetEmailAddress' => @email_addresses[0]
+          },
+          {
+            'Use' => 'businessDirect',
+            'Location' => 'onPerson',
+            'WhenAvailable' => 'anytime',
+            'InternetWebAddress' => @websites[0]
+          },
+          {
+            'Use' => 'businessDirect',
+            'Location' => 'onPerson',
+            'WhenAvailable' => 'anytime',
+            'InternetWebAddress' => @websites[1]
           }
-        },
-        {
-          "Use"=>"personal",
-          "Location"=>"onPerson",
-          "WhenAvailable"=>"anytime",
-          "InternetEmailAddress"=>@email_addresses[0]
-        },
-        {
-          "Use"=>"businessDirect",
-          "Location"=>"onPerson",
-          "WhenAvailable"=>"anytime",
-          "InternetWebAddress"=>@websites[0]
-        },
-        {
-          "Use"=>"businessDirect",
-          "Location"=>"onPerson",
-          "WhenAvailable"=>"anytime",
-          "InternetWebAddress"=>@websites[1]
-        }
-      ]
-    }
+        ]
+      }
     @contact_info = SovrenRest::ContactInfo.new(input)
   end
 
@@ -131,5 +130,4 @@ RSpec.describe SovrenRest::ContactInfo do
   it 'should extract postal_code' do
     expect(@contact_info.postal_code).to eq(@postal_code)
   end
-
 end
