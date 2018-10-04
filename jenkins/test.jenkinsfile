@@ -6,7 +6,7 @@ pipeline {
         git credentialsId: 'bigbuilder-ssh', url: 'git@github.com:SynergyDataSystems/sovren-rest.git'
       }
     }
-    stage('Setup') {
+    stage('Bundler') {
       steps {
         sh '''
           bundle install
