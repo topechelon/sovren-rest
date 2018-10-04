@@ -50,11 +50,10 @@ end
 
 desc 'Code coverage detail'
 task :simplecov do
-
   Rake::Task['test'].execute
 end
 
-task default: [ 'rspec:test' ]
+task default: ['rspec:test']
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
