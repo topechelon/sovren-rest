@@ -15,7 +15,7 @@ pipeline {
     }
     stage('RuboCop') {
       steps {
-        sh 'rake rubocop'
+        sh 'rake rubocop:lint'
       }
     }
     stage('RSpec') {
