@@ -1,6 +1,6 @@
 require 'education.rb'
 
-RSpec.describe do
+RSpec.describe SovrenRest::Education do
   before :all do
     @school_name = 'University of Stuff'
     @degree_type = 'masters'
