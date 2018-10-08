@@ -1,5 +1,5 @@
 module SovrenRest
-  # Represents an employment history record
+  # Represents a single employment history record
   class EmploymentHistory
     attr_reader :title, :employer, :city, :state, :description,
                 :start_date, :end_date
