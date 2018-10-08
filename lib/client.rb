@@ -1,6 +1,3 @@
-require 'base64'
-require 'json'
-
 module SovrenRest
   # Represents the client that executes calls against the remote host.
   class Client
@@ -18,6 +15,7 @@ module SovrenRest
         {
           inputFile: raw_file,
           outputHtml: false
+
         }
       RestClient.post(endpoint, body(body_params).to_json, headers).body
     end
