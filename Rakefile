@@ -57,6 +57,8 @@ task default: ['rspec:test']
 
 task rubocop: ['rubocop:lint']
 
+task all: ['rubocop:lint', 'rspec:test']
+
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ''
