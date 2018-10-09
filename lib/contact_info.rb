@@ -24,8 +24,7 @@ module SovrenRest
 
     def parse_email(contact_method = {})
       @email_addresses = contact_method
-                         .select { |cm| cm['InternetEmailAddress'] }
-                         .map { |cm| cm['InternetEmailAddress'] }
+                         .map { |cm| cm['InternetEmailAddress'] }.compact
     end
 
     def parse_websites(contact_method = {})
