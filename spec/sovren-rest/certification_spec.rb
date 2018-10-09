@@ -6,18 +6,8 @@ RSpec.describe SovrenRest::Certification do
     @description = 'Certified to do stuff and things'
     @effective_date = '2018-10'
 
-    input =
-      {
-        'LicenseOrCertification' => {
-          'Name' => @name,
-          'Description' => @description,
-          'EffectiveDate' => {
-            'FirstIssuedDate' => {
-              'YearMonth' => @effective_date
-            }
-          }
-        }
-      }
+    raw = File.read(File.expand_path('files/certification.json', __dir__))
+    input = JSON.parse(raw)
 
     @certification = SovrenRest::Certification.new(input)
   end

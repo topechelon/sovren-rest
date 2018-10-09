@@ -1,0 +1,50 @@
+{
+  "PersonName": {
+      "FormattedName": "Johan Von Testingstonly",
+      "GivenName": "Johan",
+      "MiddleName": "Von",
+      "FamilyName": "Testingstonly"
+  },
+  "ContactMethod": [
+    {
+      "WhenAvailable": "anytime",
+      "PostalAddress": {
+        "CountryCode": "US",
+        "PostalCode": "44720",
+        "Region": [
+          "Ohio"
+        ],
+        "Municipality": "North Canton",
+        "DeliveryAddress": {
+          "AddressLine": [
+            "123 Test St",
+            "APT # 123"
+          ]
+        }
+      }
+    },
+    {
+      "Telephone": {
+        "FormattedNumber": "330-867-5309"
+      }
+    },
+    {
+        "Use": "personal",
+        "Location": "onPerson",
+        "WhenAvailable": "anytime",
+        "InternetEmailAddress": "jtestingstonly@gmail.com"
+    },
+    {
+      "Use": "businessDirect",
+      "Location": "onPerson",
+      "WhenAvailable": "anytime",
+      "InternetWebAddress": "https://github.com/jtestingstonly"
+    },
+    {
+      "Use": "businessDirect",
+      "Location": "onPerson",
+      "WhenAvailable": "anytime",
+      "InternetWebAddress": "https://www.linkedin.com/in/jtestingstonly"
+    }
+  ]
+}

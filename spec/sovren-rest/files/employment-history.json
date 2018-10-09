@@ -1,0 +1,215 @@
+{
+    "EmployerOrg": [
+      {
+        "EmployerOrgName": "Stuff N' Things",
+        "PositionHistory": [
+          {
+            "@currentEmployer": "true",
+            "OrgName": {
+              "OrganizationName": "Stuff N' Things"
+            },
+            "OrgInfo": [
+              {
+                "PositionLocation": {
+                  "CountryCode": "US",
+                  "Region": [
+                    "Ohio"
+                  ],
+                  "Municipality": "Canton"
+                }
+              }
+            ],
+            "Description": "Doing stuff, making things",
+            "StartDate": {
+              "YearMonth": "2018-05"
+            },
+            "EndDate": {
+              "StringDate": "current"
+            },
+            "JobCategory": [
+              {
+                "TaxonomyName": "Skills taxonomy",
+                "CategoryCode": "Stuff → Things",
+                "Comments": "Stuff describes 91% of this job"
+              },
+              {
+                "TaxonomyName": "Job Level",
+                "CategoryCode": "Senior (more than 5 years experience)"
+              }
+            ],
+            "UserArea": {
+              "sov:PositionHistoryUserArea": {
+                "sov:Id": "POS-1",
+                "sov:CompanyNameProbabilityInterpretation": {
+                  "@internalUseOnly": "BM",
+                  "#text": "Confident"
+                },
+                "sov:NormalizedOrganizationName": "Stuff N' Things"
+              }
+            }
+          },
+          {
+            "@positionType": "directHire",
+            "Title": "Stuff-Thinger",
+            "OrgName": {
+              "OrganizationName": "Stuff n Things"
+            },
+            "Description": "Stuff and things",
+            "StartDate": {
+              "YearMonth": "2016-06"
+            },
+            "EndDate": {
+              "YearMonth": "2018-04"
+            },
+            "JobCategory": [
+              {
+                "TaxonomyName": "Skills taxonomy",
+                "CategoryCode": "Stuff → Things",
+                "Comments": "Stuff describes 100% of this job"
+              },
+              {
+                "TaxonomyName": "Job Level",
+                "CategoryCode": "Senior (more than 5 years experience)"
+              }
+            ],
+            "UserArea": {
+              "sov:PositionHistoryUserArea": {
+                "sov:Id": "POS-2",
+                "sov:CompanyNameProbabilityInterpretation": {
+                  "@internalUseOnly": "BM",
+                  "#text": "Confident"
+                },
+                "sov:PositionTitleProbabilityInterpretation": {
+                  "@internalUseOnly": "TT",
+                  "#text": "Confident"
+                },
+                "sov:NormalizedOrganizationName": "Stuff n Things",
+                "sov:NormalizedTitle": "Stuff Engineer"
+              }
+            }
+          }
+        ],
+        "UserArea": {
+          "sov:EmployerOrgUserArea": {
+            "sov:NormalizedEmployerOrgName": "Stuff N' Things"
+          }
+        }
+      },
+      {
+        "EmployerOrgName": "University of Stuff",
+        "PositionHistory": [
+          {
+            "@positionType": "directHire",
+            "Title": "Research Assistant, Department of Things",
+            "OrgName": {
+              "OrganizationName": "University of Stuff"
+            },
+            "OrgInfo": [
+              {
+                "PositionLocation": {
+                  "CountryCode": "US",
+                  "Region": [
+                    "Ohio"
+                  ],
+                  "Municipality": "Stuff"
+                }
+              }
+            ],
+            "Description": "Stuff n things",
+            "StartDate": {
+              "YearMonth": "2014-09"
+            },
+            "EndDate": {
+              "YearMonth": "2016-05"
+            },
+            "JobCategory": [
+              {
+                "TaxonomyName": "Skills taxonomy",
+                "CategoryCode": "Stuff → Things",
+                "Comments": "Stuff describes 100% of this job"
+              },
+              {
+                "TaxonomyName": "Job Level",
+                "CategoryCode": "Senior (more than 5 years experience)"
+              }
+            ],
+            "UserArea": {
+              "sov:PositionHistoryUserArea": {
+                "sov:Id": "POS-3",
+                "sov:CompanyNameProbabilityInterpretation": {
+                  "@internalUseOnly": "BX",
+                  "#text": "Confident"
+                },
+                "sov:PositionTitleProbabilityInterpretation": {
+                  "@internalUseOnly": "TS",
+                  "#text": "Confident"
+                },
+                "sov:NormalizedOrganizationName": "University of Stuff",
+                "sov:NormalizedTitle": "Research Assistant Department of Things",
+                "sov:Subtitles": {
+                  "sov:Subtitle": [
+                    "Research Assistant"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "UserArea": {
+          "sov:EmployerOrgUserArea": {
+            "sov:NormalizedEmployerOrgName": "University of Stuff"
+          }
+        }
+      },
+      {
+        "EmployerOrgName": "Stuff Tracking",
+        "PositionHistory": [
+          {
+            "@positionType": "directHire",
+            "Title": "Stuff Developer, Stuff n Things",
+            "OrgName": {
+              "OrganizationName": "Stuff Tracking"
+            },
+            "Description": "Stuff n things",
+            "StartDate": {
+              "YearMonth": "2012-01"
+            },
+            "EndDate": {
+              "YearMonth": "2014-08"
+            },
+            "JobCategory": [
+              {
+                "TaxonomyName": "Skills taxonomy",
+                "CategoryCode": "Stuff → Things",
+                "Comments": "Stuff describes 100% of this job"
+              },
+              {
+                "TaxonomyName": "Job Level",
+                "CategoryCode": "Entry Level"
+              }
+            ],
+            "UserArea": {
+              "sov:PositionHistoryUserArea": {
+                "sov:Id": "POS-4",
+                "sov:CompanyNameProbabilityInterpretation": {
+                  "@internalUseOnly": "BM",
+                  "#text": "Confident"
+                },
+                "sov:PositionTitleProbabilityInterpretation": {
+                  "@internalUseOnly": "TM",
+                  "#text": "Confident"
+                },
+                "sov:NormalizedOrganizationName": "Stuff Tracking",
+                "sov:NormalizedTitle": "Stuff Developer Stuff N' Things"
+              }
+            }
+          }
+        ],
+        "UserArea": {
+          "sov:EmployerOrgUserArea": {
+            "sov:NormalizedEmployerOrgName": "Stuff Tracking"
+          }
+        }
+      }
+    ]
+  }

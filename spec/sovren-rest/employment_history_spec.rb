@@ -9,100 +9,10 @@ RSpec.describe SovrenRest::EmploymentHistory do
     @start_date = '2018-05'
     @end_date = 'current'
     @title = 'Stuff-Thinger'
-    input = {
-      EmployerOrgName: @employer,
-      PositionHistory: [
-        {
-          :@currentEmployer => 'true',
-          :OrgName => {
-            OrganizationName: @employer
-          },
-          :OrgInfo => [
-            {
-              PositionLocation: {
-                CountryCode: 'US',
-                Region: [@state],
-                Municipality: @city
-              }
-            }
-          ],
-          :Description => @description,
-          :StartDate => {
-            YearMonth: @start_date
-          },
-          :EndDate => {
-            StringDate: @end_date
-          },
-          :JobCategory => [
-            {
-              TaxonomyName: 'Skills taxonomy',
-              CategoryCode: 'Information Technology → Programming',
-              Comments: 'Information Technology describes 91% of this job'
-            },
-            {
-              TaxonomyName: 'Job Level',
-              CategoryCode: 'Senior (more than 5 years experience)'
-            }
-          ],
-          :UserArea => {
-            "sov:PositionHistoryUserArea": {
-              "sov:Id": 'POS-1',
-              "sov:CompanyNameProbabilityInterpretation": {
-                :@internalUseOnly => 'BM',
-                :"#text" => 'Confident'
-              },
-              "sov:NormalizedOrganizationName": @employer
-            }
-          }
-        },
-        {
-          :@positionType => 'directHire',
-          :Title => @title,
-          :OrgName => {
-            OrganizationName: 'Stuff and Things SaaS'
-          },
-          :Description => 'C#, .NET MVC, MSSql, Postgres',
-          :StartDate => {
-            YearMonth: '2016-06'
-          },
-          :EndDate => {
-            YearMonth: '2018-04'
-          },
-          :JobCategory => [
-            {
-              TaxonomyName: 'Skills taxonomy',
-              CategoryCode: 'Stuff → Things',
-              Comments: 'Stuff describes 100% of this job'
-            },
-            {
-              TaxonomyName: 'Job Level',
-              CategoryCode: 'Senior (more than 5 years experience)'
-            }
-          ],
-          :UserArea => {
-            "sov:PositionHistoryUserArea": {
-              "sov:Id": 'POS-2',
-              "sov:CompanyNameProbabilityInterpretation": {
-                :@internalUseOnly => 'BM',
-                :"#text" => 'Confident'
-              },
-              "sov:PositionTitleProbabilityInterpretation": {
-                :@internalUseOnly => 'TT', :"#text" => 'Confident'\
-              },
-              "sov:NormalizedOrganizationName": @employer,
-              "sov:NormalizedTitle": @title
-            }
-          }
-        }
-      ],
-      UserArea: {
-        "sov:EmployerOrgUserArea": {
-          "sov:NormalizedEmployerOrgName": @employer
-        }
-      }
-    }
 
-    @employment_history = SovrenRest::EmploymentHistory.new(input)
+    raw = File.read(File.expand_path('files/employment-history.json', __dir__))
+    input = JSON.parse(raw)
+    @employment_history = SovrenRest::EmploymentHistory.new(input['EmployerOrg'][0])
   end
 
   it 'should extract title' do

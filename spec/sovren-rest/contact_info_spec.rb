@@ -25,61 +25,8 @@ RSpec.describe SovrenRest::ContactInfo do
     @country = 'US'
     @postal_code = '44720'
 
-    input =
-      {
-        'PersonName' =>
-        {
-          'FormattedName' => "#{@first_name} #{@middle_name} #{@last_name}",
-          'GivenName' => @first_name,
-          'MiddleName' => @middle_name,
-          'FamilyName' => @last_name
-        },
-        'ContactMethod' =>
-        [
-          {
-            'WhenAvailable' => 'anytime',
-            'PostalAddress' =>
-            {
-              'CountryCode' => @country,
-              'PostalCode' => @postal_code,
-              'Region' => [@state],
-              'Municipality' => @city,
-              'DeliveryAddress' =>
-              {
-                'AddressLine' =>
-                [
-                  @address_line1,
-                  @address_line2
-                ]
-              }
-            }
-          },
-          {
-            'Telephone' =>
-            {
-              'FormattedNumber' => @phone_numbers[0]
-            }
-          },
-          {
-            'Use' => 'personal',
-            'Location' => 'onPerson',
-            'WhenAvailable' => 'anytime',
-            'InternetEmailAddress' => @email_addresses[0]
-          },
-          {
-            'Use' => 'businessDirect',
-            'Location' => 'onPerson',
-            'WhenAvailable' => 'anytime',
-            'InternetWebAddress' => @websites[0]
-          },
-          {
-            'Use' => 'businessDirect',
-            'Location' => 'onPerson',
-            'WhenAvailable' => 'anytime',
-            'InternetWebAddress' => @websites[1]
-          }
-        ]
-      }
+    raw = File.read(File.expand_path('files/contact-info.json', __dir__))
+    input = JSON.parse(raw)
     @contact_info = SovrenRest::ContactInfo.new(input)
   end
 

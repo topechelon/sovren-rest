@@ -1,0 +1,56 @@
+{
+    "SchoolOrInstitution": [
+      {
+        "@schoolType": "university",
+        "School": [
+          {
+            "SchoolName": "University of Stuff"
+          }
+        ],
+        "PostalAddress": {
+          "CountryCode": "US",
+          "Region": [
+            "Ohio"
+          ],
+          "Municipality": "Stuff"
+        },
+        "Degree": [
+          {
+            "@degreeType": "masters",
+            "DegreeName": "Master of Stuff in Things",
+            "DegreeMajor": [
+              {
+                "Name": [
+                  "Stuff N Things"
+                ]
+              }
+            ],
+            "DatesOfAttendance": [
+              {
+                "StartDate": {
+                  "AnyDate": "notKnown"
+                },
+                "EndDate": {
+                  "YearMonth": "2016-08"
+                }
+              }
+            ],
+            "Comments": "University of Stuff - Stuff, Ohio\r\n\r\nMaster of Science in Computer Science, Aug 2016\r\nThesis: Towards an Ideal Execution Environment for Programmable Network Switches",
+            "UserArea": {
+              "sov:DegreeUserArea": {
+                "sov:Id": "DEG-1",
+                "sov:Graduated": "false",
+                "sov:NormalizedDegreeName": "MSc",
+                "sov:NormalizedDegreeType": "MSc"
+              }
+            }
+          }
+        ],
+        "UserArea": {
+          "sov:SchoolOrInstitutionTypeUserArea": {
+            "sov:NormalizedSchoolName": "University of Stuff"
+          }
+        }
+      }
+    ]
+  }

@@ -1,0 +1,11 @@
+{
+    "LicenseOrCertification" : {
+      "Name" : "Certified Stuff",
+      "Description" : "Certified to do stuff and things",
+      "EffectiveDate" : {
+        "FirstIssuedDate" : {
+          "YearMonth" : "2018-10"
+        }
+      }
+    }
+  }

@@ -4,25 +4,16 @@ RSpec.describe SovrenRest::ExperienceSummary do
   before :all do
     @months_experience = 81
     @years_experience = (@months_experience / 12).floor
-    input =
-      {
-        'sov:Description': 'Johan Von Testingstonly\'s experience appears to be strongly concentrated in Information Technology (mostly Programming), and slightly concentrated in Engineering (mostly Other).',
-        'sov:MonthsOfWorkExperience': @months_experience.to_s,
-        'sov:AverageMonthsPerEmployer': '27',
-        'sov:FulltimeDirectHirePredictiveIndex': '85',
-        'sov:MonthsOfManagementExperience': '0',
-        'sov:HighestManagementScore': '0',
-        'sov:ExecutiveType': 'none',
-        'sov:ManagementStory': nil
-      }
+    raw = File.read(File.expand_path('files/experience-summary.json', __dir__))
+    input = JSON.parse(raw)
     @experience_summary = SovrenRest::ExperienceSummary.new(input)
   end
 
-  it 'should extract number of months experience' do
+  it 'should extract months_of_work_experience' do
     expect(@experience_summary.months_of_work_experience).to eq(@months_experience)
   end
 
-  it 'should calculate correct number of years experience' do
+  it 'should calculate correct years_of_work_experience' do
     expect(@experience_summary.years_of_work_experience).to eq(@years_experience)
   end
 end
