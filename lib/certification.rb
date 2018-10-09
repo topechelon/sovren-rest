@@ -20,7 +20,6 @@ module SovrenRest
     end
 
     def parse_effective_date(data = {})
-      puts data['EffectiveDate']['FirstIssuedDate']
       @effective_date = data['EffectiveDate']['FirstIssuedDate']
                         .map { |_k, v| v }[0]
     end
