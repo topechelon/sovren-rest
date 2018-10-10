@@ -5,11 +5,20 @@ module SovrenRest
                 :certifications, :experience_summary
 
     def initialize(response, with_html = false)
-      puts response
-      parsed_response = JSON.parse(response['Value']['ParsedDocument'])
-      @data = parsed_response[:Resume][:StructuredXMLResume]
+      parsed_response = JSON.parse(response)
+      parsed_value = parsed_response['Value']
+      @data = parsed_value['Resume']['StructuredXMLResume']
+      @user_area = parsed_value['Resume']['UserArea']
       @with_html = with_html
       build_resume
+    end
+
+    def eql?(other)
+      self.contact_info == other.contact_info &&
+      self.employment_history == other.employment_history &&
+      self.education_history == other.education_history &&
+      self.certifications == other.certifications &&
+      self.experience_summary == other.experience_summary
     end
 
     private
@@ -23,31 +32,31 @@ module SovrenRest
     end
 
     def build_contact_info
-      SovrenRest::ContactInfo.new(@data[:ContactInfo])
+      SovrenRest::ContactInfo.new(@data['ContactInfo'])
     end
 
     def build_employment_history
-      @data[:EmploymentHistory][:EmployerOrg]
+      @data['EmploymentHistory']['EmployerOrg']
         .map { |emp| SovrenRest::EmploymentHistory.new(emp) }
         .compact
     end
 
     def build_education_history
-      @data[:EducationHistory][:SchoolorInstitution]
-        .map { |edu| SovrenRest::EducationHistory.new(edu) }
+      @data['EducationHistory']['SchoolOrInstitution']
+        .each { |edu| SovrenRest::EducationHistory.new(edu) }
         .compact
     end
 
     def build_certifications
-      @data[:LicensesAndCertifications]
-        .map { |lac| SovrenRest::Certications.new(lac) }
+      @data['LicensesAndCertifications']
+        .each { |lac| SovrenRest::Certification.new(lac) }
         .compact
     end
 
     def build_experience_summary
-      resume_area = @data[:UserArea][:"sov:ResumeUserArea"]
-      summary = resume_area[:"sov:ExperienceSummary"]
-      SovrenRest::ExperienceSummary(summary)
+      resume_area = @user_area['sov:ResumeUserArea']
+      summary = resume_area['sov:ExperienceSummary']
+      SovrenRest::ExperienceSummary.new(summary)
     end
   end
 end
