@@ -13,6 +13,7 @@ module SovrenRest
       build_resume
     end
 
+    # rubocop:disable Metrics/AbcSize
     def eql?(other)
       contact_info == other.contact_info &&
         employment_history == other.employment_history &&
@@ -20,6 +21,7 @@ module SovrenRest
         certifications == other.certifications &&
         experience_summary == other.experience_summary
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 

@@ -13,6 +13,7 @@ module SovrenRest
       parse_dates(history)
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
     def eql?(other)
       title == other.title &&
         employer == other.employer &&
@@ -22,6 +23,7 @@ module SovrenRest
         start_date == other.start_date &&
         end_date == other.end_date
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
 
     private
 

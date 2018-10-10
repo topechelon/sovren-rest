@@ -14,6 +14,8 @@ module SovrenRest
       parse_address(contact_method)
     end
 
+    # rubocop:disable Metrics/PerceivedComplexity, Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
     def eql?(other)
       first_name == other.first_name &&
         middle_name == other.middle_name &&
@@ -28,6 +30,8 @@ module SovrenRest
         country == other.country &&
         postal_code == other.postal_code
     end
+    # rubocop:enable Metrics/PerceivedComplexity, Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
 
     private
 

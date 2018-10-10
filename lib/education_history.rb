@@ -11,6 +11,7 @@ module SovrenRest
       parse_graduated(data)
     end
 
+    # rubocop:disable Metrics/AbcSize
     def eql?(other)
       school_name == other.school_name &&
         degree_type == other.degree_type &&
@@ -18,6 +19,7 @@ module SovrenRest
         graduated == other.graduated &&
         end_date == other.end_date
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 
