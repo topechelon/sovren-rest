@@ -35,11 +35,16 @@ module SovrenRest
 
     # rubocop:disable Metrics/LineLength
     def parse_location(history = {})
-      location = history.find { |h| h['OrgInfo'] }['OrgInfo']
-                        .find { |info| info['PositionLocation'] }['PositionLocation']
+      if (history.any? { |h| h['OrgInfo'] != nil })
+        location = history.find { |h| h['OrgInfo'] }['OrgInfo']
+                          .find { |info| info['PositionLocation'] }['PositionLocation']
 
-      @city = location['Municipality']
-      @state = location['Region'][0]
+        @city = location['Municipality']
+        @state = location['Region'][0]
+      else
+        @city = 'Unknown'
+        @state = 'Unknown'
+      end
     end
     # rubocop:enable Metrics/LineLength
 
