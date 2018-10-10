@@ -17,6 +17,8 @@ module SovrenRest
       self.major == other.major &&
       self.graduated == other.graduated &&
       self.end_date == other.end_date
+    end
+
     private
 
     def parse_school_name(school = {})
