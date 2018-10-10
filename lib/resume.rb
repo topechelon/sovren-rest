@@ -7,10 +7,11 @@ module SovrenRest
     def initialize(response, with_html = false)
       parsed_response = JSON.parse(response)
       parsed_value = parsed_response['Value']
-      @data = parsed_value['Resume']['StructuredXMLResume']
-      @user_area = parsed_value['Resume']['UserArea']
+      parsed_document = JSON.parse(parsed_value['ParsedDocument'])
+      data = parsed_document['Resume']['StructuredXMLResume']
+      user_area = parsed_document['Resume']['UserArea']
       @with_html = with_html
-      build_resume
+      build_resume(data, user_area)
     end
 
     # rubocop:disable Metrics/AbcSize
@@ -25,38 +26,42 @@ module SovrenRest
 
     private
 
-    def build_resume
-      @contact_info = build_contact_info
-      @employment_history = build_employment_history
-      @education_history = build_education_history
-      @certifications = build_certifications
-      @experience_summary = build_experience_summary
+    def build_resume(data, user_area)
+      @contact_info = build_contact_info(data)
+      @employment_history = build_employment_history(data)
+      @education_history = build_education_history(data)
+      @certifications = build_certifications(data)
+      @experience_summary = build_experience_summary(user_area)
     end
 
-    def build_contact_info
-      SovrenRest::ContactInfo.new(@data['ContactInfo'])
+    def build_contact_info(data)
+      SovrenRest::ContactInfo.new(data['ContactInfo'])
     end
 
-    def build_employment_history
-      @data['EmploymentHistory']['EmployerOrg']
+    def build_employment_history(data)
+      data['EmploymentHistory']['EmployerOrg']
         .map { |emp| SovrenRest::EmploymentHistory.new(emp) }
         .compact
     end
 
-    def build_education_history
-      @data['EducationHistory']['SchoolOrInstitution']
+    def build_education_history(data)
+      data['EducationHistory']['SchoolOrInstitution']
         .map { |edu| SovrenRest::EducationHistory.new(edu) }
         .compact
     end
 
-    def build_certifications
-      @data['LicensesAndCertifications']
-        .each { |lac| SovrenRest::Certification.new(lac) }
-        .compact
+    def build_certifications(data)
+      if data.key?('LicensesAndCertifications')
+        data['LicensesAndCertifications']
+          .each { |lac| SovrenRest::Certification.new(lac) }
+          .compact
+      else
+        ''
+      end
     end
 
-    def build_experience_summary
-      resume_area = @user_area['sov:ResumeUserArea']
+    def build_experience_summary(user_area)
+      resume_area = user_area['sov:ResumeUserArea']
       summary = resume_area['sov:ExperienceSummary']
       SovrenRest::ExperienceSummary.new(summary)
     end
