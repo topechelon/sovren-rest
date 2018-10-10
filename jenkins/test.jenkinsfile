@@ -1,11 +1,6 @@
 pipeline {
   agent { node { label 'ruby' } }
   stages {
-    stage('Checkout') {
-      steps {
-        git credentialsId: 'bigbuilder-ssh', url: 'git@github.com:SynergyDataSystems/sovren-rest.git'
-      }
-    }
     stage('Bundler') {
       steps {
         sh '''
