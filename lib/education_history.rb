@@ -4,15 +4,19 @@ module SovrenRest
     attr_reader :school_name, :degree_type, :major, :graduated, :end_date
 
     def initialize(data = {})
-      school = data['SchoolOrInstitution'][0]
-
-      parse_school_name(school)
-      parse_degree_type(school)
-      parse_major(school)
-      parse_end_date(school)
-      parse_graduated(school)
+      parse_school_name(data)
+      parse_degree_type(data)
+      parse_major(data)
+      parse_end_date(data)
+      parse_graduated(data)
     end
 
+    def eql?(other)
+      self.school_name == other.school_name &&
+      self.degree_type == other.degree_type &&
+      self.major == other.major &&
+      self.graduated == other.graduated &&
+      self.end_date == other.end_date
     private
 
     def parse_school_name(school = {})
