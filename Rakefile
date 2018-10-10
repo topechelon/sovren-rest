@@ -29,12 +29,17 @@ Juwelier::RubygemsDotOrgTasks.new
 namespace :rspec do
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:test) do |test|
-    test.pattern = 'spec/**/*_spec.rb'
+    test.pattern = 'spec/unit/*_spec.rb'
+    test.rspec_opts = '--color --require spec_helper --format documentation'
+  end
+
+  RSpec::Core::RakeTask.new(:integration) do |test|
+    test.pattern = 'spec/integration/*_spec.rb'
     test.rspec_opts = '--color --require spec_helper --format documentation'
   end
 
   RSpec::Core::RakeTask.new(:regression) do |test|
-    test.pattern = 'spec/**/*_spec.rb'
+    test.pattern = 'spec/unit/*_spec.rb'
     test.rspec_opts = '--require spec_helper --bisect'
   end
 end
@@ -57,7 +62,7 @@ task default: ['rspec:test']
 
 task rubocop: ['rubocop:lint']
 
-task all: ['rubocop:lint', 'rspec:test']
+task all: ['rubocop:lint', 'rspec:test', 'rspec:integration']
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|

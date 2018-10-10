@@ -1,27 +1,37 @@
 pipeline {
   agent { node { label 'ruby' } }
+  environment {
+    SOVREN_HOST=credentials('SovrenHostAddr')
+  }
   stages {
-    stage('Bundler') {
+    stage('Setup') {
       steps {
-        sh '''
-          bundle install
-        '''
+        sh 'bundle install'
       }
     }
-    stage('RuboCop') {
-      steps {
-        sh 'rake rubocop:lint'
-      }
-    }
-    stage('RSpec') {
-      steps {
-        sh 'rake rspec:test'
-      }
-      post {
-        success {
-          publishHTML([allowMissing: false, alwaysLinkToLastBuild: true,
-            keepAll: true, reportDir: 'coverage/rcov', reportFiles: 'index.html',
-            reportName: 'RCov Report', reportTitles: ''])
+    stage('Testing') {
+      parallel {
+        stage('RuboCop') {
+          steps {
+            sh 'rake rubocop:lint'
+          }
+        }
+        stage('Unit') {
+          steps {
+            sh 'rake rspec:test'
+          }
+          post {
+            success {
+              publishHTML([allowMissing: false, alwaysLinkToLastBuild: true,
+                keepAll: true, reportDir: 'coverage/rcov', reportFiles: 'index.html',
+                reportName: 'RCov Report', reportTitles: ''])
+            }
+          }
+        }
+        stage('Integration') {
+          steps {
+            sh 'rake rspec:integration'
+          }
         }
       }
     }
