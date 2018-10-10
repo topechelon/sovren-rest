@@ -15,18 +15,18 @@ module SovrenRest
     end
 
     def eql?(other)
-      self.first_name == other.first_name &&
-      self.middle_name == other.middle_name &&
-      self.last_name == other.last_name &&
-      self.email_addresses == other.email_addresses &&
-      self.websites == other.websites &&
-      self.phone_numbers == other.phone_numbers &&
-      self.address_line1 == other.address_line1 &&
-      self.address_line2 == other.address_line2 &&
-      self.city == other.city &&
-      self.state == other.state &&
-      self.country == other.country &&
-      self.postal_code == other.postal_code
+      first_name == other.first_name &&
+        middle_name == other.middle_name &&
+        last_name == other.last_name &&
+        email_addresses == other.email_addresses &&
+        websites == other.websites &&
+        phone_numbers == other.phone_numbers &&
+        address_line1 == other.address_line1 &&
+        address_line2 == other.address_line2 &&
+        city == other.city &&
+        state == other.state &&
+        country == other.country &&
+        postal_code == other.postal_code
     end
 
     private

@@ -10,9 +10,9 @@ module SovrenRest
     end
 
     def eql?(other)
-      self.name == other.name &&
-      self.description == other.description &&
-      self.effective_date == other.effective_date
+      name == other.name &&
+        description == other.description &&
+        effective_date == other.effective_date
     end
 
     private

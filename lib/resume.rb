@@ -14,11 +14,11 @@ module SovrenRest
     end
 
     def eql?(other)
-      self.contact_info == other.contact_info &&
-      self.employment_history == other.employment_history &&
-      self.education_history == other.education_history &&
-      self.certifications == other.certifications &&
-      self.experience_summary == other.experience_summary
+      contact_info == other.contact_info &&
+        employment_history == other.employment_history &&
+        education_history == other.education_history &&
+        certifications == other.certifications &&
+        experience_summary == other.experience_summary
     end
 
     private

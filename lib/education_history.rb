@@ -12,11 +12,11 @@ module SovrenRest
     end
 
     def eql?(other)
-      self.school_name == other.school_name &&
-      self.degree_type == other.degree_type &&
-      self.major == other.major &&
-      self.graduated == other.graduated &&
-      self.end_date == other.end_date
+      school_name == other.school_name &&
+        degree_type == other.degree_type &&
+        major == other.major &&
+        graduated == other.graduated &&
+        end_date == other.end_date
     end
 
     private

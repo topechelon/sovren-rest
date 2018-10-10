@@ -14,13 +14,13 @@ module SovrenRest
     end
 
     def eql?(other)
-      self.title == other.title &&
-      self.employer == other.employer &&
-      self.city == other.city &&
-      self.state == other.state &&
-      self.description == other.description &&
-      self.start_date == other.start_date &&
-      self.end_date == other.end_date
+      title == other.title &&
+        employer == other.employer &&
+        city == other.city &&
+        state == other.state &&
+        description == other.description &&
+        start_date == other.start_date &&
+        end_date == other.end_date
     end
 
     private
@@ -35,7 +35,7 @@ module SovrenRest
 
     # rubocop:disable Metrics/LineLength
     def parse_location(history = {})
-      if (history.any? { |h| h['OrgInfo'] != nil })
+      if history.any? { |h| !h['OrgInfo'].nil? }
         location = history.find { |h| h['OrgInfo'] }['OrgInfo']
                           .find { |info| info['PositionLocation'] }['PositionLocation']
 
