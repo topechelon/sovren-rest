@@ -10,8 +10,7 @@ RSpec.describe SovrenRest::EducationHistory do
 
     raw = File.read(File.expand_path('files/education-history.json', __dir__))
     input = JSON.parse(raw)
-
-    @education = SovrenRest::EducationHistory.new(input)
+    @education = SovrenRest::EducationHistory.new(input['SchoolOrInstitution'][0])
   end
 
   it 'should extract school_name' do
