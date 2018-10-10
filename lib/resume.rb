@@ -43,7 +43,7 @@ module SovrenRest
 
     def build_education_history
       @data['EducationHistory']['SchoolOrInstitution']
-        .each { |edu| SovrenRest::EducationHistory.new(edu) }
+        .map { |edu| SovrenRest::EducationHistory.new(edu) }
         .compact
     end
 
