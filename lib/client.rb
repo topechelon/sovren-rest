@@ -17,7 +17,8 @@ module SovrenRest
           outputHtml: false
 
         }
-      RestClient.post(endpoint, body(body_params).to_json, headers).body
+      SovrenRest::Resume.new(RestClient
+        .post(endpoint, body(body_params).to_json, headers).body)
     end
 
     def parse_html(raw_file)
@@ -27,7 +28,8 @@ module SovrenRest
           inputFile: raw_file,
           outputHtml: true
         }
-      RestClient.post(endpoint, body(body_params).to_json, headers).body
+      SovrenRest::Resume.new(RestClient
+        .post(endpoint, body(body_params).to_json, headers).body)
     end
 
     private
