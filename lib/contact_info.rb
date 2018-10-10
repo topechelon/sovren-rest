@@ -14,6 +14,21 @@ module SovrenRest
       parse_address(contact_method)
     end
 
+    def eql?(other)
+      self.first_name == other.first_name &&
+      self.middle_name == other.middle_name &&
+      self.last_name == other.last_name &&
+      self.email_addresses == other.email_addresses &&
+      self.websites == other.websites &&
+      self.phone_numbers == other.phone_numbers &&
+      self.address_line1 == other.address_line1 &&
+      self.address_line2 == other.address_line2 &&
+      self.city == other.city &&
+      self.state == other.state &&
+      self.country == other.country &&
+      self.postal_code == other.postal_code
+    end
+
     private
 
     def parse_name(person_name = {})

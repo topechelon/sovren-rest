@@ -9,6 +9,12 @@ module SovrenRest
       parse_effective_date(certification)
     end
 
+    def eql?(other)
+      self.name == other.name &&
+      self.description == other.description &&
+      self.effective_date == other.effective_date
+    end
+
     private
 
     def parse_name(data = {})

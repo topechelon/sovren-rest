@@ -13,6 +13,16 @@ module SovrenRest
       parse_dates(history)
     end
 
+    def eql?(other)
+      self.title == other.title &&
+      self.employer == other.employer &&
+      self.city == other.city &&
+      self.state == other.state &&
+      self.description == other.description &&
+      self.start_date == other.start_date &&
+      self.end_date == other.end_date
+    end
+
     private
 
     def parse_title(history = {})
