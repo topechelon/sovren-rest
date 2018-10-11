@@ -11,25 +11,31 @@ module SovrenRest
 
     def parse(raw_file)
       endpoint = build_url(PARSE_RESUME)
-      body_params =
-        {
-          inputFile: raw_file,
-          outputHtml: false
+      body_params = { inputFile: raw_file, outputHtml: false }
+      response = RestClient
+                 .post(endpoint, body(body_params).to_json, headers).body
 
-        }
-      SovrenRest::Resume.new(RestClient
-        .post(endpoint, body(body_params).to_json, headers).body)
+      status = JSON.parse(response)['Info']
+
+      if status['Code'] != 'Success'
+        raise "Resume parsing error:\n#{status['Message']}"
+      end
+
+      SovrenRest::Resume.new(response)
     end
 
     def parse_html(raw_file)
       endpoint = build_url(PARSE_RESUME)
-      body_params =
-        {
-          inputFile: raw_file,
-          outputHtml: true
-        }
-      SovrenRest::Resume.new(RestClient
-        .post(endpoint, body(body_params).to_json, headers).body)
+      body_params = { inputFile: raw_file, outputHtml: true }
+
+      response = RestClient
+                 .post(endpoint, body(body_params).to_json, headers).body
+
+      if response['Info']['Code'] == 'Success'
+        raise "Resume parsing error:\n#{response['Info']['Message']}"
+      end
+
+      SovrenRest::Resume.new(response)
     end
 
     private
