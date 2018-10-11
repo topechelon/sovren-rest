@@ -5,7 +5,7 @@ module SovrenRest
                 :country, :postal_code
 
     def initialize(data = {})
-      if data.nil? || !data.include?('PostalAddress')
+      if data.nil? || data.select { |d| d['PostalAddress'] }.none?
         @city = @state = @country = @postal_code = @line1 = @line2 = 'Unknown'
       else
         address = data.find { |cm| cm['PostalAddress'] }['PostalAddress']
