@@ -4,7 +4,6 @@ module SovrenRest
     attr_reader :title, :employer, :city, :state, :description,
                 :start_date, :end_date
     def initialize(data = {})
-      puts data
       history = data['PositionHistory']
 
       parse_title(history)
@@ -29,7 +28,7 @@ module SovrenRest
     private
 
     def parse_title(history = {})
-      @title = if history.nil? || !history.include?('Title')
+      @title = if history.nil? || history.select { |h| h['Title'] }.none?
                  ''
                else
                  history.find { |h| h['Title'] }['Title']
