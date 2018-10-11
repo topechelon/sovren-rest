@@ -14,14 +14,13 @@ RSpec.describe 'SovrenRest::Integration::ClientParse' do
       raise 'Environment variable \'SOVREN_HOST\' is missing'
     end
 
-    @host = ENV['SOVREN_HOST']
-    @config = ENV.fetch('SOVREN_HOST')
+    @host = ENV.fetch('SOVREN_HOST')
+    @config = ENV.fetch('SOVREN_CFG', '')
     @file = File.read(File.expand_path('files/resume.pdf', __dir__))
     @client = SovrenRest::Client.new(baseUrl: @host, configuration: @config)
   end
 
-  it 'should parse a resume' do
-    resume = @client.parse(@file)
-    puts "host: #{@host}\nclient: #{@client}\nresume: #{resume.inspect}"
+  it 'should parse a resume successfully' do
+    @client.parse(@file)
   end
 end
