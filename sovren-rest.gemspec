@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "jenkins/test.jenkinsfile",
     "lib/address.rb",
     "lib/certification.rb",
     "lib/client.rb",
