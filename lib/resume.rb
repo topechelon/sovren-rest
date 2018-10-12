@@ -2,15 +2,14 @@ module SovrenRest
   # Top level resume class.
   class Resume
     attr_reader :contact_info, :employment_history, :education_history,
-                :certifications, :experience_summary
+                :certifications, :experience_summary, :html
 
-    def initialize(response, with_html = false)
+    def initialize(response)
       parsed_response = JSON.parse(response)
       parsed_value = parsed_response['Value']
       parsed_document = JSON.parse(parsed_value['ParsedDocument'])
       data = parsed_document['Resume']['StructuredXMLResume']
       user_area = parsed_document['Resume']['UserArea']
-      @with_html = with_html
       build_resume(data, user_area)
     end
 
