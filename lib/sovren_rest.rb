@@ -13,7 +13,7 @@ module SovrenRest
     require_relative 'certification'
     require_relative 'client'
     require_relative 'contact_info'
-    require_relative 'education'
+    require_relative 'education_history'
     require_relative 'employment_history'
     require_relative 'resume'
     require_relative 'experience_summary'
