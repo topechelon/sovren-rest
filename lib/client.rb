@@ -24,18 +24,8 @@ module SovrenRest
       SovrenRest::Resume.new(response)
     end
 
-    def parse_html(raw_file)
-      endpoint = build_url(PARSE_RESUME)
-      body_params = { inputFile: raw_file, outputHtml: true }
-
-      response = RestClient
-                 .post(endpoint, body(body_params).to_json, headers).body
-
-      if response['Info']['Code'] == 'Success'
-        raise "Resume parsing error:\n#{response['Info']['Message']}"
-      end
-
-      SovrenRest::Resume.new(response)
+    def convert_to_html(raw_file)
+      parse(raw_file).html
     end
 
     private
@@ -52,7 +42,7 @@ module SovrenRest
     def body(params = {})
       {
         'DocumentAsBase64String' => file_as_base64(params[:inputFile]),
-        'OutputHtml' => params[:outputHtml],
+        'OutputHtml' => 'true',
         'Configuration' => @configuration
       }
     end
