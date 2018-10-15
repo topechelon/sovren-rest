@@ -1,5 +1,3 @@
-require 'address'
-
 module SovrenRest
   # Represents resume contact information.
   class ContactInfo
