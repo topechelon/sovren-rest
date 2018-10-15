@@ -32,7 +32,6 @@ module SovrenRest
       @education_history = build_education_history(data)
       @certifications = build_certifications(data)
       @experience_summary = build_experience_summary(user_area)
-      @html = parse_html(data)
     end
 
     def build_contact_information(data)
