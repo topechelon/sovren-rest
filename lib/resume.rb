@@ -10,6 +10,7 @@ module SovrenRest
       parsed_document = JSON.parse(parsed_value['ParsedDocument'])
       data = parsed_document['Resume']['StructuredXMLResume']
       user_area = parsed_document['Resume']['UserArea']
+      build_resume(data, user_area)
       @html = parsed_value['Html']
     end
 
