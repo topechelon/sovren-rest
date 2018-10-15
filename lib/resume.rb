@@ -1,7 +1,7 @@
 module SovrenRest
   # Top level resume class.
   class Resume
-    attr_reader :contact_info, :employment_history, :education_history,
+    attr_reader :contact_information, :employment_history, :education_history,
                 :certifications, :experience_summary, :html
 
     def initialize(response)
@@ -15,7 +15,7 @@ module SovrenRest
 
     # rubocop:disable Metrics/AbcSize
     def eql?(other)
-      contact_info == other.contact_info &&
+      contact_information == other.contact_information &&
         employment_history == other.employment_history &&
         education_history == other.education_history &&
         certifications == other.certifications &&
@@ -26,7 +26,7 @@ module SovrenRest
     private
 
     def build_resume(data, user_area)
-      @contact_info = build_contact_info(data)
+      @contact_information = build_contact_information(data)
       @employment_history = build_employment_history(data)
       @education_history = build_education_history(data)
       @certifications = build_certifications(data)
@@ -34,8 +34,8 @@ module SovrenRest
       @html = parse_html(data)
     end
 
-    def build_contact_info(data)
-      SovrenRest::ContactInfo.new(data['ContactInfo'])
+    def build_contact_information(data)
+      SovrenRest::ContactInformation.new(data['ContactInfo'])
     end
 
     def build_employment_history(data)

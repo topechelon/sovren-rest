@@ -1,6 +1,6 @@
 module SovrenRest
   # Represents resume contact information.
-  class ContactInfo
+  class ContactInformation
     attr_reader :first_name, :middle_name, :last_name, :email_addresses,
                 :websites, :phone_numbers, :address
 
