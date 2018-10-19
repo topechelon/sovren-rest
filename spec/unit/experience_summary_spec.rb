@@ -2,8 +2,9 @@ require 'experience_summary.rb'
 
 RSpec.describe SovrenRest::ExperienceSummary do
   before :all do
-    @months_experience = 81
-    @years_experience = (@months_experience / 12).floor
+    months = 81
+    @months_experience = months % 12
+    @years_experience = months / 12
     raw = File.read(File.expand_path('files/experience-summary.json', __dir__))
     input = JSON.parse(raw)
     @experience_summary = SovrenRest::ExperienceSummary.new(input)

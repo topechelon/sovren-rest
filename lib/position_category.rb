@@ -6,7 +6,7 @@ module SovrenRest
   #   'CategoryCode' => Value,
   #   'Comments'     => (Optional) Metadata
   # }
-
+  #
   class PositionCategory
     attr_reader :data
 

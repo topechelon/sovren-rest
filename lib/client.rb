@@ -3,17 +3,16 @@ module SovrenRest
   class Client
     PARSE_RESUME = '/parser/resume'.freeze
     def initialize(options = {})
-      @base_url = options[:baseUrl]
-      @account_id = options[:accountId] || '12345678'
-      @service_key = options[:serviceKey] || 'thiscanbeanything,whyrequireit?'
+      @base_url = options[:base_url]
+      @account_id = options[:account_id] || '12345678'
+      @service_key = options[:service_key] || 'thiscanbeanything,whyrequireit?'
       @configuration = options[:configuration] || ''
     end
 
     def parse(raw_file)
       endpoint = build_url(PARSE_RESUME)
-      body_params = { inputFile: raw_file, outputHtml: false }
       response = RestClient
-                 .post(endpoint, body(body_params).to_json, headers).body
+                 .post(endpoint, body(raw_file).to_json, headers).body
 
       status = JSON.parse(response)['Info']
 
@@ -39,16 +38,12 @@ module SovrenRest
       }
     end
 
-    def body(params = {})
+    def body(input_file)
       {
-        'DocumentAsBase64String' => file_as_base64(params[:inputFile]),
+        'DocumentAsBase64String' => Base64.encode64(input_file),
         'OutputHtml' => 'true',
         'Configuration' => @configuration
       }
-    end
-
-    def file_as_base64(file)
-      Base64.encode64(file)
     end
 
     def build_url(action)

@@ -12,3 +12,10 @@ Lint/UselessAssignment:
   Enabled: true
   Exclude:
     - spec/**/*
+
+AllCops:
+  Exclude:
+    - ./*.gemspec
+
+Naming/VariableNumber:
+  Enabled: false

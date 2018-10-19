@@ -2,7 +2,7 @@ module SovrenRest
   # Represents a certification.
   class Certification
     attr_reader :name, :description, :effective_date
-    def initialize(data = {})
+    def initialize(data)
       certification = data['LicenseOrCertification']
       parse_name(certification)
       parse_description(certification)
@@ -17,17 +17,17 @@ module SovrenRest
 
     private
 
-    def parse_name(data = {})
+    def parse_name(data)
       @name = data['Name']
     end
 
-    def parse_description(data = {})
+    def parse_description(data)
       @description = data['Description']
     end
 
-    def parse_effective_date(data = {})
-      @effective_date = data['EffectiveDate']['FirstIssuedDate']
-                        .map { |_k, v| v }[0]
+    def parse_effective_date(data)
+      date = data.dig('EffectiveDate', 'FirstIssuedDate') || {}
+      @effective_date = date.values[0]
     end
   end
 end

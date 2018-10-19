@@ -4,7 +4,7 @@ RSpec.describe SovrenRest::Resume do
   before :all do
     ci_raw = File.read(File.expand_path('files/contact-info.json', __dir__))
     ci = JSON.parse(ci_raw)
-    @contact_info = SovrenRest::ContactInfo.new(ci)
+    @contact_information = SovrenRest::ContactInformation.new(ci)
 
     emp_hist_raw = File.read(File.expand_path('files/employment-history.json', __dir__))
     emp_hist = JSON.parse(emp_hist_raw)
@@ -22,8 +22,8 @@ RSpec.describe SovrenRest::Resume do
     @resume = SovrenRest::Resume.new(response_body)
   end
 
-  it 'should parse contact_info' do
-    expect(@resume.contact_info).to eql(@contact_info)
+  it 'should parse contact_information' do
+    expect(@resume.contact_information).to eql(@contact_information)
   end
 
   it 'should parse employment_history' do

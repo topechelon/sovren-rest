@@ -35,35 +35,27 @@ module SovrenRest
     end
 
     def build_contact_information(data)
-      SovrenRest::ContactInformation.new(data['ContactInfo'])
+      SovrenRest::ContactInformation.new(data['ContactInfo'] || {})
     end
 
     def build_employment_history(data)
-      data['EmploymentHistory']['EmployerOrg']
-        .map { |emp| SovrenRest::EmploymentHistory.new(emp) }
-        .compact
+      arr = data.dig('EmploymentHistory', 'EmployerOrg') || []
+      arr.map { |emp| SovrenRest::EmploymentHistory.new(emp) }
     end
 
     def build_education_history(data)
-      data['EducationHistory']['SchoolOrInstitution']
-        .map { |edu| SovrenRest::EducationHistory.new(edu) }
-        .compact
+      arr = data.dig('EducationHistory', 'SchoolOrInstitution') || []
+      arr.map { |edu| SovrenRest::EducationHistory.new(edu) }
     end
 
     def build_certifications(data)
-      if data.key?('LicensesAndCertifications')
-        data['LicensesAndCertifications']
-          .each { |lac| SovrenRest::Certification.new(lac) }
-          .compact
-      else
-        ''
-      end
+      arr = data['LicensesAndCertifications'] || []
+      arr.map { |lac| SovrenRest::Certification.new(lac) }
     end
 
     def build_experience_summary(user_area)
-      resume_area = user_area['sov:ResumeUserArea']
-      summary = resume_area['sov:ExperienceSummary']
-      SovrenRest::ExperienceSummary.new(summary)
+      exp = user_area.dig('sov:ResumeUserArea', 'sov:ExperienceSummary') || {}
+      SovrenRest::ExperienceSummary.new(exp)
     end
   end
 end

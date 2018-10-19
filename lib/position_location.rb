@@ -5,7 +5,7 @@ module SovrenRest
   #   :state    => string; State name
   #   :country  => string; Country abbreviation
   # }
-
+  #
   class PositionLocation
     attr_reader :country, :city, :state
 

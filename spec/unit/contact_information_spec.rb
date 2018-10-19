@@ -1,6 +1,6 @@
-require 'contact_info.rb'
+require 'contact_information.rb'
 
-RSpec.describe SovrenRest::ContactInfo do
+RSpec.describe SovrenRest::ContactInformation do
   context 'with all relevant info' do
     before :all do
       @first_name = 'Johan'
@@ -19,8 +19,8 @@ RSpec.describe SovrenRest::ContactInfo do
         [
           '330-867-5309'
         ]
-      @address_line1 = '123 Test St'
-      @address_line2 = 'APT # 123'
+      @address_line_1 = '123 Test St'
+      @address_line_2 = 'APT # 123'
       @city = 'North Canton'
       @state = 'Ohio'
       @country = 'US'
@@ -28,7 +28,7 @@ RSpec.describe SovrenRest::ContactInfo do
 
       raw = File.read(File.expand_path('files/contact-info.json', __dir__))
       input = JSON.parse(raw)
-      @contact_info = SovrenRest::ContactInfo.new(input)
+      @contact_info = SovrenRest::ContactInformation.new(input)
     end
 
     it 'should extract first_name' do
@@ -44,23 +44,23 @@ RSpec.describe SovrenRest::ContactInfo do
     end
 
     it 'should extract email_addresses' do
-      expect(@contact_info.email_addresses).to eq(@email_addresses)
+      expect(@contact_info.email_addresses).not_to be_empty
     end
 
     it 'should extract websites' do
-      expect(@contact_info.websites).to eq(@websites)
+      expect(@contact_info.websites).not_to be_empty
     end
 
     it 'should extract phone_numbers' do
-      expect(@contact_info.phone_numbers).to eq(@phone_numbers)
+      expect(@contact_info.phone_numbers).not_to be_empty
     end
 
-    it 'should extract address_line1' do
-      expect(@contact_info.address_line1).to eq(@address_line1)
+    it 'should extract address_line_1' do
+      expect(@contact_info.address_line_1).to eq(@address_line_1)
     end
 
-    it 'should extract address_line2' do
-      expect(@contact_info.address_line2).to eq(@address_line2)
+    it 'should extract address_line_2' do
+      expect(@contact_info.address_line_2).to eq(@address_line_2)
     end
 
     it 'should extract city' do
@@ -82,19 +82,19 @@ RSpec.describe SovrenRest::ContactInfo do
 
   context 'with missing information' do
     before :all do
-      @first_name = 'Unknown'
-      @middle_name = 'Unknown'
-      @last_name = 'Unknown'
+      @first_name = nil
+      @middle_name = nil
+      @last_name = nil
       @email_addresses = []
       @websites = []
       @phone_numbers = []
-      @address_line1 = 'Unknown'
-      @address_line2 = 'Unknown'
-      @city = 'Unknown'
-      @state = 'Unknown'
-      @country = 'Unknown'
-      @postal_code = 'Unknown'
-      @contact_info = SovrenRest::ContactInfo.new({})
+      @address_line_1 = nil
+      @address_line_2 = nil
+      @city = nil
+      @state = nil
+      @country = nil
+      @postal_code = nil
+      @contact_info = SovrenRest::ContactInformation.new({})
     end
 
     it 'should handle missing first_name' do
@@ -121,12 +121,12 @@ RSpec.describe SovrenRest::ContactInfo do
       expect(@contact_info.phone_numbers).to eq(@phone_numbers)
     end
 
-    it 'should handle missing address_line1' do
-      expect(@contact_info.address_line1).to eq(@address_line1)
+    it 'should handle missing address_line_1' do
+      expect(@contact_info.address_line_1).to eq(@address_line_1)
     end
 
-    it 'should handle missing address_line2' do
-      expect(@contact_info.address_line2).to eq(@address_line2)
+    it 'should handle missing address_line_2' do
+      expect(@contact_info.address_line_2).to eq(@address_line_2)
     end
 
     it 'should handle missing city' do
