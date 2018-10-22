@@ -1,14 +1,30 @@
 module SovrenRest
-  # Represents the client that executes calls against the remote host.
+  ##
+  # Represents the client that executes calls against a remote host.
   class Client
+    # Parse resume controller/action path.
     PARSE_RESUME = '/parser/resume'.freeze
-    def initialize(options = {})
+
+    ##
+    # Creates a new sovren rest client with the given options.
+    #
+    #   options =>
+    #   {
+    #     base_url      #  Endpoint to Sovren rest service
+    #     account_id    #  Sovren account ID. If self hosted, not required
+    #     service_key   #  Sovren service key. If self hosted, not required
+    #     configuration #  Sovren parser configuration string. Optional
+    #   }
+    def initialize(options)
       @base_url = options[:base_url]
       @account_id = options[:account_id] || '12345678'
       @service_key = options[:service_key] || 'thiscanbeanything,whyrequireit?'
       @configuration = options[:configuration] || ''
     end
 
+    ##
+    # Parses a raw resume PDF file and returns a SovrenRest::Resume object.
+    # Throws if Sovren does not return an Info.Code of 'Success'.
     def parse(raw_file)
       endpoint = build_url(PARSE_RESUME)
       response = RestClient
@@ -23,12 +39,10 @@ module SovrenRest
       SovrenRest::Resume.new(response)
     end
 
-    def convert_to_html(raw_file)
-      parse(raw_file).html
-    end
-
     private
 
+    ##
+    # Builds up header for remote calls.
     def headers
       {
         'Content-Type' => 'application/json',
@@ -38,6 +52,8 @@ module SovrenRest
       }
     end
 
+    ##
+    # Builds up body of message for remote call.
     def body(input_file)
       {
         'DocumentAsBase64String' => Base64.encode64(input_file),
@@ -46,6 +62,8 @@ module SovrenRest
       }
     end
 
+    ##
+    # Helper methods to construct host/controller/action URL.
     def build_url(action)
       "#{@base_url}#{action}"
     end

@@ -1,26 +1,48 @@
 module SovrenRest
-  # Top level resume class.
+  ##
+  # Top level resume class, an aggregation of resume information held.
   class Resume
-    attr_reader :contact_information, :employment_history, :education_history,
-                :certifications, :experience_summary, :html
+    # SovrenRest::ContactInformation.
+    attr_reader :contact_information
 
+    # SovrenRest::EmploymentHistory.
+    attr_reader :employment_history
+
+    # SovrenRest::EducationHistory.
+    attr_reader :education_history
+
+    # Array of SovrenRest::Certification.
+    attr_reader :certifications
+
+    # Sovren specific resume metadata.
+    attr_reader :metadata
+
+    # HTML representation of the resume.
+    attr_reader :html
+
+    ##
+    # Initializes and parses a resume summary.
     def initialize(response)
       parsed_response = JSON.parse(response)
-      parsed_value = parsed_response['Value']
-      parsed_document = JSON.parse(parsed_value['ParsedDocument'])
-      data = parsed_document['Resume']['StructuredXMLResume']
-      user_area = parsed_document['Resume']['UserArea']
-      build_resume(data, user_area)
-      @html = parsed_value['Html']
+      parsed_value = parsed_response['Value'] || {}
+      parsed_document = parsed_value['ParsedDocument'] || '{}'
+      document = JSON.parse(parsed_document) || {}
+      data = document.dig('Resume', 'StructuredXMLResume')
+      user_area = document.dig('Resume', 'UserArea')
+      build_resume(data || {}, user_area || {})
+      @html = parsed_value.dig('Html')
     end
 
     # rubocop:disable Metrics/AbcSize
+
+    ##
+    # Custom equality definition.
     def eql?(other)
       contact_information == other.contact_information &&
         employment_history == other.employment_history &&
         education_history == other.education_history &&
         certifications == other.certifications &&
-        experience_summary == other.experience_summary
+        metadata == other.metadata
     end
     # rubocop:enable Metrics/AbcSize
 
@@ -31,7 +53,7 @@ module SovrenRest
       @employment_history = build_employment_history(data)
       @education_history = build_education_history(data)
       @certifications = build_certifications(data)
-      @experience_summary = build_experience_summary(user_area)
+      @metadata = build_metadata(user_area)
     end
 
     def build_contact_information(data)
@@ -53,9 +75,8 @@ module SovrenRest
       arr.map { |lac| SovrenRest::Certification.new(lac) }
     end
 
-    def build_experience_summary(user_area)
-      exp = user_area.dig('sov:ResumeUserArea', 'sov:ExperienceSummary') || {}
-      SovrenRest::ExperienceSummary.new(exp)
+    def build_metadata(user_area)
+      user_area.dig('sov:ResumeUserArea') || {}
     end
   end
 end
