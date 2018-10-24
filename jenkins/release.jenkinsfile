@@ -1,0 +1,50 @@
+pipeline {
+  agent { node { label 'ruby' } }
+  parameters {
+    choice(name:'RELEASE_TYPE', choices:['Patch', 'Minor', 'Major'], description:'Type of release being made')
+  }
+  stages {
+    stage('Setup') {
+      steps {
+        sh 'bundle install'
+      }
+    }
+    stage('Version Bump') {
+      steps {
+        script {
+          switch (params.RELEASE_TYPE) {
+            case 'Patch':
+              sh 'rake version:bump:patch'
+              break
+            case 'Minor':
+              sh 'rake version:bump:minor'
+              break
+            case 'Major':
+              sh 'rake version:bump:major'
+              break
+          }
+        }
+      }
+    }
+    stage('Github') {
+      steps {
+        sh '''
+          rake gemspec:release
+          rake git:release
+        '''
+      }
+    }
+    stage('Documentation') {
+      steps {
+        sh '''
+          git checkout gh-pages
+          git pull origin master
+          rake rdoc
+          git commit -am 'Update doc for release'
+          git push
+          git checkout master
+        '''
+      }
+    }
+  }
+}
