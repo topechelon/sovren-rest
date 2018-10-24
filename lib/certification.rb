@@ -8,8 +8,8 @@ module SovrenRest
     # Description of the certification/license.
     attr_reader :description
 
-    # Effective issue date of certification/license.
-    attr_reader :effective_date
+    # Array of effective issue dates of certification/license.
+    attr_reader :effective_dates
 
     ##
     # Initializes a new license or certification with a name,
@@ -18,7 +18,7 @@ module SovrenRest
       certification = data['LicenseOrCertification'] || {}
       parse_name(certification)
       parse_description(certification)
-      parse_effective_date(certification)
+      parse_effective_dates(certification)
     end
 
     ##
@@ -26,7 +26,7 @@ module SovrenRest
     def eql?(other)
       name == other.name &&
         description == other.description &&
-        effective_date == other.effective_date
+        effective_dates == other.effective_dates
     end
 
     private
@@ -39,9 +39,9 @@ module SovrenRest
       @description = data['Description']
     end
 
-    def parse_effective_date(data)
+    def parse_effective_dates(data)
       date = data.dig('EffectiveDate', 'FirstIssuedDate') || {}
-      @effective_date = date.values[0]
+      @effective_dates = date.values.compact
     end
   end
 end
