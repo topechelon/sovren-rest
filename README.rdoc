@@ -1,6 +1,8 @@
 = sovren-rest
 
-Description goes here.
+Ruby gem for interfacing with a Sovren 9.0 REST api.
+
+Documentation: https://synergydatasystems.github.io/sovren-rest/
 
 == Contributing to sovren-rest
 
