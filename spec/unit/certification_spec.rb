@@ -5,7 +5,6 @@ RSpec.describe SovrenRest::Certification do
     before :all do
       @name = 'Certified Stuff'
       @description = 'Certified to do stuff and things'
-      @effective_date = '2018-10'
 
       raw = File.read(File.expand_path('files/certification.json', __dir__))
       input = JSON.parse(raw)
@@ -21,15 +20,14 @@ RSpec.describe SovrenRest::Certification do
       expect(@certification.description).to eq(@description)
     end
 
-    it 'should extract effective_date' do
-      expect(@certification.effective_date).to eq(@effective_date)
+    it 'should extract effective_dates' do
+      expect(@certification.effective_dates).not_to be_empty
     end
   end
   context 'with missing information' do
     before :all do
       @name = nil
       @description = nil
-      @effective_date = nil
 
       @certification = SovrenRest::Certification.new({})
     end
@@ -42,8 +40,8 @@ RSpec.describe SovrenRest::Certification do
       expect(@certification.description).to eq(@description)
     end
 
-    it 'should handle missing effective_date' do
-      expect(@certification.effective_date).to eq(@effective_date)
+    it 'should handle missing effective_dates' do
+      expect(@certification.effective_dates).to be_empty
     end
   end
 end
