@@ -11,5 +11,6 @@ module SovrenRest
   require_relative 'sovren-rest/contact_information'
   require_relative 'sovren-rest/education_history'
   require_relative 'sovren-rest/employment_history'
+  require_relative 'sovren-rest/parse_response'
   require_relative 'sovren-rest/resume'
 end

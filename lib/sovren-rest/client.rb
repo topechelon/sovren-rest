@@ -23,20 +23,18 @@ module SovrenRest
     end
 
     ##
-    # Parses a raw resume PDF file and returns a SovrenRest::Resume object.
-    # Throws if Sovren does not return an Info.Code of 'Success'.
+    # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse object.
+    # Throws an exception if the request is not successful
     def parse(raw_file)
-      endpoint = build_url(PARSE_RESUME)
-      response = RestClient
-                 .post(endpoint, body(raw_file).to_json, headers).body
+      parse_resume_url = build_url(PARSE_RESUME)
+      raw_response = RestClient.post(parse_resume_url, parse_body(raw_file).to_json, headers)
+      response = SovrenRest::ParseResponse.new(raw_response.body)
 
-      status = JSON.parse(response)['Info']
-
-      if status['Code'] != 'Success'
-        raise "Resume parsing error:\n#{status['Message']}"
+      unless response.successful?
+        raise "Resume parsing error:\n#{response.message}"
       end
 
-      SovrenRest::Resume.new(response)
+      response
     end
 
     private
@@ -54,7 +52,7 @@ module SovrenRest
 
     ##
     # Builds up body of message for remote call.
-    def body(input_file)
+    def parse_body(input_file)
       {
         'DocumentAsBase64String' => Base64.encode64(input_file),
         'OutputHtml' => 'true',

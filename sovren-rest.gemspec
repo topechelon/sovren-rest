@@ -40,6 +40,7 @@ Gem::Specification.new do |gem|
     'lib/sovren-rest/education_history.rb',
     'lib/sovren-rest/employment_history.rb',
     'lib/sovren-rest/experience_summary.rb',
+    'lib/sovren-rest/parse_response.rb',
     'lib/sovren-rest/resume.rb',
     'lib/sovren-rest.rb',
     'sovren-rest.gemspec',

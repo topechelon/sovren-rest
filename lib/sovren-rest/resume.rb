@@ -17,20 +17,12 @@ module SovrenRest
     # Sovren specific resume metadata.
     attr_reader :metadata
 
-    # HTML representation of the resume.
-    attr_reader :html
-
     ##
-    # Initializes and parses a resume summary.
-    def initialize(response)
-      parsed_response = JSON.parse(response)
-      parsed_value = parsed_response['Value'] || {}
-      parsed_document = parsed_value['ParsedDocument'] || '{}'
-      document = JSON.parse(parsed_document) || {}
+    # Initializes a resume from ParsedDocument data.
+    def initialize(document)
       data = document.dig('Resume', 'StructuredXMLResume')
       user_area = document.dig('Resume', 'UserArea')
       build_resume(data || {}, user_area || {})
-      @html = parsed_value.dig('Html')
     end
 
     # rubocop:disable Metrics/AbcSize
