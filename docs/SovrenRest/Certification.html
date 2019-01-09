@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/certification.rb
+    <li>lib/sovren-rest/certification.rb
   </ul>
 </nav>
 
@@ -109,6 +109,8 @@
   
     <li><a href="../SovrenRest/EmploymentHistory.html">SovrenRest::EmploymentHistory</a>
   
+    <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
+  
     <li><a href="../SovrenRest/Position.html">SovrenRest::Position</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
@@ -157,15 +159,15 @@
         </div>
       </div>
       
-      <div id="attribute-i-effective_date" class="method-detail">
+      <div id="attribute-i-effective_dates" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">effective_date</span><span
+          <span class="method-name">effective_dates</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
         
-        <p>Effective issue date of certification/license.</p>
+        <p>Array of effective issue dates of certification/license.</p>
         
         </div>
       </div>
@@ -209,12 +211,12 @@ issue date.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/certification.rb, line 17</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/certification.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-identifier">certification</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;LicenseOrCertification&#39;</span>] <span class="ruby-operator">||</span> {}
   <span class="ruby-identifier">parse_name</span>(<span class="ruby-identifier">certification</span>)
   <span class="ruby-identifier">parse_description</span>(<span class="ruby-identifier">certification</span>)
-  <span class="ruby-identifier">parse_effective_date</span>(<span class="ruby-identifier">certification</span>)
+  <span class="ruby-identifier">parse_effective_dates</span>(<span class="ruby-identifier">certification</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -248,11 +250,11 @@ issue date.</p>
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/certification.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/certification.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&amp;&amp;</span>
     <span class="ruby-identifier">description</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">description</span> <span class="ruby-operator">&amp;&amp;</span>
-    <span class="ruby-identifier">effective_date</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">effective_date</span>
+    <span class="ruby-identifier">effective_dates</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">effective_dates</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- eql-3F-source -->
           

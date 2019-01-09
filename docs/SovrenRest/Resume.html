@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/resume.rb
+    <li>lib/sovren-rest/resume.rb
   </ul>
 </nav>
 
@@ -108,6 +108,8 @@
     <li><a href="../SovrenRest/Employer.html">SovrenRest::Employer</a>
   
     <li><a href="../SovrenRest/EmploymentHistory.html">SovrenRest::EmploymentHistory</a>
+  
+    <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
   
     <li><a href="../SovrenRest/Position.html">SovrenRest::Position</a>
   
@@ -170,6 +172,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-document_json" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">document_json</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Raw document JSON string provided by the response</p>
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-education_history" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">education_history</span><span
@@ -192,19 +207,6 @@
         <div class="method-description">
         
         <p><a href="EmploymentHistory.html">SovrenRest::EmploymentHistory</a>.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-html" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">html</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>HTML representation of the resume.</p>
         
         </div>
       </div>
@@ -235,28 +237,25 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(response)</span>
+            class="method-args">(document_json)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Initializes and parses a resume summary.</p>
+          <p>Initializes a resume from ParsedDocument data.</p>
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/resume.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">response</span>)
-  <span class="ruby-identifier">parsed_response</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">response</span>)
-  <span class="ruby-identifier">parsed_value</span> = <span class="ruby-identifier">parsed_response</span>[<span class="ruby-string">&#39;Value&#39;</span>] <span class="ruby-operator">||</span> {}
-  <span class="ruby-identifier">parsed_document</span> = <span class="ruby-identifier">parsed_value</span>[<span class="ruby-string">&#39;ParsedDocument&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;{}&#39;</span>
-  <span class="ruby-identifier">document</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">parsed_document</span>) <span class="ruby-operator">||</span> {}
-  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Resume&#39;</span>, <span class="ruby-string">&#39;StructuredXMLResume&#39;</span>)
-  <span class="ruby-identifier">user_area</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Resume&#39;</span>, <span class="ruby-string">&#39;UserArea&#39;</span>)
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">document_json</span>)
+  <span class="ruby-ivar">@document_json</span> = <span class="ruby-identifier">document_json</span>
+
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">document_json</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Resume&#39;</span>, <span class="ruby-string">&#39;StructuredXMLResume&#39;</span>)
+  <span class="ruby-identifier">user_area</span> = <span class="ruby-identifier">document_json</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Resume&#39;</span>, <span class="ruby-string">&#39;UserArea&#39;</span>)
   <span class="ruby-identifier">build_resume</span>(<span class="ruby-identifier">data</span> <span class="ruby-operator">||</span> {}, <span class="ruby-identifier">user_area</span> <span class="ruby-operator">||</span> {})
-  <span class="ruby-ivar">@html</span> = <span class="ruby-identifier">parsed_value</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Html&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -290,7 +289,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/resume.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">contact_information</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">contact_information</span> <span class="ruby-operator">&amp;&amp;</span>
     <span class="ruby-identifier">employment_history</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">employment_history</span> <span class="ruby-operator">&amp;&amp;</span>

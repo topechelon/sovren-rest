@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/client.rb
+    <li>lib/sovren-rest/client.rb
   </ul>
 </nav>
 
@@ -108,6 +108,8 @@
     <li><a href="../SovrenRest/Employer.html">SovrenRest::Employer</a>
   
     <li><a href="../SovrenRest/EmploymentHistory.html">SovrenRest::EmploymentHistory</a>
+  
+    <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
   
     <li><a href="../SovrenRest/Position.html">SovrenRest::Position</a>
   
@@ -184,7 +186,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/client.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>)
   <span class="ruby-ivar">@base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>]
   <span class="ruby-ivar">@account_id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:account_id</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;12345678&#39;</span>
@@ -219,25 +221,26 @@
         <div class="method-description">
           
           <p>Parses a raw resume PDF file and returns a <a
-href="Resume.html">SovrenRest::Resume</a> object. Throws if Sovren does not
-return an Info.Code of &#39;Success&#39;.</p>
+href="ParseResponse.html">SovrenRest::ParseResponse</a>. Throws an
+exception if the request is not successful</p>
           
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/client.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>)
-  <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">build_url</span>(<span class="ruby-constant">PARSE_RESUME</span>)
-  <span class="ruby-identifier">response</span> = <span class="ruby-constant">RestClient</span>
-             .<span class="ruby-identifier">post</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">body</span>(<span class="ruby-identifier">raw_file</span>).<span class="ruby-identifier">to_json</span>, <span class="ruby-identifier">headers</span>).<span class="ruby-identifier">body</span>
+  <span class="ruby-identifier">parse_resume_url</span> = <span class="ruby-identifier">build_url</span>(<span class="ruby-constant">PARSE_RESUME</span>)
+  <span class="ruby-identifier">post_arguments</span> = [
+    <span class="ruby-identifier">parse_resume_url</span>,
+    <span class="ruby-identifier">parse_body</span>(<span class="ruby-identifier">raw_file</span>).<span class="ruby-identifier">to_json</span>,
+    <span class="ruby-identifier">headers</span>
+  ]
+  <span class="ruby-identifier">raw_response</span> = <span class="ruby-constant">RestClient</span>.<span class="ruby-identifier">post</span>(*<span class="ruby-identifier">post_arguments</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">body</span>)
 
-  <span class="ruby-identifier">status</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">response</span>)[<span class="ruby-string">&#39;Info&#39;</span>]
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Parsing Error:\n#{response.message}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">successful?</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">status</span>[<span class="ruby-string">&#39;Code&#39;</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;Success&#39;</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Resume parsing error:\n#{status[&#39;Message&#39;]}&quot;</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">Resume</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>)
+  <span class="ruby-identifier">response</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- parse-source -->
           

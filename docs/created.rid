@@ -1,11 +1,13 @@
-Mon, 22 Oct 2018 15:07:38 -0400
-README.rdoc	Wed, 26 Sep 2018 17:12:31 -0400
-lib/certification.rb	Mon, 22 Oct 2018 15:06:03 -0400
-lib/client.rb	Mon, 22 Oct 2018 15:06:13 -0400
-lib/contact_information.rb	Mon, 22 Oct 2018 15:06:23 -0400
-lib/education_history.rb	Mon, 22 Oct 2018 15:06:44 -0400
-lib/employer.rb	Mon, 22 Oct 2018 15:06:53 -0400
-lib/employment_history.rb	Mon, 22 Oct 2018 15:06:57 -0400
-lib/position.rb	Mon, 22 Oct 2018 15:05:54 -0400
-lib/resume.rb	Mon, 22 Oct 2018 15:07:32 -0400
-lib/sovren_rest.rb	Mon, 22 Oct 2018 15:07:31 -0400
+Wed, 09 Jan 2019 10:06:30 -0500
+README.rdoc	Tue, 08 Jan 2019 13:29:54 -0500
+lib/sovren-rest.rb	Tue, 08 Jan 2019 15:27:58 -0500
+lib/sovren-rest/certification.rb	Tue, 08 Jan 2019 14:28:56 -0500
+lib/sovren-rest/client.rb	Wed, 09 Jan 2019 10:05:13 -0500
+lib/sovren-rest/contact_information.rb	Tue, 08 Jan 2019 14:28:56 -0500
+lib/sovren-rest/education_history.rb	Tue, 08 Jan 2019 14:28:56 -0500
+lib/sovren-rest/employer.rb	Tue, 08 Jan 2019 14:28:56 -0500
+lib/sovren-rest/employment_history.rb	Tue, 08 Jan 2019 14:28:56 -0500
+lib/sovren-rest/parse_response.rb	Wed, 09 Jan 2019 09:59:08 -0500
+lib/sovren-rest/position.rb	Tue, 08 Jan 2019 14:28:56 -0500
+lib/sovren-rest/resume.rb	Wed, 09 Jan 2019 09:46:48 -0500
+lib/sovren-rest/version.rb	Wed, 09 Jan 2019 10:02:43 -0500
