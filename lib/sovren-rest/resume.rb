@@ -1,8 +1,8 @@
 require_relative 'category/generic.rb'
-Dir.foreach('lib/sovren-rest/category') do |filename|
-  next if File.directory?(filename)
-  require_relative "category/#{filename}"
-end
+require_relative 'category/certification.rb'
+require_relative 'category/contact_information.rb'
+require_relative 'category/education_history.rb'
+require_relative 'category/employment_history.rb'
 
 module SovrenRest
   ##
