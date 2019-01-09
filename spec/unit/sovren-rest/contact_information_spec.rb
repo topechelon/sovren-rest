@@ -1,4 +1,4 @@
-require 'contact_information.rb'
+require 'sovren-rest/contact_information.rb'
 
 RSpec.describe SovrenRest::ContactInformation do
   context 'with all relevant information' do
@@ -7,7 +7,7 @@ RSpec.describe SovrenRest::ContactInformation do
       @middle_name = 'Von'
       @last_name = 'Testingstonly'
 
-      raw = File.read(File.expand_path('files/contact-info.json', __dir__))
+      raw = File.read(File.expand_path('../files/contact-info.json', __dir__))
       input = JSON.parse(raw)
       @contact_info = SovrenRest::ContactInformation.new(input)
     end

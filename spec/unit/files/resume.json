@@ -1,9 +1,313 @@
 {
-  "Info": {
-    "Code": "Success",
-    "Message": "Some message"
-  },
-  "Value": {
-    "ParsedDocument": "{      \"Resume\": {        \"@xml:lang\": \"en\",        \"@xmlns\": \"http://ns.hr-xml.org/2006-02-28\",        \"@xmlns:sov\": \"http://sovren.com/hr-xml/2006-02-28\",        \"ResumeId\": {          \"IdValue\": null        },        \"StructuredXMLResume\": {          \"ContactInfo\": {            \"PersonName\": {              \"FormattedName\": \"Johan Von Testingstonly\",              \"GivenName\": \"Johan\",              \"MiddleName\": \"Von\",              \"FamilyName\": \"Testingstonly\"            },            \"ContactMethod\": [              {                \"WhenAvailable\": \"anytime\",                \"PostalAddress\": {                  \"CountryCode\": \"US\",                  \"PostalCode\": \"44720\",                  \"Region\": [                    \"Ohio\"                  ],                  \"Municipality\": \"North Canton\",                  \"DeliveryAddress\": {                    \"AddressLine\": [                      \"123 Test St\",                      \"APT # 123\"                    ]                  }                }              },              {                \"Telephone\": {                  \"FormattedNumber\": \"330-867-5309\"                }              },              {                \"Use\": \"personal\",                \"Location\": \"onPerson\",                \"WhenAvailable\": \"anytime\",                \"InternetEmailAddress\": \"jtestingstonly@gmail.com\"              },              {                \"Use\": \"businessDirect\",                \"Location\": \"onPerson\",                \"WhenAvailable\": \"anytime\",                \"InternetWebAddress\": \"https://github.com/jtestingstonly\"              },              {                \"Use\": \"businessDirect\",                \"Location\": \"onPerson\",                \"WhenAvailable\": \"anytime\",                \"InternetWebAddress\": \"https://www.linkedin.com/in/jtestingstonly\"              }            ]          },        \"EmploymentHistory\": {          \"EmployerOrg\": [            {              \"EmployerOrgName\": \"Stuff N' Things\",              \"PositionHistory\": [                {                  \"@currentEmployer\": \"true\",                  \"OrgName\": {                    \"OrganizationName\": \"Stuff N' Things\"                  },                  \"OrgInfo\": [                    {                      \"PositionLocation\": {                        \"CountryCode\": \"US\",                        \"Region\": [                          \"Ohio\"                        ],                        \"Municipality\": \"Canton\"                      }                    }                  ],                  \"Description\": \"Doing stuff, making things\",                  \"StartDate\": {                    \"YearMonth\": \"2018-05\"                  },                  \"EndDate\": {                    \"StringDate\": \"current\"                  },                  \"JobCategory\": [                    {                      \"TaxonomyName\": \"Skills taxonomy\",                      \"CategoryCode\": \"Stuff → Things\",                      \"Comments\": \"Stuff describes 91% of this job\"                    },                    {                      \"TaxonomyName\": \"Job Level\",                      \"CategoryCode\": \"Senior (more than 5 years experience)\"                    }                  ],                  \"UserArea\": {                    \"sov:PositionHistoryUserArea\": {                      \"sov:Id\": \"POS-1\",                      \"sov:CompanyNameProbabilityInterpretation\": {                        \"@internalUseOnly\": \"BM\",                        \"#text\": \"Confident\"                      },                      \"sov:NormalizedOrganizationName\": \"Stuff N' Things\"                    }                  }                },                {                  \"@positionType\": \"directHire\",                  \"Title\": \"Stuff-Thinger\",                  \"OrgName\": {                    \"OrganizationName\": \"Stuff n Things\"                  },                  \"Description\": \"Stuff and things\",                  \"StartDate\": {                    \"YearMonth\": \"2016-06\"                  },                  \"EndDate\": {                    \"YearMonth\": \"2018-04\"                  },                  \"JobCategory\": [                    {                      \"TaxonomyName\": \"Skills taxonomy\",                      \"CategoryCode\": \"Stuff → Things\",                      \"Comments\": \"Stuff describes 100% of this job\"                    },                    {                      \"TaxonomyName\": \"Job Level\",                      \"CategoryCode\": \"Senior (more than 5 years experience)\"                    }                  ],                  \"UserArea\": {                    \"sov:PositionHistoryUserArea\": {                      \"sov:Id\": \"POS-2\",                      \"sov:CompanyNameProbabilityInterpretation\": {                        \"@internalUseOnly\": \"BM\",                        \"#text\": \"Confident\"                      },                      \"sov:PositionTitleProbabilityInterpretation\": {                        \"@internalUseOnly\": \"TT\",                        \"#text\": \"Confident\"                      },                      \"sov:NormalizedOrganizationName\": \"Stuff n Things\",                      \"sov:NormalizedTitle\": \"Stuff Engineer\"                    }                  }                }              ],              \"UserArea\": {                \"sov:EmployerOrgUserArea\": {                  \"sov:NormalizedEmployerOrgName\": \"Stuff N' Things\"                }              }            },            {              \"EmployerOrgName\": \"University of Stuff\",              \"PositionHistory\": [                {                  \"@positionType\": \"directHire\",                  \"Title\": \"Research Assistant, Department of Things\",                  \"OrgName\": {                    \"OrganizationName\": \"University of Stuff\"                  },                  \"OrgInfo\": [                    {                      \"PositionLocation\": {                        \"CountryCode\": \"US\",                        \"Region\": [                          \"Ohio\"                        ],                        \"Municipality\": \"Akron\"                      }                    }                  ],                  \"Description\": \"Stuff n things\",                  \"StartDate\": {                    \"YearMonth\": \"2014-09\"                  },                  \"EndDate\": {                    \"YearMonth\": \"2016-05\"                  },                  \"JobCategory\": [                    {                      \"TaxonomyName\": \"Skills taxonomy\",                      \"CategoryCode\": \"Stuff → Things\",                      \"Comments\": \"Stuff describes 100% of this job\"                    },                    {                      \"TaxonomyName\": \"Job Level\",                      \"CategoryCode\": \"Senior (more than 5 years experience)\"                    }                  ],                  \"UserArea\": {                    \"sov:PositionHistoryUserArea\": {                      \"sov:Id\": \"POS-3\",                      \"sov:CompanyNameProbabilityInterpretation\": {                        \"@internalUseOnly\": \"BX\",                        \"#text\": \"Confident\"                      },                      \"sov:PositionTitleProbabilityInterpretation\": {                        \"@internalUseOnly\": \"TS\",                        \"#text\": \"Confident\"                      },                      \"sov:NormalizedOrganizationName\": \"University of Stuff\",                      \"sov:NormalizedTitle\": \"Research Assistant Department of Things\",                      \"sov:Subtitles\": {                        \"sov:Subtitle\": [                          \"Research Assistant\"                        ]                      }                    }                  }                }              ],              \"UserArea\": {                \"sov:EmployerOrgUserArea\": {                  \"sov:NormalizedEmployerOrgName\": \"University of Stuff\"                }              }            }          ]        },        \"EducationHistory\": {          \"SchoolOrInstitution\": [            {              \"@schoolType\": \"university\",              \"School\": [                {                  \"SchoolName\": \"University of Stuff\"                }              ],              \"PostalAddress\": {                \"CountryCode\": \"US\",                \"Region\": [                  \"Ohio\"                ],                \"Municipality\": \"Stuff\"              },              \"Degree\": [                {                  \"@degreeType\": \"masters\",                  \"DegreeName\": \"Master of Stuff in Things\",                  \"DegreeMajor\": [                    {                      \"Name\": [                        \"Stuff N Things\"                      ]                    }                  ],                  \"DatesOfAttendance\": [                    {                      \"StartDate\": {                        \"AnyDate\": \"notKnown\"                      },                      \"EndDate\": {                        \"YearMonth\": \"2016-08\"                      }                    }                  ],                  \"Comments\": \"University of Stuff - Stuff, Ohio Master of Science in Computer Science, Aug 2016 Thesis: Towards an Ideal Execution Environment for Programmable Network Switches\",                  \"UserArea\": {                    \"sov:DegreeUserArea\": {                      \"sov:Id\": \"DEG-1\",                      \"sov:Graduated\": \"false\",                      \"sov:NormalizedDegreeName\": \"MSc\",                      \"sov:NormalizedDegreeType\": \"MSc\"                    }                  }                }              ],              \"UserArea\": {                \"sov:SchoolOrInstitutionTypeUserArea\": {                  \"sov:NormalizedSchoolName\": \"University of Stuff\"                }              }            }          ]        },        \"LicensesAndCertifications\": [          {            \"LicenseOrCertification\" : {              \"Name\" : \"Certified Stuff\",              \"Description\" : \"Certified to do stuff and things\",              \"EffectiveDate\" : {                \"FirstIssuedDate\" : {                  \"YearMonth\" : \"2018-10\"                }              }            }          }        ]        },        \"NonXMLResume\": {          \"TextResume\": null        },        \"UserArea\": {          \"sov:ResumeUserArea\": {            \"sov:ExperienceSummary\": {              \"sov:Description\": \"Johan Von Testingstonly's experience appears to be strongly concentrated in Stuff (mostly stuff), and slightly concentrated in things (mostly things).\",              \"sov:MonthsOfWorkExperience\": \"81\",              \"sov:AverageMonthsPerEmployer\": \"27\",              \"sov:FulltimeDirectHirePredictiveIndex\": \"85\",              \"sov:MonthsOfManagementExperience\": \"0\",              \"sov:HighestManagementScore\": \"0\",              \"sov:ExecutiveType\": \"none\",              \"sov:ManagementStory\": null            }          }        }      }     }"
+  "Resume": {
+    "@xml:lang": "en",
+    "@xmlns": "http://ns.hr-xml.org/2006-02-28",
+    "@xmlns:sov": "http://sovren.com/hr-xml/2006-02-28",
+    "ResumeId": {
+      "IdValue": null
+    },
+    "StructuredXMLResume": {
+      "ContactInfo": {
+        "PersonName": {
+          "FormattedName": "Johan Von Testingstonly",
+          "GivenName": "Johan",
+          "MiddleName": "Von",
+          "FamilyName": "Testingstonly"
+        },
+        "ContactMethod": [
+          {
+            "WhenAvailable": "anytime",
+            "PostalAddress": {
+              "CountryCode": "US",
+              "PostalCode": "44720",
+              "Region": [
+                "Ohio"
+              ],
+              "Municipality": "North Canton",
+              "DeliveryAddress": {
+                "AddressLine": [
+                  "123 Test St",
+                  "APT # 123"
+                ]
+              }
+            }
+          },
+          {
+            "Telephone": {
+              "FormattedNumber": "330-867-5309"
+            }
+          },
+          {
+            "Use": "personal",
+            "Location": "onPerson",
+            "WhenAvailable": "anytime",
+            "InternetEmailAddress": "jtestingstonly@gmail.com"
+          },
+          {
+            "Use": "businessDirect",
+            "Location": "onPerson",
+            "WhenAvailable": "anytime",
+            "InternetWebAddress": "https://github.com/jtestingstonly"
+          },
+          {
+            "Use": "businessDirect",
+            "Location": "onPerson",
+            "WhenAvailable": "anytime",
+            "InternetWebAddress": "https://www.linkedin.com/in/jtestingstonly"
+          }
+        ]
+      },
+      "EmploymentHistory": {
+        "EmployerOrg": [
+          {
+            "EmployerOrgName": "Stuff N' Things",
+            "PositionHistory": [
+              {
+                "@currentEmployer": "true",
+                "OrgName": {
+                  "OrganizationName": "Stuff N' Things"
+                },
+                "OrgInfo": [
+                  {
+                    "PositionLocation": {
+                      "CountryCode": "US",
+                      "Region": [
+                        "Ohio"
+                      ],
+                      "Municipality": "Canton"
+                    }
+                  }
+                ],
+                "Description": "Doing stuff, making things",
+                "StartDate": {
+                  "YearMonth": "2018-05"
+                },
+                "EndDate": {
+                  "StringDate": "current"
+                },
+                "JobCategory": [
+                  {
+                    "TaxonomyName": "Skills taxonomy",
+                    "CategoryCode": "Stuff → Things",
+                    "Comments": "Stuff describes 91% of this job"
+                  },
+                  {
+                    "TaxonomyName": "Job Level",
+                    "CategoryCode": "Senior (more than 5 years experience)"
+                  }
+                ],
+                "UserArea": {
+                  "sov:PositionHistoryUserArea": {
+                    "sov:Id": "POS-1",
+                    "sov:CompanyNameProbabilityInterpretation": {
+                      "@internalUseOnly": "BM",
+                      "#text": "Confident"
+                    },
+                    "sov:NormalizedOrganizationName": "Stuff N' Things"
+                  }
+                }
+              },
+              {
+                "@positionType": "directHire",
+                "Title": "Stuff-Thinger",
+                "OrgName": {
+                  "OrganizationName": "Stuff n Things"
+                },
+                "Description": "Stuff and things",
+                "StartDate": {
+                  "YearMonth": "2016-06"
+                },
+                "EndDate": {
+                  "YearMonth": "2018-04"
+                },
+                "JobCategory": [
+                  {
+                    "TaxonomyName": "Skills taxonomy",
+                    "CategoryCode": "Stuff → Things",
+                    "Comments": "Stuff describes 100% of this job"
+                  },
+                  {
+                    "TaxonomyName": "Job Level",
+                    "CategoryCode": "Senior (more than 5 years experience)"
+                  }
+                ],
+                "UserArea": {
+                  "sov:PositionHistoryUserArea": {
+                    "sov:Id": "POS-2",
+                    "sov:CompanyNameProbabilityInterpretation": {
+                      "@internalUseOnly": "BM",
+                      "#text": "Confident"
+                    },
+                    "sov:PositionTitleProbabilityInterpretation": {
+                      "@internalUseOnly": "TT",
+                      "#text": "Confident"
+                    },
+                    "sov:NormalizedOrganizationName": "Stuff n Things",
+                    "sov:NormalizedTitle": "Stuff Engineer"
+                  }
+                }
+              }
+            ],
+            "UserArea": {
+              "sov:EmployerOrgUserArea": {
+                "sov:NormalizedEmployerOrgName": "Stuff N' Things"
+              }
+            }
+          },
+          {
+            "EmployerOrgName": "University of Stuff",
+            "PositionHistory": [
+              {
+                "@positionType": "directHire",
+                "Title": "Research Assistant, Department of Things",
+                "OrgName": {
+                  "OrganizationName": "University of Stuff"
+                },
+                "OrgInfo": [
+                  {
+                    "PositionLocation": {
+                      "CountryCode": "US",
+                      "Region": [
+                        "Ohio"
+                      ],
+                      "Municipality": "Akron"
+                    }
+                  }
+                ],
+                "Description": "Stuff n things",
+                "StartDate": {
+                  "YearMonth": "2014-09"
+                },
+                "EndDate": {
+                  "YearMonth": "2016-05"
+                },
+                "JobCategory": [
+                  {
+                    "TaxonomyName": "Skills taxonomy",
+                    "CategoryCode": "Stuff → Things",
+                    "Comments": "Stuff describes 100% of this job"
+                  },
+                  {
+                    "TaxonomyName": "Job Level",
+                    "CategoryCode": "Senior (more than 5 years experience)"
+                  }
+                ],
+                "UserArea": {
+                  "sov:PositionHistoryUserArea": {
+                    "sov:Id": "POS-3",
+                    "sov:CompanyNameProbabilityInterpretation": {
+                      "@internalUseOnly": "BX",
+                      "#text": "Confident"
+                    },
+                    "sov:PositionTitleProbabilityInterpretation": {
+                      "@internalUseOnly": "TS",
+                      "#text": "Confident"
+                    },
+                    "sov:NormalizedOrganizationName": "University of Stuff",
+                    "sov:NormalizedTitle": "Research Assistant Department of Things",
+                    "sov:Subtitles": {
+                      "sov:Subtitle": [
+                        "Research Assistant"
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "UserArea": {
+              "sov:EmployerOrgUserArea": {
+                "sov:NormalizedEmployerOrgName": "University of Stuff"
+              }
+            }
+          }
+        ]
+      },
+      "EducationHistory": {
+        "SchoolOrInstitution": [
+          {
+            "@schoolType": "university",
+            "School": [
+              {
+                "SchoolName": "University of Stuff"
+              }
+            ],
+            "PostalAddress": {
+              "CountryCode": "US",
+              "Region": [
+                "Ohio"
+              ],
+              "Municipality": "Stuff"
+            },
+            "Degree": [
+              {
+                "@degreeType": "masters",
+                "DegreeName": "Master of Stuff in Things",
+                "DegreeMajor": [
+                  {
+                    "Name": [
+                      "Stuff N Things"
+                    ]
+                  }
+                ],
+                "DatesOfAttendance": [
+                  {
+                    "StartDate": {
+                      "AnyDate": "notKnown"
+                    },
+                    "EndDate": {
+                      "YearMonth": "2016-08"
+                    }
+                  }
+                ],
+                "Comments": "University of Stuff - Stuff, Ohio Master of Science in Computer Science, Aug 2016 Thesis: Towards an Ideal Execution Environment for Programmable Network Switches",
+                "UserArea": {
+                  "sov:DegreeUserArea": {
+                    "sov:Id": "DEG-1",
+                    "sov:Graduated": "false",
+                    "sov:NormalizedDegreeName": "MSc",
+                    "sov:NormalizedDegreeType": "MSc"
+                  }
+                }
+              }
+            ],
+            "UserArea": {
+              "sov:SchoolOrInstitutionTypeUserArea": {
+                "sov:NormalizedSchoolName": "University of Stuff"
+              }
+            }
+          }
+        ]
+      },
+      "LicensesAndCertifications": [
+        {
+          "LicenseOrCertification": {
+            "Name": "Certified Stuff",
+            "Description": "Certified to do stuff and things",
+            "EffectiveDate": {
+              "FirstIssuedDate": {
+                "YearMonth": "2018-10"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "NonXMLResume": {
+      "TextResume": null
+    },
+    "UserArea": {
+      "sov:ResumeUserArea": {
+        "sov:ExperienceSummary": {
+          "sov:Description": "Johan Von Testingstonly's experience appears to be strongly concentrated in Stuff (mostly stuff), and slightly concentrated in things (mostly things).",
+          "sov:MonthsOfWorkExperience": "81",
+          "sov:AverageMonthsPerEmployer": "27",
+          "sov:FulltimeDirectHirePredictiveIndex": "85",
+          "sov:MonthsOfManagementExperience": "0",
+          "sov:HighestManagementScore": "0",
+          "sov:ExecutiveType": "none",
+          "sov:ManagementStory": null
+        }
+      }
+    }
   }
 }

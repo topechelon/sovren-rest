@@ -1,0 +1,11 @@
+{
+  "Value": {
+    "Html": "HTML Content",
+    "ParsedDocument": "{}",
+    "ScrubbedParsedDocument": "{}"
+  },
+  "Info": {
+    "Code": "Success",
+    "Message": ""
+  }
+}

@@ -1,4 +1,4 @@
-require 'position.rb'
+require 'sovren-rest/position.rb'
 
 RSpec.describe SovrenRest::Position do
   context 'with all relevant information' do
@@ -12,7 +12,7 @@ RSpec.describe SovrenRest::Position do
       @state = 'Ohio'
       @country = 'US'
 
-      raw = File.read(File.expand_path('files/employment-history.json', __dir__))
+      raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
       input = JSON.parse(raw).dig('EmployerOrg', 0, 'PositionHistory', 0)
       @position = SovrenRest::Position.new(input)
     end

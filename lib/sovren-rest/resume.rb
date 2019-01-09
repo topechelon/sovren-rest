@@ -17,11 +17,16 @@ module SovrenRest
     # Sovren specific resume metadata.
     attr_reader :metadata
 
+    # Raw document JSON string provided by the response
+    attr_reader :document_json
+
     ##
     # Initializes a resume from ParsedDocument data.
-    def initialize(document)
-      data = document.dig('Resume', 'StructuredXMLResume')
-      user_area = document.dig('Resume', 'UserArea')
+    def initialize(document_json)
+      @document_json = document_json
+
+      data = document_json.dig('Resume', 'StructuredXMLResume')
+      user_area = document_json.dig('Resume', 'UserArea')
       build_resume(data || {}, user_area || {})
     end
 

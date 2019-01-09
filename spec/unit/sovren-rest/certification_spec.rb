@@ -1,4 +1,4 @@
-require 'certification.rb'
+require 'sovren-rest/certification.rb'
 
 RSpec.describe SovrenRest::Certification do
   context 'with all relevant information' do
@@ -6,7 +6,7 @@ RSpec.describe SovrenRest::Certification do
       @name = 'Certified Stuff'
       @description = 'Certified to do stuff and things'
 
-      raw = File.read(File.expand_path('files/certification.json', __dir__))
+      raw = File.read(File.expand_path('../files/certification.json', __dir__))
       input = JSON.parse(raw)
 
       @certification = SovrenRest::Certification.new(input)

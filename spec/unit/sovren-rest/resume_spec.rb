@@ -1,22 +1,22 @@
-require 'resume.rb'
+require 'sovren-rest/resume.rb'
 
 RSpec.describe SovrenRest::Resume do
   context 'with all relevant information' do
     before :all do
-      ci_raw = File.read(File.expand_path('files/contact-info.json', __dir__))
+      ci_raw = File.read(File.expand_path('../files/contact-info.json', __dir__))
       ci = JSON.parse(ci_raw)
       @contact_information = SovrenRest::ContactInformation.new(ci)
 
-      emp_hist_raw = File.read(File.expand_path('files/employment-history.json', __dir__))
+      emp_hist_raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
       emp_hist = JSON.parse(emp_hist_raw)
       @employment_history = emp_hist['EmployerOrg'].map { |wh| SovrenRest::EmploymentHistory.new(wh) }
 
-      edu_hist_raw = File.read(File.expand_path('files/education-history.json', __dir__))
+      edu_hist_raw = File.read(File.expand_path('../files/education-history.json', __dir__))
       edu_hist = JSON.parse(edu_hist_raw)
       @education_history = edu_hist['SchoolOrInstitution'].map { |eh| SovrenRest::EducationHistory.new(eh) }
 
-      response_body = File.read(File.expand_path('files/resume.json', __dir__))
-      @resume = SovrenRest::Resume.new(response_body)
+      response_body = File.read(File.expand_path('../files/resume.json', __dir__))
+      @resume = SovrenRest::Resume.new(JSON.parse(response_body))
     end
 
     it 'should parse contact_information' do
@@ -38,7 +38,7 @@ RSpec.describe SovrenRest::Resume do
   context 'with missing information' do
     before :all do
       @contact_information = SovrenRest::ContactInformation.new({})
-      @resume = SovrenRest::Resume.new('{ "Value": null }')
+      @resume = SovrenRest::Resume.new({})
     end
 
     it 'should parse contact_information' do

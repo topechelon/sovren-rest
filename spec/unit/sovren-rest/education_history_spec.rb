@@ -1,4 +1,4 @@
-require 'education_history.rb'
+require 'sovren-rest/education_history.rb'
 
 RSpec.describe SovrenRest::EducationHistory do
   context 'with all relevant information' do
@@ -9,7 +9,7 @@ RSpec.describe SovrenRest::EducationHistory do
       @end_date = '2016-08'
       @graduated = 'false'
 
-      raw = File.read(File.expand_path('files/education-history.json', __dir__))
+      raw = File.read(File.expand_path('../files/education-history.json', __dir__))
       input = JSON.parse(raw)
       @education = SovrenRest::EducationHistory.new(input['SchoolOrInstitution'][0])
     end

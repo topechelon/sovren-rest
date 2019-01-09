@@ -1,11 +1,11 @@
-require 'employer.rb'
+require 'sovren-rest/employer.rb'
 
 RSpec.describe SovrenRest::Employer do
   context 'with all relevant information' do
     before :all do
       @name = 'Stuff N\' Things'
 
-      raw = File.read(File.expand_path('files/employment-history.json', __dir__))
+      raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
       input = JSON.parse(raw)
       @employer = SovrenRest::Employer.new(input['EmployerOrg'][0])
     end

@@ -23,16 +23,19 @@ module SovrenRest
     end
 
     ##
-    # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse object.
+    # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse.
     # Throws an exception if the request is not successful
     def parse(raw_file)
       parse_resume_url = build_url(PARSE_RESUME)
-      raw_response = RestClient.post(parse_resume_url, parse_body(raw_file).to_json, headers)
+      post_arguments = [
+        parse_resume_url,
+        parse_body(raw_file).to_json,
+        headers
+      ]
+      raw_response = RestClient.post(*post_arguments)
       response = SovrenRest::ParseResponse.new(raw_response.body)
 
-      unless response.successful?
-        raise "Resume parsing error:\n#{response.message}"
-      end
+      raise "Parsing Error:\n#{response.message}" unless response.successful?
 
       response
     end

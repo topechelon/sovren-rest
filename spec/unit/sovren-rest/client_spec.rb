@@ -1,4 +1,4 @@
-require 'client.rb'
+require 'sovren-rest/client.rb'
 require 'base64'
 require 'rest-client'
 

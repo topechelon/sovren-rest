@@ -6,13 +6,12 @@ module SovrenRest
 
     def initialize(response)
       @parsed_response = JSON.parse(response)
-      @parsed_value = @parsed_response['Value'] || {}
     end
 
     ##
     # HTML representation of the resume.
     def html
-      @parsed_value.dig('Html')
+      value.dig('Html')
     end
 
     ##
@@ -28,23 +27,27 @@ module SovrenRest
     end
 
     def successful?
-      status['Code'] == STATUS_SUCCESS
+      info['Code'] == STATUS_SUCCESS
     end
 
     ##
     # The success or error message returned by Sovren
     def message
-      status['Message']
+      info['Message']
     end
 
     private
 
-    def status
+    def value
+      @parsed_response['Value'] || {}
+    end
+
+    def info
       @parsed_response['Info']
     end
 
     def build_resume(key)
-      document_string = @parsed_value[key] || '{}'
+      document_string = value[key] || '{}'
       document = JSON.parse(document_string)
       SovrenRest::Resume.new(document)
     end

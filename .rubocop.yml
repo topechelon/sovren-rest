@@ -19,3 +19,6 @@ AllCops:
 
 Naming/VariableNumber:
   Enabled: false
+
+Naming/FileName:
+  Enabled: false

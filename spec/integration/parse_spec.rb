@@ -1,4 +1,4 @@
-require 'sovren_rest'
+require 'sovren-rest'
 
 RSpec.describe 'SovrenRest::Integration::ClientParse' do
   before :all do
@@ -8,7 +8,7 @@ RSpec.describe 'SovrenRest::Integration::ClientParse' do
 
     @host = ENV.fetch('SOVREN_HOST')
     @config = ENV.fetch('SOVREN_CFG', '')
-    @file = File.read(File.expand_path('files/resume.pdf', __dir__))
+    @file = File.read(File.expand_path('../files/resume.pdf', __dir__))
     @client = SovrenRest::Client.new(base_url: @host, configuration: @config)
   end
 
