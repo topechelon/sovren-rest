@@ -5,19 +5,19 @@ RSpec.describe SovrenRest::Resume do
     let(:contact_information) do
       ci_raw = File.read(File.expand_path('../files/contact-info.json', __dir__))
       ci = JSON.parse(ci_raw)
-      SovrenRest::ContactInformation.new(ci)
+      SovrenRest::Category::ContactInformation.new(ci)
     end
 
     let(:employment_history) do
       emp_hist_raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
       emp_hist = JSON.parse(emp_hist_raw)
-      emp_hist['EmployerOrg'].map { |wh| SovrenRest::EmploymentHistory.new(wh) }
+      emp_hist['EmployerOrg'].map { |wh| SovrenRest::Category::EmploymentHistory.new(wh) }
     end
 
     let(:education_history) do
       edu_hist_raw = File.read(File.expand_path('../files/education-history.json', __dir__))
       edu_hist = JSON.parse(edu_hist_raw)
-      edu_hist['SchoolOrInstitution'].map { |eh| SovrenRest::EducationHistory.new(eh) }
+      edu_hist['SchoolOrInstitution'].map { |eh| SovrenRest::Category::EducationHistory.new(eh) }
     end
 
     let(:resume) do
@@ -43,7 +43,7 @@ RSpec.describe SovrenRest::Resume do
   end
 
   context 'with missing information' do
-    let(:contact_information) { SovrenRest::ContactInformation.new({}) }
+    let(:contact_information) { SovrenRest::Category::ContactInformation.new({}) }
     let(:resume) { SovrenRest::Resume.new({}) }
 
     it 'should parse contact_information' do

@@ -1,13 +1,13 @@
-require 'sovren-rest/employment_history.rb'
+require 'sovren-rest/category/employment_history.rb'
 
-RSpec.describe SovrenRest::EmploymentHistory do
+RSpec.describe SovrenRest::Category::EmploymentHistory do
   context 'with all relevant information' do
     before :all do
       @company_name = 'Stuff N\' Things'
 
-      raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
+      raw = File.read(File.expand_path('../../files/employment-history.json', __dir__))
       input = JSON.parse(raw)
-      @employer = SovrenRest::EmploymentHistory.new(input['EmployerOrg'][0])
+      @employer = SovrenRest::Category::EmploymentHistory.new(input['EmployerOrg'][0])
     end
 
     it 'should extract company_name' do
@@ -27,7 +27,7 @@ RSpec.describe SovrenRest::EmploymentHistory do
     before :all do
       @company_name = nil
 
-      @employer = SovrenRest::EmploymentHistory.new({})
+      @employer = SovrenRest::Category::EmploymentHistory.new({})
     end
 
     it 'should extract company_name' do

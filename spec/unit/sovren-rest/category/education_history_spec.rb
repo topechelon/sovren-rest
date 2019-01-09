@@ -1,6 +1,6 @@
-require 'sovren-rest/education_history.rb'
+require 'sovren-rest/category/education_history.rb'
 
-RSpec.describe SovrenRest::EducationHistory do
+RSpec.describe SovrenRest::Category::EducationHistory do
   context 'with all relevant information' do
     before :all do
       @school_name = 'University of Stuff'
@@ -9,9 +9,9 @@ RSpec.describe SovrenRest::EducationHistory do
       @end_date = '2016-08'
       @graduated = 'false'
 
-      raw = File.read(File.expand_path('../files/education-history.json', __dir__))
+      raw = File.read(File.expand_path('../../files/education-history.json', __dir__))
       input = JSON.parse(raw)
-      @education = SovrenRest::EducationHistory.new(input['SchoolOrInstitution'][0])
+      @education = SovrenRest::Category::EducationHistory.new(input['SchoolOrInstitution'][0])
     end
 
     it 'should extract school_name' do
@@ -42,7 +42,7 @@ RSpec.describe SovrenRest::EducationHistory do
       @end_date = nil
       @graduated = nil
 
-      @education = SovrenRest::EducationHistory.new({})
+      @education = SovrenRest::Category::EducationHistory.new({})
     end
 
     it 'should handle missing school_name' do

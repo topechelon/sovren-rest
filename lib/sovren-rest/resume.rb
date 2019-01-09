@@ -1,3 +1,9 @@
+require_relative 'category/generic.rb'
+Dir.foreach('lib/sovren-rest/category') do |filename|
+  next if File.directory?(filename)
+  require_relative "category/#{filename}"
+end
+
 module SovrenRest
   ##
   # Top level resume class, an aggregation of resume information held.
@@ -11,37 +17,37 @@ module SovrenRest
       @data = data
     end
 
-    # SovrenRest::ContactInformation
+    # SovrenRest::Category::ContactInformation
     def contact_information
       path = %w[ContactInfo]
       contact_info = xml_resume.dig(*path) || {}
-      @contact_information ||= SovrenRest::ContactInformation.new(contact_info)
+      @contact_information ||= Category::ContactInformation.new(contact_info)
     end
 
-    # Array of SovrenRest::EmploymentHistory
+    # Array of SovrenRest::Category::EmploymentHistory
     def employment_history
       path = %w[EmploymentHistory EmployerOrg]
       arr = xml_resume.dig(*path) || []
       @employment_history ||= arr.map do |employment_history|
-        SovrenRest::EmploymentHistory.new(employment_history)
+        Category::EmploymentHistory.new(employment_history)
       end
     end
 
-    # Array of SovrenRest::EducationHistory
+    # Array of SovrenRest::Category::EducationHistory
     def education_history
       path = %w[EducationHistory SchoolOrInstitution]
       arr = xml_resume.dig(*path) || []
       @education_history ||= arr.map do |education|
-        SovrenRest::EducationHistory.new(education)
+        Category::EducationHistory.new(education)
       end
     end
 
-    # Array of SovrenRest::Certification
+    # Array of SovrenRest::Category::Certification
     def certifications
       path = %w[LicensesAndCertifications LicenseOrCertification]
       arr = xml_resume.dig(*path) || []
       @certifications ||= arr.map do |certification|
-        SovrenRest::Certification.new(certification)
+        Category::Certification.new(certification)
       end
     end
 

@@ -1,15 +1,15 @@
-require 'sovren-rest/certification.rb'
+require 'sovren-rest/category/certification.rb'
 
-RSpec.describe SovrenRest::Certification do
+RSpec.describe SovrenRest::Category::Certification do
   context 'with all relevant information' do
     before :all do
       @name = 'Certified Stuff'
       @description = 'Certified to do stuff and things'
 
-      raw = File.read(File.expand_path('../files/certification.json', __dir__))
+      raw = File.read(File.expand_path('../../files/certification.json', __dir__))
       input = JSON.parse(raw)
 
-      @certification = SovrenRest::Certification.new(input)
+      @certification = SovrenRest::Category::Certification.new(input)
     end
 
     it 'should extract name' do
@@ -29,7 +29,7 @@ RSpec.describe SovrenRest::Certification do
       @name = nil
       @description = nil
 
-      @certification = SovrenRest::Certification.new({})
+      @certification = SovrenRest::Category::Certification.new({})
     end
 
     it 'should handle missing name' do

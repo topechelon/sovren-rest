@@ -1,15 +1,15 @@
-require 'sovren-rest/contact_information.rb'
+require 'sovren-rest/category/contact_information.rb'
 
-RSpec.describe SovrenRest::ContactInformation do
+RSpec.describe SovrenRest::Category::ContactInformation do
   context 'with all relevant information' do
     before :all do
       @first_name = 'Johan'
       @middle_name = 'Von'
       @last_name = 'Testingstonly'
 
-      raw = File.read(File.expand_path('../files/contact-info.json', __dir__))
+      raw = File.read(File.expand_path('../../files/contact-info.json', __dir__))
       input = JSON.parse(raw)
-      @contact_info = SovrenRest::ContactInformation.new(input)
+      @contact_info = SovrenRest::Category::ContactInformation.new(input)
     end
 
     it 'should extract first_name' do
@@ -50,7 +50,7 @@ RSpec.describe SovrenRest::ContactInformation do
       @websites = []
       @phone_numbers = []
       @addresses = []
-      @contact_info = SovrenRest::ContactInformation.new({})
+      @contact_info = SovrenRest::Category::ContactInformation.new({})
     end
 
     it 'should handle missing first_name' do
