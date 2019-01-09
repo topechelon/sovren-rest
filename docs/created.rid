@@ -1,7 +1,7 @@
-Wed, 09 Jan 2019 12:45:05 -0500
+Wed, 09 Jan 2019 12:51:26 -0500
 README.rdoc	Tue, 08 Jan 2019 13:29:54 -0500
 lib/sovren-rest.rb	Wed, 09 Jan 2019 12:29:20 -0500
-lib/sovren-rest/category/certification.rb	Wed, 09 Jan 2019 12:43:01 -0500
+lib/sovren-rest/category/certification.rb	Wed, 09 Jan 2019 12:50:31 -0500
 lib/sovren-rest/category/contact_information.rb	Wed, 09 Jan 2019 12:42:33 -0500
 lib/sovren-rest/category/education_history.rb	Wed, 09 Jan 2019 12:42:26 -0500
 lib/sovren-rest/category/employment_history.rb	Wed, 09 Jan 2019 12:42:08 -0500

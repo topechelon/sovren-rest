@@ -73,7 +73,13 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-i-description">#description</a>
+    
+    <li><a href="#method-i-effective_dates">#effective_dates</a>
+    
     <li><a href="#method-i-eql-3F">#eql?</a>
+    
+    <li><a href="#method-i-name">#name</a>
     
   </ul>
 </nav>
@@ -149,41 +155,15 @@
       <h3 class="section-header">Attributes</h3>
 
       
-      <div id="attribute-i-description" class="method-detail">
+      <div id="attribute-i-data" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">description</span><span
+          <span class="method-name">data</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
         
-        <p>Description of the certification/license.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-effective_dates" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">effective_dates</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Array of effective issue dates of certification/license.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">name</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name of the certification/license.</p>
+        <p><a href="Certification.html">Certification</a> json</p>
         
         </div>
       </div>
@@ -214,12 +194,9 @@ issue date.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">certification</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;LicenseOrCertification&#39;</span>] <span class="ruby-operator">||</span> {}
-  <span class="ruby-identifier">parse_name</span>(<span class="ruby-identifier">certification</span>)
-  <span class="ruby-identifier">parse_description</span>(<span class="ruby-identifier">certification</span>)
-  <span class="ruby-identifier">parse_effective_dates</span>(<span class="ruby-identifier">certification</span>)
+  <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -235,6 +212,67 @@ issue date.</p>
   
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-description" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">description</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Description of the certification/license.</p>
+          
+
+          
+          <div class="method-source-code" id="description-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">description</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;Description&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- description-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- description-method -->
+
+    
+      <div id="method-i-effective_dates" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">effective_dates</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of effective issue dates of certification/license.</p>
+          
+
+          
+          <div class="method-source-code" id="effective_dates-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">effective_dates</span>
+  <span class="ruby-identifier">date</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;EffectiveDate&#39;</span>, <span class="ruby-string">&#39;FirstIssuedDate&#39;</span>) <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">date</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">compact</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- effective_dates-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- effective_dates-method -->
 
     
       <div id="method-i-eql-3F" class="method-detail ">
@@ -253,7 +291,7 @@ issue date.</p>
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">name</span> <span class="ruby-identifier">description</span> <span class="ruby-identifier">effective_dates</span>]
   <span class="ruby-identifier">properties</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">property</span><span class="ruby-operator">|</span> <span class="ruby-identifier">compare_values</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">property</span>) }
@@ -266,6 +304,36 @@ issue date.</p>
 
         
       </div><!-- eql-3F-method -->
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Name of the certification/license.</p>
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;Name&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-method -->
 
     
     </section><!-- public-instance-method-details -->
