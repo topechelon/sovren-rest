@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Resume - sovren-rest 0.2.0
+<title>class SovrenRest::Resume - sovren-rest 0.2.1
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -73,7 +73,17 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-i-certifications">#certifications</a>
+    
+    <li><a href="#method-i-contact_information">#contact_information</a>
+    
+    <li><a href="#method-i-education_history">#education_history</a>
+    
+    <li><a href="#method-i-employment_history">#employment_history</a>
+    
     <li><a href="#method-i-eql-3F">#eql?</a>
+    
+    <li><a href="#method-i-metadata">#metadata</a>
     
   </ul>
 </nav>
@@ -98,21 +108,23 @@
   
     <li><a href="../SovrenRest.html">SovrenRest</a>
   
-    <li><a href="../SovrenRest/Certification.html">SovrenRest::Certification</a>
+    <li><a href="../SovrenRest/Category.html">SovrenRest::Category</a>
+  
+    <li><a href="../SovrenRest/Category/Certification.html">SovrenRest::Category::Certification</a>
+  
+    <li><a href="../SovrenRest/Category/ContactInformation.html">SovrenRest::Category::ContactInformation</a>
+  
+    <li><a href="../SovrenRest/Category/EducationHistory.html">SovrenRest::Category::EducationHistory</a>
+  
+    <li><a href="../SovrenRest/Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</a>
+  
+    <li><a href="../SovrenRest/Category/EmploymentPosition.html">SovrenRest::Category::EmploymentPosition</a>
+  
+    <li><a href="../SovrenRest/Category/Generic.html">SovrenRest::Category::Generic</a>
   
     <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
   
-    <li><a href="../SovrenRest/ContactInformation.html">SovrenRest::ContactInformation</a>
-  
-    <li><a href="../SovrenRest/EducationHistory.html">SovrenRest::EducationHistory</a>
-  
-    <li><a href="../SovrenRest/Employer.html">SovrenRest::Employer</a>
-  
-    <li><a href="../SovrenRest/EmploymentHistory.html">SovrenRest::EmploymentHistory</a>
-  
     <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
-  
-    <li><a href="../SovrenRest/Position.html">SovrenRest::Position</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
@@ -147,80 +159,15 @@
       <h3 class="section-header">Attributes</h3>
 
       
-      <div id="attribute-i-certifications" class="method-detail">
+      <div id="attribute-i-data" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">certifications</span><span
+          <span class="method-name">data</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
         
-        <p>Array of <a href="Certification.html">SovrenRest::Certification</a>.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-contact_information" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">contact_information</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p><a href="ContactInformation.html">SovrenRest::ContactInformation</a>.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-document_json" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">document_json</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Raw document JSON string provided by the response</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-education_history" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">education_history</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p><a href="EducationHistory.html">SovrenRest::EducationHistory</a>.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-employment_history" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">employment_history</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p><a href="EmploymentHistory.html">SovrenRest::EmploymentHistory</a>.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-metadata" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">metadata</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Sovren specific resume metadata.</p>
+        <p>Document JSON provided by the response</p>
         
         </div>
       </div>
@@ -238,7 +185,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(document_json)</span>
+            class="method-args">(data)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -250,13 +197,9 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">document_json</span>)
-  <span class="ruby-ivar">@document_json</span> = <span class="ruby-identifier">document_json</span>
-
-  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">document_json</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Resume&#39;</span>, <span class="ruby-string">&#39;StructuredXMLResume&#39;</span>)
-  <span class="ruby-identifier">user_area</span> = <span class="ruby-identifier">document_json</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Resume&#39;</span>, <span class="ruby-string">&#39;UserArea&#39;</span>)
-  <span class="ruby-identifier">build_resume</span>(<span class="ruby-identifier">data</span> <span class="ruby-operator">||</span> {}, <span class="ruby-identifier">user_area</span> <span class="ruby-operator">||</span> {})
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
+  <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -274,6 +217,144 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-certifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">certifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of <a
+href="Category/Certification.html">SovrenRest::Category::Certification</a></p>
+          
+
+          
+          <div class="method-source-code" id="certifications-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">certifications</span>
+  <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[LicensesAndCertifications LicenseOrCertification]</span>
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> []
+  <span class="ruby-ivar">@certifications</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">certification</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Category</span><span class="ruby-operator">::</span><span class="ruby-constant">Certification</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">certification</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- certifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- certifications-method -->
+
+    
+      <div id="method-i-contact_information" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contact_information</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="Category/ContactInformation.html">SovrenRest::Category::ContactInformation</a></p>
+          
+
+          
+          <div class="method-source-code" id="contact_information-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">contact_information</span>
+  <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[ContactInfo]</span>
+  <span class="ruby-identifier">contact_info</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> {}
+  <span class="ruby-ivar">@contact_information</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Category</span><span class="ruby-operator">::</span><span class="ruby-constant">ContactInformation</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">contact_info</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- contact_information-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- contact_information-method -->
+
+    
+      <div id="method-i-education_history" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">education_history</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of <a
+href="Category/EducationHistory.html">SovrenRest::Category::EducationHistory</a></p>
+          
+
+          
+          <div class="method-source-code" id="education_history-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">education_history</span>
+  <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[EducationHistory SchoolOrInstitution]</span>
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> []
+  <span class="ruby-ivar">@education_history</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">education</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Category</span><span class="ruby-operator">::</span><span class="ruby-constant">EducationHistory</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">education</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- education_history-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- education_history-method -->
+
+    
+      <div id="method-i-employment_history" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">employment_history</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of <a
+href="Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</a></p>
+          
+
+          
+          <div class="method-source-code" id="employment_history-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">employment_history</span>
+  <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[EmploymentHistory EmployerOrg]</span>
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> []
+  <span class="ruby-ivar">@employment_history</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">employment_history</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Category</span><span class="ruby-operator">::</span><span class="ruby-constant">EmploymentHistory</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">employment_history</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- employment_history-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- employment_history-method -->
+
+    
       <div id="method-i-eql-3F" class="method-detail ">
         
         <div class="method-heading">
@@ -285,18 +366,16 @@
 
         <div class="method-description">
           
-          <p>Custom equality definition.</p>
+          
           
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">contact_information</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">contact_information</span> <span class="ruby-operator">&amp;&amp;</span>
-    <span class="ruby-identifier">employment_history</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">employment_history</span> <span class="ruby-operator">&amp;&amp;</span>
-    <span class="ruby-identifier">education_history</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">education_history</span> <span class="ruby-operator">&amp;&amp;</span>
-    <span class="ruby-identifier">certifications</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">certifications</span> <span class="ruby-operator">&amp;&amp;</span>
-    <span class="ruby-identifier">metadata</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">metadata</span>
+  <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">contact_information</span> <span class="ruby-identifier">employment_history</span>
+                  <span class="ruby-identifier">education_history</span> <span class="ruby-identifier">certifications</span> <span class="ruby-identifier">metadata</span>]
+  <span class="ruby-identifier">properties</span>.<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">property</span><span class="ruby-operator">|</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">property</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">property</span>) }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- eql-3F-source -->
           
@@ -306,6 +385,36 @@
 
         
       </div><!-- eql-3F-method -->
+
+    
+      <div id="method-i-metadata" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">metadata</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sovren-specific resume metadata.</p>
+          
+
+          
+          <div class="method-source-code" id="metadata-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">metadata</span>
+  <span class="ruby-identifier">user_area</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;sov:ResumeUserArea&#39;</span>) <span class="ruby-operator">||</span> {}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- metadata-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- metadata-method -->
 
     
     </section><!-- public-instance-method-details -->

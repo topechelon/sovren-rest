@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::ParseResponse - sovren-rest 0.2.0
+<title>class SovrenRest::ParseResponse - sovren-rest 0.2.1
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -106,21 +106,23 @@
   
     <li><a href="../SovrenRest.html">SovrenRest</a>
   
-    <li><a href="../SovrenRest/Certification.html">SovrenRest::Certification</a>
+    <li><a href="../SovrenRest/Category.html">SovrenRest::Category</a>
+  
+    <li><a href="../SovrenRest/Category/Certification.html">SovrenRest::Category::Certification</a>
+  
+    <li><a href="../SovrenRest/Category/ContactInformation.html">SovrenRest::Category::ContactInformation</a>
+  
+    <li><a href="../SovrenRest/Category/EducationHistory.html">SovrenRest::Category::EducationHistory</a>
+  
+    <li><a href="../SovrenRest/Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</a>
+  
+    <li><a href="../SovrenRest/Category/EmploymentPosition.html">SovrenRest::Category::EmploymentPosition</a>
+  
+    <li><a href="../SovrenRest/Category/Generic.html">SovrenRest::Category::Generic</a>
   
     <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
   
-    <li><a href="../SovrenRest/ContactInformation.html">SovrenRest::ContactInformation</a>
-  
-    <li><a href="../SovrenRest/EducationHistory.html">SovrenRest::EducationHistory</a>
-  
-    <li><a href="../SovrenRest/Employer.html">SovrenRest::Employer</a>
-  
-    <li><a href="../SovrenRest/EmploymentHistory.html">SovrenRest::EmploymentHistory</a>
-  
     <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
-  
-    <li><a href="../SovrenRest/Position.html">SovrenRest::Position</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
@@ -174,7 +176,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(response)</span>
+            class="method-args">(raw_response)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -187,8 +189,8 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">response</span>)
-  <span class="ruby-ivar">@parsed_response</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">raw_response</span>)
+  <span class="ruby-ivar">@response</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           

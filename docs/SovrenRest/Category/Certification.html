@@ -4,30 +4,30 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::EmploymentHistory - sovren-rest 0.2.0
+<title>class SovrenRest::Category::Certification - sovren-rest 0.2.1
 </title>
 
-<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "../";
+  var rdoc_rel_prefix = "../../";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
 <body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
-    <a href="../index.html">Home</a>
-    <a href="../table_of_contents.html#classes">Classes</a>
-    <a href="../table_of_contents.html#methods">Methods</a>
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
   </h3>
 </nav>
 
@@ -48,7 +48,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/sovren-rest/employment_history.rb
+    <li>lib/sovren-rest/category/certification.rb
   </ul>
 </nav>
 
@@ -60,7 +60,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">Object
+  <p class="link">Generic
   
 </nav>
 
@@ -86,7 +86,7 @@
 
   <ul>
   
-    <li class="file"><a href="../README_rdoc.html">README</a>
+    <li class="file"><a href="../../README_rdoc.html">README</a>
   
   </ul>
 </nav>
@@ -96,25 +96,27 @@
 
   <ul class="link-list">
   
-    <li><a href="../SovrenRest.html">SovrenRest</a>
+    <li><a href="../../SovrenRest.html">SovrenRest</a>
   
-    <li><a href="../SovrenRest/Certification.html">SovrenRest::Certification</a>
+    <li><a href="../../SovrenRest/Category.html">SovrenRest::Category</a>
   
-    <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
+    <li><a href="../../SovrenRest/Category/Certification.html">SovrenRest::Category::Certification</a>
   
-    <li><a href="../SovrenRest/ContactInformation.html">SovrenRest::ContactInformation</a>
+    <li><a href="../../SovrenRest/Category/ContactInformation.html">SovrenRest::Category::ContactInformation</a>
   
-    <li><a href="../SovrenRest/EducationHistory.html">SovrenRest::EducationHistory</a>
+    <li><a href="../../SovrenRest/Category/EducationHistory.html">SovrenRest::Category::EducationHistory</a>
   
-    <li><a href="../SovrenRest/Employer.html">SovrenRest::Employer</a>
+    <li><a href="../../SovrenRest/Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</a>
   
-    <li><a href="../SovrenRest/EmploymentHistory.html">SovrenRest::EmploymentHistory</a>
+    <li><a href="../../SovrenRest/Category/EmploymentPosition.html">SovrenRest::Category::EmploymentPosition</a>
   
-    <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
+    <li><a href="../../SovrenRest/Category/Generic.html">SovrenRest::Category::Generic</a>
   
-    <li><a href="../SovrenRest/Position.html">SovrenRest::Position</a>
+    <li><a href="../../SovrenRest/Client.html">SovrenRest::Client</a>
   
-    <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
+    <li><a href="../../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
+  
+    <li><a href="../../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
   </ul>
 </nav>
@@ -123,11 +125,11 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class SovrenRest::EmploymentHistory</h1>
+  <h1 class="class">class SovrenRest::Category::Certification</h1>
 
   <div id="description" class="description">
     
-<p>Represents employment history as a list of employers.</p>
+<p>Represents a certification or license.</p>
 
   </div><!-- description -->
 
@@ -147,15 +149,41 @@
       <h3 class="section-header">Attributes</h3>
 
       
-      <div id="attribute-i-employers" class="method-detail">
+      <div id="attribute-i-description" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">employers</span><span
+          <span class="method-name">description</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
         
-        <p>An array of <a href="Employer.html">SovrenRest::Employer</a>.</p>
+        <p>Description of the certification/license.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-effective_dates" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">effective_dates</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Array of effective issue dates of certification/license.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name of the certification/license.</p>
         
         </div>
       </div>
@@ -180,15 +208,18 @@
 
         <div class="method-description">
           
-          <p>Initializes an array of past and current employers.</p>
+          <p>Initializes a new license or certification with a name, description, and
+issue date.</p>
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/employment_history.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">employers</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;EmployerOrg&#39;</span>] <span class="ruby-operator">||</span> []
-  <span class="ruby-ivar">@employers</span> = <span class="ruby-identifier">employers</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">Employer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">e</span>) }
+  <span class="ruby-identifier">certification</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;LicenseOrCertification&#39;</span>] <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">parse_name</span>(<span class="ruby-identifier">certification</span>)
+  <span class="ruby-identifier">parse_description</span>(<span class="ruby-identifier">certification</span>)
+  <span class="ruby-identifier">parse_effective_dates</span>(<span class="ruby-identifier">certification</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -217,14 +248,15 @@
 
         <div class="method-description">
           
-          <p>Custom equality definition.</p>
+          
           
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/employment_history.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-identifier">employers</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">employers</span>
+  <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">name</span> <span class="ruby-identifier">description</span> <span class="ruby-identifier">effective_dates</span>]
+  <span class="ruby-identifier">properties</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">property</span><span class="ruby-operator">|</span> <span class="ruby-identifier">compare_values</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">property</span>) }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- eql-3F-source -->
           
