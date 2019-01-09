@@ -4,8 +4,8 @@ module SovrenRest
   class ParseResponse
     STATUS_SUCCESS = 'Success'.freeze
 
-    def initialize(response)
-      @parsed_response = JSON.parse(response)
+    def initialize(raw_response)
+      @response = JSON.parse(raw_response)
     end
 
     ##
@@ -39,11 +39,11 @@ module SovrenRest
     private
 
     def value
-      @parsed_response['Value'] || {}
+      @response['Value'] || {}
     end
 
     def info
-      @parsed_response['Info']
+      @response['Info']
     end
 
     def build_resume(key)

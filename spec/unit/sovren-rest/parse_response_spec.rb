@@ -15,9 +15,8 @@ RSpec.describe SovrenRest::ParseResponse do
       it { is_expected.to be_a SovrenRest::Resume }
 
       it "uses the data from #{key}" do
-        data = JSON.parse(file_content)
-        document_json = JSON.parse(data.dig('Value', key))
-        expect(subject.document_json).to eq document_json
+        data = JSON.parse(JSON.parse(file_content).dig('Value', key))
+        expect(subject.data).to eq data
       end
     end
   end

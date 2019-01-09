@@ -1,7 +1,7 @@
 module SovrenRest
   ##
   # Represents a position at an organization.
-  class Position
+  class EmploymentPosition
     # Current position flag.
     attr_reader :current
 
@@ -48,26 +48,11 @@ module SovrenRest
       parse_metadata(data)
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
-    # rubocop:disable Metrics/MethodLength, Metrics/PerceivedComplexity
-
-    ##
-    # Custom equality definition.
     def eql?(other)
-      current == other.current &&
-        title == other.title &&
-        department == other.department &&
-        description == other.description &&
-        city == other.city &&
-        state == other.state &&
-        country == other.country &&
-        start_date == other.start_date &&
-        end_date == other.end_date &&
-        categories == other.categories &&
-        metadata == other.metadata
+      properties = %i[current title department description city state
+                      country start_date end_date categories metadata]
+      properties.all? { |property| send(property) == other.send(property) }
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/MethodLength, Metrics/PerceivedComplexity
 
     private
 

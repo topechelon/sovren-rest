@@ -3,22 +3,43 @@ require 'sovren-rest/employment_history.rb'
 RSpec.describe SovrenRest::EmploymentHistory do
   context 'with all relevant information' do
     before :all do
+      @company_name = 'Stuff N\' Things'
+
       raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
       input = JSON.parse(raw)
-      @employment_history = SovrenRest::EmploymentHistory.new(input)
+      @employer = SovrenRest::EmploymentHistory.new(input['EmployerOrg'][0])
     end
 
-    it 'should extract an employer' do
-      expect(@employment_history.employers).not_to be_empty
+    it 'should extract company_name' do
+      expect(@employer.company_name).to eq(@company_name)
+    end
+
+    it 'should extract metadata' do
+      expect(@employer.metadata).not_to be_nil
+    end
+
+    it 'should extract employment_positions' do
+      expect(@employer.employment_positions).not_to be_empty
     end
   end
+
   context 'with missing information' do
     before :all do
-      @employment_history = SovrenRest::EmploymentHistory.new({})
+      @company_name = nil
+
+      @employer = SovrenRest::EmploymentHistory.new({})
     end
 
-    it 'should not extract an employer' do
-      expect(@employment_history.employers).to be_empty
+    it 'should extract company_name' do
+      expect(@employer.company_name).to eq(@company_name)
+    end
+
+    it 'should extract metadata' do
+      expect(@employer.metadata).to be_nil
+    end
+
+    it 'should extract employment_positions' do
+      expect(@employer.employment_positions).to be_empty
     end
   end
 end

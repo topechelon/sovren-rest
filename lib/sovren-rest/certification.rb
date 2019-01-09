@@ -21,8 +21,6 @@ module SovrenRest
       parse_effective_dates(certification)
     end
 
-    ##
-    # Custom equality definition.
     def eql?(other)
       name == other.name &&
         description == other.description &&

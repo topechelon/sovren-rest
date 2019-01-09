@@ -1,6 +1,6 @@
-require 'sovren-rest/position.rb'
+require 'sovren-rest/employment_position.rb'
 
-RSpec.describe SovrenRest::Position do
+RSpec.describe SovrenRest::EmploymentPosition do
   context 'with all relevant information' do
     before :all do
       @current = 'true'
@@ -14,7 +14,7 @@ RSpec.describe SovrenRest::Position do
 
       raw = File.read(File.expand_path('../files/employment-history.json', __dir__))
       input = JSON.parse(raw).dig('EmployerOrg', 0, 'PositionHistory', 0)
-      @position = SovrenRest::Position.new(input)
+      @position = SovrenRest::EmploymentPosition.new(input)
     end
 
     it 'should extract current' do
@@ -71,7 +71,7 @@ RSpec.describe SovrenRest::Position do
       @state = nil
       @country = nil
 
-      @position = SovrenRest::Position.new({})
+      @position = SovrenRest::EmploymentPosition.new({})
     end
 
     it 'should extract current' do

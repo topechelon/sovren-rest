@@ -51,27 +51,12 @@ module SovrenRest
       parse_location(data)
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
-    # rubocop:disable Metrics/MethodLength, Metrics/PerceivedComplexity
-
-    ##
-    # Custom equality definition.
     def eql?(other)
-      school_name == other.school_name &&
-        school_type == other.school_type &&
-        degree_type == other.degree_type &&
-        degree_major == other.degree_major &&
-        degree_type == other.degree_type &&
-        start_date == other.start_date &&
-        end_date == other.end_date &&
-        comments == other.comments &&
-        city == other.city &&
-        state == other.state &&
-        metadata == other.metadata &&
-        graduated == other.graduated
+      properties = %i[school_name school_type degree_type
+                      degree_major start_date end_date comments
+                      city state metadata graduated]
+      properties.all? { |property| send(property) == other.send(property) }
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/MethodLength, Metrics/PerceivedComplexity
 
     private
 

@@ -2,78 +2,68 @@ module SovrenRest
   ##
   # Top level resume class, an aggregation of resume information held.
   class Resume
-    # SovrenRest::ContactInformation.
-    attr_reader :contact_information
-
-    # SovrenRest::EmploymentHistory.
-    attr_reader :employment_history
-
-    # SovrenRest::EducationHistory.
-    attr_reader :education_history
-
-    # Array of SovrenRest::Certification.
-    attr_reader :certifications
-
-    # Sovren specific resume metadata.
-    attr_reader :metadata
-
-    # Raw document JSON string provided by the response
-    attr_reader :document_json
+    # Document JSON provided by the response
+    attr_reader :data
 
     ##
     # Initializes a resume from ParsedDocument data.
-    def initialize(document_json)
-      @document_json = document_json
-
-      data = document_json.dig('Resume', 'StructuredXMLResume')
-      user_area = document_json.dig('Resume', 'UserArea')
-      build_resume(data || {}, user_area || {})
+    def initialize(data)
+      @data = data
     end
 
-    # rubocop:disable Metrics/AbcSize
+    # SovrenRest::ContactInformation
+    def contact_information
+      path = %w[ContactInfo]
+      contact_info = xml_resume.dig(*path) || {}
+      @contact_information ||= SovrenRest::ContactInformation.new(contact_info)
+    end
 
-    ##
-    # Custom equality definition.
+    # Array of SovrenRest::EmploymentHistory
+    def employment_history
+      path = %w[EmploymentHistory EmployerOrg]
+      arr = xml_resume.dig(*path) || []
+      @employment_history ||= arr.map do |employment_history|
+        SovrenRest::EmploymentHistory.new(employment_history)
+      end
+    end
+
+    # Array of SovrenRest::EducationHistory
+    def education_history
+      path = %w[EducationHistory SchoolOrInstitution]
+      arr = xml_resume.dig(*path) || []
+      @education_history ||= arr.map do |education|
+        SovrenRest::EducationHistory.new(education)
+      end
+    end
+
+    # Array of SovrenRest::Certification
+    def certifications
+      path = %w[LicensesAndCertifications LicenseOrCertification]
+      arr = xml_resume.dig(*path) || []
+      @certifications ||= arr.map do |certification|
+        SovrenRest::Certification.new(certification)
+      end
+    end
+
+    # Sovren-specific resume metadata.
+    def metadata
+      user_area.dig('sov:ResumeUserArea') || {}
+    end
+
     def eql?(other)
-      contact_information == other.contact_information &&
-        employment_history == other.employment_history &&
-        education_history == other.education_history &&
-        certifications == other.certifications &&
-        metadata == other.metadata
+      properties = %i[contact_information employment_history
+                      education_history certifications metadata]
+      properties.all? { |property| send(property) == other.send(property) }
     end
-    # rubocop:enable Metrics/AbcSize
 
     private
 
-    def build_resume(data, user_area)
-      @contact_information = build_contact_information(data)
-      @employment_history = build_employment_history(data)
-      @education_history = build_education_history(data)
-      @certifications = build_certifications(data)
-      @metadata = build_metadata(user_area)
+    def xml_resume
+      data.dig('Resume', 'StructuredXMLResume') || {}
     end
 
-    def build_contact_information(data)
-      SovrenRest::ContactInformation.new(data['ContactInfo'] || {})
-    end
-
-    def build_employment_history(data)
-      arr = data.dig('EmploymentHistory', 'EmployerOrg') || []
-      arr.map { |emp| SovrenRest::EmploymentHistory.new(emp) }
-    end
-
-    def build_education_history(data)
-      arr = data.dig('EducationHistory', 'SchoolOrInstitution') || []
-      arr.map { |edu| SovrenRest::EducationHistory.new(edu) }
-    end
-
-    def build_certifications(data)
-      arr = data['LicensesAndCertifications'] || []
-      arr.map { |lac| SovrenRest::Certification.new(lac) }
-    end
-
-    def build_metadata(user_area)
-      user_area.dig('sov:ResumeUserArea') || {}
+    def user_area
+      data.dig('Resume', 'UserArea') || {}
     end
   end
 end

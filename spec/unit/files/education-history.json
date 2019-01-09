@@ -1,56 +1,56 @@
 {
-    "SchoolOrInstitution": [
-      {
-        "@schoolType": "university",
-        "School": [
-          {
-            "SchoolName": "University of Stuff"
-          }
+  "SchoolOrInstitution": [
+    {
+      "@schoolType": "university",
+      "School": [
+        {
+          "SchoolName": "University of Stuff"
+        }
+      ],
+      "PostalAddress": {
+        "CountryCode": "US",
+        "Region": [
+          "Ohio"
         ],
-        "PostalAddress": {
-          "CountryCode": "US",
-          "Region": [
-            "Ohio"
+        "Municipality": "Stuff"
+      },
+      "Degree": [
+        {
+          "@degreeType": "masters",
+          "DegreeName": "Master of Stuff in Things",
+          "DegreeMajor": [
+            {
+              "Name": [
+                "Stuff N Things"
+              ]
+            }
           ],
-          "Municipality": "Stuff"
-        },
-        "Degree": [
-          {
-            "@degreeType": "masters",
-            "DegreeName": "Master of Stuff in Things",
-            "DegreeMajor": [
-              {
-                "Name": [
-                  "Stuff N Things"
-                ]
-              }
-            ],
-            "DatesOfAttendance": [
-              {
-                "StartDate": {
-                  "AnyDate": "notKnown"
-                },
-                "EndDate": {
-                  "YearMonth": "2016-08"
-                }
-              }
-            ],
-            "Comments": "University of Stuff - Stuff, Ohio Master of Science in Computer Science, Aug 2016 Thesis: Towards an Ideal Execution Environment for Programmable Network Switches",
-            "UserArea": {
-              "sov:DegreeUserArea": {
-                "sov:Id": "DEG-1",
-                "sov:Graduated": "false",
-                "sov:NormalizedDegreeName": "MSc",
-                "sov:NormalizedDegreeType": "MSc"
+          "DatesOfAttendance": [
+            {
+              "StartDate": {
+                "AnyDate": "notKnown"
+              },
+              "EndDate": {
+                "YearMonth": "2016-08"
               }
             }
-          }
-        ],
-        "UserArea": {
-          "sov:SchoolOrInstitutionTypeUserArea": {
-            "sov:NormalizedSchoolName": "University of Stuff"
+          ],
+          "Comments": "University of Stuff - Stuff, Ohio Master of Science in Computer Science, Aug 2016 Thesis: Towards an Ideal Execution Environment for Programmable Network Switches",
+          "UserArea": {
+            "sov:DegreeUserArea": {
+              "sov:Id": "DEG-1",
+              "sov:Graduated": "false",
+              "sov:NormalizedDegreeName": "MSc",
+              "sov:NormalizedDegreeType": "MSc"
+            }
           }
         }
+      ],
+      "UserArea": {
+        "sov:SchoolOrInstitutionTypeUserArea": {
+          "sov:NormalizedSchoolName": "University of Stuff"
+        }
       }
-    ]
-  }
+    }
+  ]
+}

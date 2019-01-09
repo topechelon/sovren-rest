@@ -34,20 +34,11 @@ module SovrenRest
       parse_addresses(contact_method)
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
-
-    ##
-    # Custom equality definition.
     def eql?(other)
-      first_name == other.first_name &&
-        middle_name == other.middle_name &&
-        last_name == other.last_name &&
-        email_addresses == other.email_addresses &&
-        websites == other.websites &&
-        phone_numbers == other.phone_numbers &&
-        addresses == other.addresses
+      properties = %w[first_name middle_name last_name email_addresses
+                      websites phone_numbers addresses]
+      properties.all? { |property| send(property) == other.send(property) }
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
 
     private
 

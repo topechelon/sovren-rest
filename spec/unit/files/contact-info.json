@@ -1,9 +1,9 @@
 {
   "PersonName": {
-      "FormattedName": "Johan Von Testingstonly",
-      "GivenName": "Johan",
-      "MiddleName": "Von",
-      "FamilyName": "Testingstonly"
+    "FormattedName": "Johan Von Testingstonly",
+    "GivenName": "Johan",
+    "MiddleName": "Von",
+    "FamilyName": "Testingstonly"
   },
   "ContactMethod": [
     {
@@ -29,10 +29,10 @@
       }
     },
     {
-        "Use": "personal",
-        "Location": "onPerson",
-        "WhenAvailable": "anytime",
-        "InternetEmailAddress": "jtestingstonly@gmail.com"
+      "Use": "personal",
+      "Location": "onPerson",
+      "WhenAvailable": "anytime",
+      "InternetEmailAddress": "jtestingstonly@gmail.com"
     },
     {
       "Use": "businessDirect",
