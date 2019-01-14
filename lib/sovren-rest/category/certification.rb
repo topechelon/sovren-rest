@@ -3,16 +3,6 @@ module SovrenRest
     ##
     # Represents a certification or license.
     class Certification < Generic
-      # Certification json
-      attr_reader :data
-
-      ##
-      # Initializes a new license or certification with a name,
-      # description, and issue date.
-      def initialize(data)
-        @data = data
-      end
-
       # Name of the certification/license.
       def name
         data['Name']

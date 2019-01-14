@@ -1,6 +1,12 @@
 module SovrenRest
   module Category
     class Generic
+      attr_reader :data
+
+      def initialize(data)
+        @data = data
+      end
+
       protected
 
       def compare_values(other, property)

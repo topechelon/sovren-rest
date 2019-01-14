@@ -4,52 +4,70 @@ module SovrenRest
     # Represents a resume education history.
     class EducationHistory < Generic
       # HROpenStandards school type.
-      attr_reader :school_type
+      def school_type
+        data.dig('@schoolType')
+      end
 
       # Name of the school or institutution.
-      attr_reader :school_name
+      def school_name
+        data.dig('School', 0, 'SchoolName')
+      end
 
       # HROpenStandards degree type.
-      attr_reader :degree_type
+      def degree_type
+        data.dig('Degree', 0, '@degreeType')
+      end
 
       # Name of the degree.
-      attr_reader :degree_name
+      def degree_name
+        data.dig('Degree', 0, 'DegreeName')
+      end
 
       # Major distinction for the degree.
-      attr_reader :degree_major
-
-      # Sovren graduated flag.
-      attr_reader :graduated
+      def degree_major
+        data.dig('Degree', 0, 'DegreeMajor', 0, 'Name', 0)
+      end
 
       # Date started work on degree.
-      attr_reader :start_date
+      def start_date
+        date = dates_of_attendance['StartDate'] || {}
+        date.values[0]
+      end
 
       # Date ended work on degree.
-      attr_reader :end_date
+      def end_date
+        date = dates_of_attendance['EndDate'] || {}
+        date.values[0]
+      end
+
+      # Sovren graduated flag.
+      def graduated
+        data.dig('Degree', 0, 'UserArea', 'sov:DegreeUserArea', 'sov:Graduated')
+      end
 
       # Additional comments.
-      attr_reader :comments
+      def comments
+        data.dig('Degree', 0, 'Comments')
+      end
 
       # School/institution city name.
-      attr_reader :city
+      def city
+        location['Municipality']
+      end
 
       # School/institution state name.
-      attr_reader :state
+      def state
+        location.dig('Region', 0)
+      end
 
       # School/institution country code.
-      attr_reader :country
+      def country
+        location['CountryCode']
+      end
 
       # Sovren specific education data.
-      attr_reader :metadata
-
-      ##
-      # Initializes Education History with parsed school or institution data.
-      def initialize(data)
-        parse_school(data)
-        parse_degree(data)
-        parse_dates(data)
-        parse_metadata(data)
-        parse_location(data)
+      def metadata
+        data.dig('Degree', 0, 'UserArea')
       end
 
       def eql?(other)
@@ -61,37 +79,12 @@ module SovrenRest
 
       private
 
-      def parse_school(school)
-        @school_type = school.dig('@schoolType')
-        @school_name = school.dig('School', 0, 'SchoolName')
+      def dates_of_attendance
+        data.dig('Degree', 0, 'DatesOfAttendance', 0) || {}
       end
 
-      def parse_degree(school)
-        @degree_type = school.dig('Degree', 0, '@degreeType')
-        @degree_major = school.dig('Degree', 0, 'DegreeName')
-        @degree_major = school.dig('Degree', 0, 'DegreeMajor', 0, 'Name', 0)
-      end
-
-      def parse_dates(school)
-        dates = school.dig('Degree', 0, 'DatesOfAttendance', 0) || {}
-        start_date = dates['StartDate'] || {}
-        @start_date = start_date.values[0]
-        end_date = dates['EndDate'] || {}
-        @end_date = end_date.values[0]
-      end
-
-      def parse_metadata(school)
-        @graduated = school.dig('Degree', 0, 'UserArea',
-                                'sov:DegreeUserArea', 'sov:Graduated')
-        @comments = school.dig('Degree', 0, 'Comments')
-        @metadata = school.dig('Degree', 0, 'UserArea')
-      end
-
-      def parse_location(data)
-        location = data['PostalAddress'] || {}
-        @city = location['Municipality']
-        @state = location.dig('Region', 0)
-        @country = location['CountryCode']
+      def location
+        data['PostalAddress'] || {}
       end
     end
   end

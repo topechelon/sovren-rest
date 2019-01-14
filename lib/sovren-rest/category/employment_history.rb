@@ -5,15 +5,6 @@ module SovrenRest
     ##
     # Represents an employer for an employee. Can have many positions.
     class EmploymentHistory < Generic
-      # Employment History json
-      attr_reader :data
-
-      ##
-      # Initializes a new employer and parses all positions held.
-      def initialize(data)
-        @data = data
-      end
-
       # Name of the employer.
       def company_name
         data['EmployerOrgName']

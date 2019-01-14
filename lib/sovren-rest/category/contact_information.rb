@@ -4,35 +4,38 @@ module SovrenRest
     # Represents resume contact information.
     class ContactInformation < Generic
       # First name, given name.
-      attr_reader :first_name
+      def first_name
+        person_name['GivenName']
+      end
 
       # Middle name.
-      attr_reader :middle_name
+      def middle_name
+        person_name['MiddleName']
+      end
 
       # Last name, family name.
-      attr_reader :last_name
+      def last_name
+        person_name['FamilyName']
+      end
 
       # Array of Sovren email address contact methods.
-      attr_reader :email_addresses
+      def email_addresses
+        contact_method.select { |cm| cm['InternetEmailAddress'] }
+      end
 
       # Array of website addresses.
-      attr_reader :websites
+      def websites
+        contact_method.select { |cm| cm['InternetWebAddress'] }
+      end
 
       # Array of Sovren phone number contact methods.
-      attr_reader :phone_numbers
+      def phone_numbers
+        contact_method.select { |cm| cm['Telephone'] }
+      end
 
       # Array of Sovren postal address contact methods.
-      attr_reader :addresses
-
-      ##
-      # Initializes Contact Information with parsed data.
-      def initialize(data)
-        parse_name(data['PersonName'] || {})
-        contact_method = data['ContactMethod'] || []
-        parse_email(contact_method)
-        parse_websites(contact_method)
-        parse_phone_numbers(contact_method)
-        parse_addresses(contact_method)
+      def addresses
+        contact_method.select { |cm| cm['PostalAddress'] }
       end
 
       def eql?(other)
@@ -43,27 +46,12 @@ module SovrenRest
 
       private
 
-      def parse_name(person_name)
-        @first_name = person_name['GivenName']
-        @last_name = person_name['FamilyName']
-        @middle_name = person_name['MiddleName']
+      def person_name
+        data['PersonName'] || {}
       end
 
-      def parse_email(contact_method)
-        @email_addresses = contact_method
-                           .select { |cm| cm['InternetEmailAddress'] }
-      end
-
-      def parse_websites(contact_method)
-        @websites = contact_method.select { |cm| cm['InternetWebAddress'] }
-      end
-
-      def parse_phone_numbers(contact_method)
-        @phone_numbers = contact_method.select { |cm| cm['Telephone'] }
-      end
-
-      def parse_addresses(contact_method)
-        @addresses = contact_method.select { |cm| cm['PostalAddress'] }
+      def contact_method
+        data['ContactMethod'] || []
       end
     end
   end

@@ -4,49 +4,60 @@ module SovrenRest
     # Represents a position at an organization.
     class EmploymentPosition < Generic
       # Current position flag.
-      attr_reader :current
+      def current
+        data['@currentEmployer'] || false
+      end
 
       # Position title.
-      attr_reader :title
+      def title
+        data['Title']
+      end
 
       # Department/Subdivison.
-      attr_reader :department
-
-      # Description/summary of the position.
-      attr_reader :description
-
-      # City name.
-      attr_reader :city
-
-      # State name.
-      attr_reader :state
+      def department
+        data.dig('OrgName', 'OrganizationName')
+      end
 
       # Country code.
-      attr_reader :country
+      def country
+        location.dig('CountryCode')
+      end
+
+      # State name.
+      def state
+        location.dig('Region', 0)
+      end
+
+      # City name.
+      def city
+        location.dig('Municipality')
+      end
+
+      # Description/summary of the position.
+      def description
+        data['Description']
+      end
 
       # Start of employment.
-      attr_reader :start_date
+      def start_date
+        start_date = data['StartDate'] || {}
+        @start_date = start_date.values[0]
+      end
 
       # End of employment.
-      attr_reader :end_date
+      def end_date
+        end_date = data['EndDate'] || {}
+        @end_date = end_date.values[0] || 'current'
+      end
 
       # Array of Sovren position history job categories.
-      attr_reader :categories
+      def categories
+        data['JobCategory'] || []
+      end
 
       # Sovren specific position metadata.
-      attr_reader :metadata
-
-      ##
-      # Initializes a position summary with parsed data.
-      def initialize(data)
-        parse_current(data)
-        parse_title(data)
-        parse_department(data)
-        parse_location(data)
-        parse_description(data)
-        parse_dates(data)
-        parse_categories(data)
-        parse_metadata(data)
+      def metadata
+        data['UserArea']
       end
 
       def eql?(other)
@@ -57,45 +68,10 @@ module SovrenRest
 
       private
 
-      def parse_current(data)
-        @current = data['@currentEmployer'] || false
-      end
-
-      def parse_title(data)
-        @title = data['Title']
-      end
-
-      def parse_department(data)
-        @department = data.dig('OrgName', 'OrganizationName')
-      end
-
-      def parse_location(data)
+      def location
         org_info = data['OrgInfo'] || []
         find_location = org_info.find { |d| d['PositionLocation'] } || {}
         location = find_location.dig('PositionLocation') || {}
-        @country = location.dig('CountryCode')
-        @state = location.dig('Region', 0)
-        @city = location.dig('Municipality')
-      end
-
-      def parse_description(data)
-        @description = data['Description']
-      end
-
-      def parse_dates(data)
-        start_date = data['StartDate'] || {}
-        @start_date = start_date.values[0]
-        end_date = data['EndDate'] || {}
-        @end_date = end_date.values[0] || 'current'
-      end
-
-      def parse_categories(data)
-        categories = data['JobCategory'] || []
-        @categories = categories.map { |m| m }
-      end
-
-      def parse_metadata(data)
-        @metadata = data['UserArea']
       end
     end
   end
