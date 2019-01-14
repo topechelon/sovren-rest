@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::EmploymentPosition - sovren-rest 0.2.1
+<title>class SovrenRest::Category::EmploymentPosition - sovren-rest 0.3.0
 </title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
@@ -71,9 +71,29 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li><a href="#method-i-categories">#categories</a>
+    
+    <li><a href="#method-i-city">#city</a>
+    
+    <li><a href="#method-i-country">#country</a>
+    
+    <li><a href="#method-i-current">#current</a>
+    
+    <li><a href="#method-i-department">#department</a>
+    
+    <li><a href="#method-i-description">#description</a>
+    
+    <li><a href="#method-i-end_date">#end_date</a>
     
     <li><a href="#method-i-eql-3F">#eql?</a>
+    
+    <li><a href="#method-i-metadata">#metadata</a>
+    
+    <li><a href="#method-i-start_date">#start_date</a>
+    
+    <li><a href="#method-i-state">#state</a>
+    
+    <li><a href="#method-i-title">#title</a>
     
   </ul>
 </nav>
@@ -144,204 +164,222 @@
     
 
     
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
-
-      
-      <div id="attribute-i-categories" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">categories</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Array of Sovren position history job categories.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-city" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">city</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>City name.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-country" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">country</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Country code.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-current" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">current</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Current position flag.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-department" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">department</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Department/Subdivison.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-description" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">description</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Description/summary of the position.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-end_date" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">end_date</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>End of employment.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-metadata" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">metadata</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Sovren specific position metadata.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-start_date" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">start_date</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Start of employment.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-state" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">state</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>State name.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-title" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">title</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Position title.</p>
-        
-        </div>
-      </div>
-      
-    </section><!-- attribute-method-details -->
-    
 
     <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-c-new" class="method-detail ">
+      <div id="method-i-categories" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(data)</span>
+          <span class="method-name">categories</span><span
+            class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Initializes a position summary with parsed data.</p>
+          <p>Array of Sovren position history job categories.</p>
           
 
           
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_current</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_title</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_department</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_location</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_description</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_dates</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_categories</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_metadata</span>(<span class="ruby-identifier">data</span>)
+          <div class="method-source-code" id="categories-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">categories</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;JobCategory&#39;</span>] <span class="ruby-operator">||</span> []
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
+          </div><!-- categories-source -->
           
         </div>
 
         
 
         
-      </div><!-- new-method -->
+      </div><!-- categories-method -->
 
     
-    </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+      <div id="method-i-city" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">city</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>City name.</p>
+          
+
+          
+          <div class="method-source-code" id="city-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">city</span>
+  <span class="ruby-identifier">location</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Municipality&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- city-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- city-method -->
+
+    
+      <div id="method-i-country" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">country</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Country code.</p>
+          
+
+          
+          <div class="method-source-code" id="country-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">country</span>
+  <span class="ruby-identifier">location</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;CountryCode&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- country-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- country-method -->
+
+    
+      <div id="method-i-current" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Current position flag.</p>
+          
+
+          
+          <div class="method-source-code" id="current-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;@currentEmployer&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current-method -->
+
+    
+      <div id="method-i-department" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">department</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Department/Subdivison.</p>
+          
+
+          
+          <div class="method-source-code" id="department-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">department</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;OrgName&#39;</span>, <span class="ruby-string">&#39;OrganizationName&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- department-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- department-method -->
+
+    
+      <div id="method-i-description" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">description</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Description/summary of the position.</p>
+          
+
+          
+          <div class="method-source-code" id="description-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">description</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;Description&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- description-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- description-method -->
+
+    
+      <div id="method-i-end_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">end_date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>End of employment.</p>
+          
+
+          
+          <div class="method-source-code" id="end_date-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_date</span>
+  <span class="ruby-identifier">end_date</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;EndDate&#39;</span>] <span class="ruby-operator">||</span> {}
+  <span class="ruby-ivar">@end_date</span> = <span class="ruby-identifier">end_date</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;current&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- end_date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- end_date-method -->
 
     
       <div id="method-i-eql-3F" class="method-detail ">
@@ -360,7 +398,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">current</span> <span class="ruby-identifier">title</span> <span class="ruby-identifier">department</span> <span class="ruby-identifier">description</span> <span class="ruby-identifier">city</span> <span class="ruby-identifier">state</span>
                   <span class="ruby-identifier">country</span> <span class="ruby-identifier">start_date</span> <span class="ruby-identifier">end_date</span> <span class="ruby-identifier">categories</span> <span class="ruby-identifier">metadata</span>]
@@ -374,6 +412,127 @@
 
         
       </div><!-- eql-3F-method -->
+
+    
+      <div id="method-i-metadata" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">metadata</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sovren specific position metadata.</p>
+          
+
+          
+          <div class="method-source-code" id="metadata-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">metadata</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;UserArea&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- metadata-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- metadata-method -->
+
+    
+      <div id="method-i-start_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start_date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Start of employment.</p>
+          
+
+          
+          <div class="method-source-code" id="start_date-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_date</span>
+  <span class="ruby-identifier">start_date</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;StartDate&#39;</span>] <span class="ruby-operator">||</span> {}
+  <span class="ruby-ivar">@start_date</span> = <span class="ruby-identifier">start_date</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- start_date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- start_date-method -->
+
+    
+      <div id="method-i-state" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">state</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>State name.</p>
+          
+
+          
+          <div class="method-source-code" id="state-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">state</span>
+  <span class="ruby-identifier">location</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Region&#39;</span>, <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- state-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- state-method -->
+
+    
+      <div id="method-i-title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Position title.</p>
+          
+
+          
+          <div class="method-source-code" id="title-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_position.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>
+  <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;Title&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- title-method -->
 
     
     </section><!-- public-instance-method-details -->

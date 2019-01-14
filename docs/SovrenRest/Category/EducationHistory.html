@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::EducationHistory - sovren-rest 0.2.1
+<title>class SovrenRest::Category::EducationHistory - sovren-rest 0.3.0
 </title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
@@ -71,9 +71,33 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li><a href="#method-i-city">#city</a>
+    
+    <li><a href="#method-i-comments">#comments</a>
+    
+    <li><a href="#method-i-country">#country</a>
+    
+    <li><a href="#method-i-degree_major">#degree_major</a>
+    
+    <li><a href="#method-i-degree_name">#degree_name</a>
+    
+    <li><a href="#method-i-degree_type">#degree_type</a>
+    
+    <li><a href="#method-i-end_date">#end_date</a>
     
     <li><a href="#method-i-eql-3F">#eql?</a>
+    
+    <li><a href="#method-i-graduated">#graduated</a>
+    
+    <li><a href="#method-i-metadata">#metadata</a>
+    
+    <li><a href="#method-i-school_name">#school_name</a>
+    
+    <li><a href="#method-i-school_type">#school_type</a>
+    
+    <li><a href="#method-i-start_date">#start_date</a>
+    
+    <li><a href="#method-i-state">#state</a>
     
   </ul>
 </nav>
@@ -144,227 +168,222 @@
     
 
     
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
-
-      
-      <div id="attribute-i-city" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">city</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>School/institution city name.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-comments" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">comments</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Additional comments.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-country" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">country</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>School/institution country code.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-degree_major" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">degree_major</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Major distinction for the degree.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-degree_name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">degree_name</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name of the degree.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-degree_type" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">degree_type</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>HROpenStandards degree type.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-end_date" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">end_date</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Date ended work on degree.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-graduated" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">graduated</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Sovren graduated flag.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-metadata" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">metadata</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Sovren specific education data.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-school_name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">school_name</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name of the school or institutution.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-school_type" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">school_type</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>HROpenStandards school type.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-start_date" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">start_date</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Date started work on degree.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-state" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">state</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>School/institution state name.</p>
-        
-        </div>
-      </div>
-      
-    </section><!-- attribute-method-details -->
-    
 
     <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-c-new" class="method-detail ">
+      <div id="method-i-city" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(data)</span>
+          <span class="method-name">city</span><span
+            class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Initializes Education History with parsed school or institution data.</p>
+          <p>School/institution city name.</p>
           
 
           
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_school</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_degree</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_dates</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_metadata</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_location</span>(<span class="ruby-identifier">data</span>)
+          <div class="method-source-code" id="city-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">city</span>
+  <span class="ruby-identifier">location</span>[<span class="ruby-string">&#39;Municipality&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
+          </div><!-- city-source -->
           
         </div>
 
         
 
         
-      </div><!-- new-method -->
+      </div><!-- city-method -->
 
     
-    </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+      <div id="method-i-comments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">comments</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Additional comments.</p>
+          
+
+          
+          <div class="method-source-code" id="comments-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comments</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;Comments&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- comments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- comments-method -->
+
+    
+      <div id="method-i-country" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">country</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>School/institution country code.</p>
+          
+
+          
+          <div class="method-source-code" id="country-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">country</span>
+  <span class="ruby-identifier">location</span>[<span class="ruby-string">&#39;CountryCode&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- country-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- country-method -->
+
+    
+      <div id="method-i-degree_major" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">degree_major</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Major distinction for the degree.</p>
+          
+
+          
+          <div class="method-source-code" id="degree_major-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">degree_major</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;DegreeMajor&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;Name&#39;</span>, <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- degree_major-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- degree_major-method -->
+
+    
+      <div id="method-i-degree_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">degree_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Name of the degree.</p>
+          
+
+          
+          <div class="method-source-code" id="degree_name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">degree_name</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;DegreeName&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- degree_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- degree_name-method -->
+
+    
+      <div id="method-i-degree_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">degree_type</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>HROpenStandards degree type.</p>
+          
+
+          
+          <div class="method-source-code" id="degree_type-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">degree_type</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;@degreeType&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- degree_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- degree_type-method -->
+
+    
+      <div id="method-i-end_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">end_date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Date ended work on degree.</p>
+          
+
+          
+          <div class="method-source-code" id="end_date-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_date</span>
+  <span class="ruby-identifier">date</span> = <span class="ruby-identifier">dates_of_attendance</span>[<span class="ruby-string">&#39;EndDate&#39;</span>] <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">date</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- end_date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- end_date-method -->
 
     
       <div id="method-i-eql-3F" class="method-detail ">
@@ -383,7 +402,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">school_name</span> <span class="ruby-identifier">school_type</span> <span class="ruby-identifier">degree_type</span>
                   <span class="ruby-identifier">degree_major</span> <span class="ruby-identifier">start_date</span> <span class="ruby-identifier">end_date</span> <span class="ruby-identifier">comments</span>
@@ -398,6 +417,187 @@
 
         
       </div><!-- eql-3F-method -->
+
+    
+      <div id="method-i-graduated" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">graduated</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sovren graduated flag.</p>
+          
+
+          
+          <div class="method-source-code" id="graduated-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">graduated</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;UserArea&#39;</span>, <span class="ruby-string">&#39;sov:DegreeUserArea&#39;</span>, <span class="ruby-string">&#39;sov:Graduated&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- graduated-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- graduated-method -->
+
+    
+      <div id="method-i-metadata" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">metadata</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sovren specific education data.</p>
+          
+
+          
+          <div class="method-source-code" id="metadata-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">metadata</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;UserArea&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- metadata-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- metadata-method -->
+
+    
+      <div id="method-i-school_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">school_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Name of the school or institutution.</p>
+          
+
+          
+          <div class="method-source-code" id="school_name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">school_name</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;School&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;SchoolName&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- school_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- school_name-method -->
+
+    
+      <div id="method-i-school_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">school_type</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>HROpenStandards school type.</p>
+          
+
+          
+          <div class="method-source-code" id="school_type-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">school_type</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;@schoolType&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- school_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- school_type-method -->
+
+    
+      <div id="method-i-start_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start_date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Date started work on degree.</p>
+          
+
+          
+          <div class="method-source-code" id="start_date-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_date</span>
+  <span class="ruby-identifier">date</span> = <span class="ruby-identifier">dates_of_attendance</span>[<span class="ruby-string">&#39;StartDate&#39;</span>] <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">date</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- start_date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- start_date-method -->
+
+    
+      <div id="method-i-state" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">state</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>School/institution state name.</p>
+          
+
+          
+          <div class="method-source-code" id="state-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">state</span>
+  <span class="ruby-identifier">location</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Region&#39;</span>, <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- state-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- state-method -->
 
     
     </section><!-- public-instance-method-details -->

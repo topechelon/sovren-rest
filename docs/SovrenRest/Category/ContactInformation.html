@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::ContactInformation - sovren-rest 0.2.1
+<title>class SovrenRest::Category::ContactInformation - sovren-rest 0.3.0
 </title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
@@ -71,9 +71,21 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li><a href="#method-i-addresses">#addresses</a>
+    
+    <li><a href="#method-i-email_addresses">#email_addresses</a>
     
     <li><a href="#method-i-eql-3F">#eql?</a>
+    
+    <li><a href="#method-i-first_name">#first_name</a>
+    
+    <li><a href="#method-i-last_name">#last_name</a>
+    
+    <li><a href="#method-i-middle_name">#middle_name</a>
+    
+    <li><a href="#method-i-phone_numbers">#phone_numbers</a>
+    
+    <li><a href="#method-i-websites">#websites</a>
     
   </ul>
 </nav>
@@ -144,150 +156,71 @@
     
 
     
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
-
-      
-      <div id="attribute-i-addresses" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">addresses</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Array of Sovren postal address contact methods.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-email_addresses" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">email_addresses</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Array of Sovren email address contact methods.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-first_name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">first_name</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>First name, given name.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-last_name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">last_name</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Last name, family name.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-middle_name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">middle_name</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Middle name.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-phone_numbers" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">phone_numbers</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Array of Sovren phone number contact methods.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-websites" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">websites</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Array of website addresses.</p>
-        
-        </div>
-      </div>
-      
-    </section><!-- attribute-method-details -->
-    
 
     <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-c-new" class="method-detail ">
+      <div id="method-i-addresses" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(data)</span>
+          <span class="method-name">addresses</span><span
+            class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Initializes Contact Information with parsed data.</p>
+          <p>Array of Sovren postal address contact methods.</p>
           
 
           
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 29</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-identifier">parse_name</span>(<span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;PersonName&#39;</span>] <span class="ruby-operator">||</span> {})
-  <span class="ruby-identifier">contact_method</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;ContactMethod&#39;</span>] <span class="ruby-operator">||</span> []
-  <span class="ruby-identifier">parse_email</span>(<span class="ruby-identifier">contact_method</span>)
-  <span class="ruby-identifier">parse_websites</span>(<span class="ruby-identifier">contact_method</span>)
-  <span class="ruby-identifier">parse_phone_numbers</span>(<span class="ruby-identifier">contact_method</span>)
-  <span class="ruby-identifier">parse_addresses</span>(<span class="ruby-identifier">contact_method</span>)
+          <div class="method-source-code" id="addresses-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">addresses</span>
+  <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;PostalAddress&#39;</span>] }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
+          </div><!-- addresses-source -->
           
         </div>
 
         
 
         
-      </div><!-- new-method -->
+      </div><!-- addresses-method -->
 
     
-    </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+      <div id="method-i-email_addresses" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">email_addresses</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of Sovren email address contact methods.</p>
+          
+
+          
+          <div class="method-source-code" id="email_addresses-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">email_addresses</span>
+  <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;InternetEmailAddress&#39;</span>] }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- email_addresses-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- email_addresses-method -->
 
     
       <div id="method-i-eql-3F" class="method-detail ">
@@ -306,7 +239,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-node">%w[first_name middle_name last_name email_addresses
                   websites phone_numbers addresses]</span>
@@ -320,6 +253,156 @@
 
         
       </div><!-- eql-3F-method -->
+
+    
+      <div id="method-i-first_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">first_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>First name, given name.</p>
+          
+
+          
+          <div class="method-source-code" id="first_name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">first_name</span>
+  <span class="ruby-identifier">person_name</span>[<span class="ruby-string">&#39;GivenName&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- first_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- first_name-method -->
+
+    
+      <div id="method-i-last_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Last name, family name.</p>
+          
+
+          
+          <div class="method-source-code" id="last_name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_name</span>
+  <span class="ruby-identifier">person_name</span>[<span class="ruby-string">&#39;FamilyName&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- last_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- last_name-method -->
+
+    
+      <div id="method-i-middle_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">middle_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Middle name.</p>
+          
+
+          
+          <div class="method-source-code" id="middle_name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">middle_name</span>
+  <span class="ruby-identifier">person_name</span>[<span class="ruby-string">&#39;MiddleName&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- middle_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- middle_name-method -->
+
+    
+      <div id="method-i-phone_numbers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">phone_numbers</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of Sovren phone number contact methods.</p>
+          
+
+          
+          <div class="method-source-code" id="phone_numbers-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">phone_numbers</span>
+  <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;Telephone&#39;</span>] }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- phone_numbers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- phone_numbers-method -->
+
+    
+      <div id="method-i-websites" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">websites</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Array of website addresses.</p>
+          
+
+          
+          <div class="method-source-code" id="websites-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">websites</span>
+  <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;InternetWebAddress&#39;</span>] }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- websites-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- websites-method -->
 
     
     </section><!-- public-instance-method-details -->
