@@ -19,6 +19,16 @@ module SovrenRest
         data['EmployerOrgName']
       end
 
+      # City of the employer.
+      def city
+        data['City']
+      end
+
+      # State of the employer.
+      def state
+        data['State']
+      end
+
       # Array of SovrenRest::EmploymentPosition
       def employment_positions
         employment_positions = data['PositionHistory'] || []
