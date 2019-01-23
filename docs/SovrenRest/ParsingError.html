@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Client - sovren-rest 0.4.0
+<title>class SovrenRest::ParsingError - sovren-rest 0.4.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -48,7 +48,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/sovren-rest/client.rb
+    <li>lib/exceptions.rb
   </ul>
 </nav>
 
@@ -60,7 +60,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">Object
+  <p class="link">StandardError
   
 </nav>
 
@@ -72,8 +72,6 @@
   <ul class="link-list">
     
     <li><a href="#method-c-new">::new</a>
-    
-    <li><a href="#method-i-parse">#parse</a>
     
   </ul>
 </nav>
@@ -127,11 +125,11 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class SovrenRest::Client</h1>
+  <h1 class="class">class SovrenRest::ParsingError</h1>
 
   <div id="description" class="description">
     
-<p>Represents the client that executes calls against a remote host.</p>
+<p>Custom error encapsulating erroneous Sovren responses</p>
 
   </div><!-- description -->
 
@@ -144,20 +142,40 @@
     
 
     
-    <!-- Constants -->
-    <section id="constants-list" class="section">
-      <h3 class="section-header">Constants</h3>
-      <dl>
-      
-        <dt id="PARSE_RESUME">PARSE_RESUME
-        
-        <dd class="description"><p>Parse resume controller/action path.</p>
-        
-      
-      </dl>
-    </section>
-    
 
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-code" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">code</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-response" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">response</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
     
 
     <!-- Methods -->
@@ -170,33 +188,23 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(options)</span>
+            class="method-args">(response, code: nil)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Creates a new sovren rest client with the given options.</p>
-
-<pre class="ruby"><span class="ruby-identifier">options</span> =<span class="ruby-operator">&gt;</span>
-{
-  <span class="ruby-identifier">base_url</span>      <span class="ruby-comment">#  Endpoint to Sovren rest service</span>
-  <span class="ruby-identifier">account_id</span>    <span class="ruby-comment">#  Sovren account ID. If self hosted, not required</span>
-  <span class="ruby-identifier">service_key</span>   <span class="ruby-comment">#  Sovren service key. If self hosted, not required</span>
-  <span class="ruby-identifier">configuration</span> <span class="ruby-comment">#  Sovren parser configuration string. Optional</span>
-}
-</pre>
+          
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 18</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>)
-  <span class="ruby-ivar">@base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>]
-  <span class="ruby-ivar">@account_id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:account_id</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;12345678&#39;</span>
-  <span class="ruby-ivar">@service_key</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:service_key</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;thiscanbeanything,whyrequireit?&#39;</span>
-  <span class="ruby-ivar">@configuration</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:configuration</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>
+            <pre><span class="ruby-comment"># File lib/exceptions.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@response</span> = <span class="ruby-identifier">response</span>
+  <span class="ruby-ivar">@code</span> = <span class="ruby-identifier">code</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -209,47 +217,6 @@
 
     
     </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-parse" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">parse</span><span
-            class="method-args">(raw_file)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Parses a raw resume PDF file and returns a <a
-href="ParseResponse.html">SovrenRest::ParseResponse</a>. Throws an
-exception if the request is not successful</p>
-          
-
-          
-          <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>)
-  <span class="ruby-identifier">raw_response</span> = <span class="ruby-constant">RestClient</span>.<span class="ruby-identifier">post</span>(*<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
-  <span class="ruby-identifier">handle_response</span>(<span class="ruby-identifier">raw_response</span>)
-<span class="ruby-keyword">rescue</span> <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">ExceptionWithResponse</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-  <span class="ruby-identifier">handle_response</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">response</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- parse-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- parse-method -->
-
-    
-    </section><!-- public-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

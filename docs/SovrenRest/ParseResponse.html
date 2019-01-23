@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::ParseResponse - sovren-rest 0.3.1
+<title>class SovrenRest::ParseResponse - sovren-rest 0.4.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -73,6 +73,8 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-i-code">#code</a>
+    
     <li><a href="#method-i-html">#html</a>
     
     <li><a href="#method-i-message">#message</a>
@@ -123,6 +125,8 @@
     <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
   
     <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
+  
+    <li><a href="../SovrenRest/ParsingError.html">SovrenRest::ParsingError</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
@@ -208,6 +212,36 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-code" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">code</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The response code returned by Sovren</p>
+          
+
+          
+          <div class="method-source-code" id="code-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">code</span>
+  <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Code&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- code-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- code-method -->
+
+    
       <div id="method-i-html" class="method-detail ">
         
         <div class="method-heading">
@@ -254,7 +288,7 @@
 
           
           <div class="method-source-code" id="message-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">message</span>
   <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Message&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -345,9 +379,9 @@ removed</p>
 
           
           <div class="method-source-code" id="successful-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">successful?</span>
-  <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Code&#39;</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">STATUS_SUCCESS</span>
+  <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-constant">STATUS_SUCCESS</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- successful-3F-source -->
           
