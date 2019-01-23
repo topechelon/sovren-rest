@@ -26,21 +26,23 @@ module SovrenRest
     # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse.
     # Throws an exception if the request is not successful
     def parse(raw_file)
-      parse_resume_url = build_url(PARSE_RESUME)
-      post_arguments = [
-        parse_resume_url,
-        parse_body(raw_file).to_json,
-        headers
-      ]
-      raw_response = RestClient.post(*post_arguments)
-      response = SovrenRest::ParseResponse.new(raw_response.body)
-
-      raise "Parsing Error:\n#{response.message}" unless response.successful?
-
-      response
+      raw_response = RestClient.post(*post_arguments(raw_file))
+      handle_response(raw_response)
+    rescue RestClient::ExceptionWithResponse => e
+      handle_response(e.response)
     end
 
     private
+
+    def handle_response(raw_response)
+      response = SovrenRest::ParseResponse.new(raw_response.body)
+      unless response.successful?
+        error_message = "Parsing Error:\n#{response.message}"
+        raise SovrenRest::ParsingError.new(error_message, code: response.code)
+      end
+
+      response
+    end
 
     ##
     # Builds up header for remote calls.
@@ -67,6 +69,17 @@ module SovrenRest
     # Helper methods to construct host/controller/action URL.
     def build_url(action)
       "#{@base_url}#{action}"
+    end
+
+    ##
+    # Helper methods to build arguments
+    def post_arguments(raw_file)
+      parse_resume_url = build_url(PARSE_RESUME)
+      [
+        parse_resume_url,
+        parse_body(raw_file).to_json,
+        headers
+      ]
     end
   end
 end

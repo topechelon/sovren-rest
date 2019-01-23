@@ -9,6 +9,11 @@ RSpec.describe SovrenRest::ParseResponse do
     it { is_expected.to eq 'HTML Content' }
   end
 
+  describe 'code' do
+    subject { parse_response.code }
+    it { is_expected.to eq 'Success' }
+  end
+
   shared_examples_for :resume do |method_name, key|
     describe method_name.to_s do
       subject { parse_response.send(method_name) }
@@ -29,6 +34,12 @@ RSpec.describe SovrenRest::ParseResponse do
       subject { parse_response }
       before { parse_response.send(:info)['Code'] = 'Success' }
       it { is_expected.to be_successful }
+    end
+
+    context 'when the status code is not \'Success\'' do
+      subject { parse_response }
+      before { parse_response.send(:info)['Code'] = 'Failure' }
+      it { is_expected.not_to be_successful }
     end
   end
 end
