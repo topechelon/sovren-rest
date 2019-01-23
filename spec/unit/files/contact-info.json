@@ -29,6 +29,11 @@
       }
     },
     {
+      "Mobile": {
+        "FormattedNumber": "555-555-5555"
+      }
+    },
+    {
       "Use": "personal",
       "Location": "onPerson",
       "WhenAvailable": "anytime",

@@ -30,7 +30,7 @@ module SovrenRest
 
       # Array of Sovren phone number contact methods.
       def phone_numbers
-        contact_method.select { |cm| cm['Telephone'] }
+        contact_method.select { |cm| cm['Telephone'] || cm['Mobile'] }
       end
 
       # Array of Sovren postal address contact methods.

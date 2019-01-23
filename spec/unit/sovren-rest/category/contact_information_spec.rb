@@ -6,6 +6,46 @@ RSpec.describe SovrenRest::Category::ContactInformation do
       @first_name = 'Johan'
       @middle_name = 'Von'
       @last_name = 'Testingstonly'
+      @phone_numbers = [
+        { 'Telephone' => { 'FormattedNumber' => '330-867-5309' } },
+        { 'Mobile' => { 'FormattedNumber' => '555-555-5555' } }
+      ]
+      @email_addresses = [
+        { "Use" => "personal", "Location" => "onPerson", "WhenAvailable" => "anytime", "InternetEmailAddress" => "jtestingstonly@gmail.com" }
+      ]
+      @websites = [
+        {
+          "Use" => "businessDirect",
+          "Location" => "onPerson",
+          "WhenAvailable" => "anytime",
+          "InternetWebAddress" => "https://github.com/jtestingstonly"
+        },
+        {
+          "Use" => "businessDirect",
+          "Location" => "onPerson",
+          "WhenAvailable" => "anytime",
+          "InternetWebAddress" => "https://www.linkedin.com/in/jtestingstonly"
+        }
+      ]
+      @addresses = [
+        {
+          "WhenAvailable" => "anytime",
+          "PostalAddress" => {
+            "CountryCode" => "US",
+            "PostalCode" => "44720",
+            "Region" => [
+              "Ohio"
+            ],
+            "Municipality" => "North Canton",
+            "DeliveryAddress" => {
+              "AddressLine" => [
+                "123 Test St",
+                "APT # 123"
+              ]
+            }
+          }
+        }
+      ]
 
       raw = File.read(File.expand_path('../../files/contact-info.json', __dir__))
       input = JSON.parse(raw)
@@ -25,19 +65,19 @@ RSpec.describe SovrenRest::Category::ContactInformation do
     end
 
     it 'should extract email_addresses' do
-      expect(@contact_info.email_addresses).not_to be_empty
+      expect(@contact_info.email_addresses).to eq(@email_addresses)
     end
 
     it 'should extract websites' do
-      expect(@contact_info.websites).not_to be_empty
+      expect(@contact_info.websites).to eq(@websites)
     end
 
     it 'should extract phone_numbers' do
-      expect(@contact_info.phone_numbers).not_to be_empty
+      expect(@contact_info.phone_numbers).to eq(@phone_numbers)
     end
 
     it 'should extract addresses' do
-      expect(@contact_info.addresses).not_to be_empty
+      expect(@contact_info.addresses).to eq(@addresses)
     end
   end
 
