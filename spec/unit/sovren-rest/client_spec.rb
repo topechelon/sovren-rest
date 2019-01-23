@@ -1,6 +1,6 @@
 require 'sovren-rest/parse_response.rb'
 require 'sovren-rest/client.rb'
-require 'exceptions.rb'
+require 'sovren-rest/exceptions.rb'
 require 'base64'
 require 'rest-client'
 
