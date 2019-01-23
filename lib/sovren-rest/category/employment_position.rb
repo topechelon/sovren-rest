@@ -71,7 +71,7 @@ module SovrenRest
       def location
         org_info = data['OrgInfo'] || []
         find_location = org_info.find { |d| d['PositionLocation'] } || {}
-        location = find_location.dig('PositionLocation') || {}
+        find_location.dig('PositionLocation') || {}
       end
     end
   end

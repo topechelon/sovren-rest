@@ -77,6 +77,8 @@
     
     <li><a href="#method-i-country">#country</a>
     
+    <li><a href="#method-i-degree_date">#degree_date</a>
+    
     <li><a href="#method-i-degree_major">#degree_major</a>
     
     <li><a href="#method-i-degree_name">#degree_name</a>
@@ -191,7 +193,7 @@
 
           
           <div class="method-source-code" id="city-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">city</span>
   <span class="ruby-identifier">location</span>[<span class="ruby-string">&#39;Municipality&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -221,7 +223,7 @@
 
           
           <div class="method-source-code" id="comments-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 49</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">comments</span>
   <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;Comments&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -251,7 +253,7 @@
 
           
           <div class="method-source-code" id="country-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 64</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">country</span>
   <span class="ruby-identifier">location</span>[<span class="ruby-string">&#39;CountryCode&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -263,6 +265,36 @@
 
         
       </div><!-- country-method -->
+
+    
+      <div id="method-i-degree_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">degree_date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Date the degree was received</p>
+          
+
+          
+          <div class="method-source-code" id="degree_date-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">degree_date</span>
+  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;DegreeDate&#39;</span>, <span class="ruby-string">&#39;AnyDate&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- degree_date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- degree_date-method -->
 
     
       <div id="method-i-degree_major" class="method-detail ">
@@ -371,7 +403,7 @@
 
           
           <div class="method-source-code" id="end_date-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">end_date</span>
   <span class="ruby-identifier">date</span> = <span class="ruby-identifier">dates_of_attendance</span>[<span class="ruby-string">&#39;EndDate&#39;</span>] <span class="ruby-operator">||</span> {}
   <span class="ruby-identifier">date</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>]
@@ -402,7 +434,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">school_name</span> <span class="ruby-identifier">school_type</span> <span class="ruby-identifier">degree_type</span>
                   <span class="ruby-identifier">degree_major</span> <span class="ruby-identifier">start_date</span> <span class="ruby-identifier">end_date</span> <span class="ruby-identifier">comments</span>
@@ -435,7 +467,7 @@
 
           
           <div class="method-source-code" id="graduated-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">graduated</span>
   <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;UserArea&#39;</span>, <span class="ruby-string">&#39;sov:DegreeUserArea&#39;</span>, <span class="ruby-string">&#39;sov:Graduated&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -465,7 +497,7 @@
 
           
           <div class="method-source-code" id="metadata-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">metadata</span>
   <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Degree&#39;</span>, <span class="ruby-value">0</span>, <span class="ruby-string">&#39;UserArea&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -555,7 +587,7 @@
 
           
           <div class="method-source-code" id="start_date-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">start_date</span>
   <span class="ruby-identifier">date</span> = <span class="ruby-identifier">dates_of_attendance</span>[<span class="ruby-string">&#39;StartDate&#39;</span>] <span class="ruby-operator">||</span> {}
   <span class="ruby-identifier">date</span>.<span class="ruby-identifier">values</span>[<span class="ruby-value">0</span>]
@@ -586,7 +618,7 @@
 
           
           <div class="method-source-code" id="state-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/education_history.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">state</span>
   <span class="ruby-identifier">location</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Region&#39;</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>

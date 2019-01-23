@@ -363,7 +363,7 @@
           <div class="method-source-code" id="phone_numbers-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">phone_numbers</span>
-  <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;Telephone&#39;</span>] }
+  <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;Telephone&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;Mobile&#39;</span>] }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- phone_numbers-source -->
           

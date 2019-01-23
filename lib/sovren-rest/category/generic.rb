@@ -1,5 +1,7 @@
 module SovrenRest
   module Category
+    ##
+    # A generic placeholder for a resume category
     class Generic
       attr_reader :data
 

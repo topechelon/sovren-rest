@@ -11,36 +11,36 @@ RSpec.describe SovrenRest::Category::ContactInformation do
         { 'Mobile' => { 'FormattedNumber' => '555-555-5555' } }
       ]
       @email_addresses = [
-        { "Use" => "personal", "Location" => "onPerson", "WhenAvailable" => "anytime", "InternetEmailAddress" => "jtestingstonly@gmail.com" }
+        { 'Use' => 'personal', 'Location' => 'onPerson', 'WhenAvailable' => 'anytime', 'InternetEmailAddress' => 'jtestingstonly@gmail.com' }
       ]
       @websites = [
         {
-          "Use" => "businessDirect",
-          "Location" => "onPerson",
-          "WhenAvailable" => "anytime",
-          "InternetWebAddress" => "https://github.com/jtestingstonly"
+          'Use' => 'businessDirect',
+          'Location' => 'onPerson',
+          'WhenAvailable' => 'anytime',
+          'InternetWebAddress' => 'https://github.com/jtestingstonly'
         },
         {
-          "Use" => "businessDirect",
-          "Location" => "onPerson",
-          "WhenAvailable" => "anytime",
-          "InternetWebAddress" => "https://www.linkedin.com/in/jtestingstonly"
+          'Use' => 'businessDirect',
+          'Location' => 'onPerson',
+          'WhenAvailable' => 'anytime',
+          'InternetWebAddress' => 'https://www.linkedin.com/in/jtestingstonly'
         }
       ]
       @addresses = [
         {
-          "WhenAvailable" => "anytime",
-          "PostalAddress" => {
-            "CountryCode" => "US",
-            "PostalCode" => "44720",
-            "Region" => [
-              "Ohio"
+          'WhenAvailable' => 'anytime',
+          'PostalAddress' => {
+            'CountryCode' => 'US',
+            'PostalCode' => '44720',
+            'Region' => [
+              'Ohio'
             ],
-            "Municipality" => "North Canton",
-            "DeliveryAddress" => {
-              "AddressLine" => [
-                "123 Test St",
-                "APT # 123"
+            'Municipality' => 'North Canton',
+            'DeliveryAddress' => {
+              'AddressLine' => [
+                '123 Test St',
+                'APT # 123'
               ]
             }
           }
