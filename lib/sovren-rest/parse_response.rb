@@ -26,8 +26,14 @@ module SovrenRest
       build_resume('ScrubbedParsedDocument')
     end
 
+    ##
+    # The response code returned by Sovren
+    def code
+      info['Code']
+    end
+
     def successful?
-      info['Code'] == STATUS_SUCCESS
+      code == STATUS_SUCCESS
     end
 
     ##
