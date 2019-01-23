@@ -28,6 +28,11 @@ module SovrenRest
         data.dig('Degree', 0, 'DegreeMajor', 0, 'Name', 0)
       end
 
+      # Date the degree was received
+      def degree_date
+        data.dig('Degree', 0, 'DegreeDate', 'AnyDate')
+      end
+
       # Date started work on degree.
       def start_date
         date = dates_of_attendance['StartDate'] || {}

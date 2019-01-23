@@ -6,6 +6,7 @@ RSpec.describe SovrenRest::Category::EducationHistory do
       @school_name = 'University of Stuff'
       @degree_type = 'masters'
       @degree_major = 'Stuff N Things'
+      @degree_date = '2016-08'
       @end_date = '2016-08'
       @graduated = 'false'
 
@@ -20,6 +21,10 @@ RSpec.describe SovrenRest::Category::EducationHistory do
 
     it 'should extract degree_type' do
       expect(@education.degree_type).to eq(@degree_type)
+    end
+
+    it 'should extract degree_date' do
+      expect(@education.degree_date).to eq(@degree_date)
     end
 
     it 'should extract degree_major' do
@@ -38,6 +43,7 @@ RSpec.describe SovrenRest::Category::EducationHistory do
     before :all do
       @school_name = nil
       @degree_type = nil
+      @degree_date = nil
       @degree_major = nil
       @end_date = nil
       @graduated = nil
@@ -51,6 +57,10 @@ RSpec.describe SovrenRest::Category::EducationHistory do
 
     it 'should handle missing degree_type' do
       expect(@education.degree_type).to eq(@degree_type)
+    end
+
+    it 'should handle missing degree_date' do
+      expect(@education.degree_date).to eq(@degree_date)
     end
 
     it 'should handle missing degree_major' do

@@ -18,6 +18,9 @@
         {
           "@degreeType": "masters",
           "DegreeName": "Master of Stuff in Things",
+          "DegreeDate": {
+            "AnyDate": "2016-08"
+          },
           "DegreeMajor": [
             {
               "Name": [
