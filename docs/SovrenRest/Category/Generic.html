@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::Generic - sovren-rest 0.3.0
+<title>class SovrenRest::Category::Generic - sovren-rest 0.3.1
 </title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
@@ -129,6 +129,8 @@
 
   <div id="description" class="description">
     
+<p>A generic placeholder for a resume category</p>
+
   </div><!-- description -->
 
   
@@ -185,7 +187,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/generic.rb, line 6</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/generic.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
@@ -221,7 +223,7 @@
 
           
           <div class="method-source-code" id="compare_values-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/generic.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/generic.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">compare_values</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">property</span>)
   <span class="ruby-identifier">a</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">property</span>)
   <span class="ruby-identifier">b</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">property</span>)
