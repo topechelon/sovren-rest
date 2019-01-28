@@ -2,7 +2,7 @@ module SovrenRest
   ##
   # Interprets the response body for a /parser/resume response
   class ParseResponse
-    STATUS_SUCCESS = 'Success'.freeze
+    FAILURE_CODES = %w[ConversionException MissingParameter InvalidParameter AuthenticationError]
 
     def initialize(raw_response)
       @response = JSON.parse(raw_response)
@@ -32,8 +32,8 @@ module SovrenRest
       info['Code']
     end
 
-    def successful?
-      code == STATUS_SUCCESS
+    def failed?
+      FAILURE_CODES.include?(code)
     end
 
     ##

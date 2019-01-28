@@ -36,8 +36,8 @@ module SovrenRest
 
     def handle_response(raw_response)
       response = SovrenRest::ParseResponse.new(raw_response.body)
-      unless response.successful?
-        error_message = "Parsing Error:\n#{response.message}"
+      if response.failed?
+        error_message = response.message
         raise SovrenRest::ParsingError.new(error_message, code: response.code)
       end
 

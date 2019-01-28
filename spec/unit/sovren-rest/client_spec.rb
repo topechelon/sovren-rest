@@ -76,8 +76,8 @@ RSpec.describe SovrenRest::Client do
       end
 
       context 'and the code is not success' do
-        let(:error_code) { 'WarningsFoundDuringParsing' }
-        let(:error_message) { 'Warnings in parse document' }
+        let(:error_code) { 'ConversionException' }
+        let(:error_message) { 'Could not convert document' }
         let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
 
         it 'raises a SovrenRest::ParsingError' do
@@ -92,7 +92,7 @@ RSpec.describe SovrenRest::Client do
 
         it 'adds the sovren response message to the error message' do
           expect { client.parse(input_file) }.to raise_error do |error|
-            expect(error.message).to eq("Parsing Error:\n#{error_message}")
+            expect(error.message).to eq(error_message)
           end
         end
       end
@@ -117,7 +117,7 @@ RSpec.describe SovrenRest::Client do
 
       it 'adds the sovren response message to the error message' do
         expect { client.parse(input_file) }.to raise_error do |error|
-          expect(error.message).to eq("Parsing Error:\n#{error_message}")
+          expect(error.message).to eq(error_message)
         end
       end
     end
