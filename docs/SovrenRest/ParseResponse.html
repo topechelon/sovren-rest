@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::ParseResponse - sovren-rest 0.4.1
+<title>class SovrenRest::ParseResponse - sovren-rest 0.5.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -75,6 +75,8 @@
     
     <li><a href="#method-i-code">#code</a>
     
+    <li><a href="#method-i-failed-3F">#failed?</a>
+    
     <li><a href="#method-i-html">#html</a>
     
     <li><a href="#method-i-message">#message</a>
@@ -82,8 +84,6 @@
     <li><a href="#method-i-parsed_resume">#parsed_resume</a>
     
     <li><a href="#method-i-scrubbed_parsed_resume">#scrubbed_parsed_resume</a>
-    
-    <li><a href="#method-i-successful-3F">#successful?</a>
     
   </ul>
 </nav>
@@ -159,7 +159,7 @@
       <h3 class="section-header">Constants</h3>
       <dl>
       
-        <dt id="STATUS_SUCCESS">STATUS_SUCCESS
+        <dt id="FAILURE_CODES">FAILURE_CODES
         
         <dd class="description">
         
@@ -240,6 +240,36 @@
 
         
       </div><!-- code-method -->
+
+    
+      <div id="method-i-failed-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">failed?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="failed-3F-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">failed?</span>
+  <span class="ruby-constant">FAILURE_CODES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">code</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- failed-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- failed-3F-method -->
 
     
       <div id="method-i-html" class="method-detail ">
@@ -361,36 +391,6 @@ removed</p>
 
         
       </div><!-- scrubbed_parsed_resume-method -->
-
-    
-      <div id="method-i-successful-3F" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">successful?</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="successful-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">successful?</span>
-  <span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-constant">STATUS_SUCCESS</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- successful-3F-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- successful-3F-method -->
 
     
     </section><!-- public-instance-method-details -->
