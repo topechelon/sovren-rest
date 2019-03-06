@@ -4,6 +4,8 @@ module SovrenRest
   class ParseResponse
     FAILURE_CODES = %w[ConversionException MissingParameter InvalidParameter AuthenticationError]
 
+    attr_reader :response
+
     def initialize(raw_response)
       @response = JSON.parse(raw_response)
     end
