@@ -2,7 +2,13 @@ module SovrenRest
   ##
   # Interprets the response body for a /parser/resume response
   class ParseResponse
-    FAILURE_CODES = %w[ConversionException MissingParameter InvalidParameter AuthenticationError]
+    FAILURE_CODES = %w[
+      ConversionException
+      MissingParameter
+      InvalidParameter
+      AuthenticationError
+      UnhandledException
+    ].freeze
 
     attr_reader :response
 

@@ -1,4 +1,4 @@
-require 'sovren-rest/parse_response.rb'
+require 'sovren-rest.rb'
 
 RSpec.describe SovrenRest::ParseResponse do
   let(:file_content) { File.read(File.expand_path('../files/response.json', __dir__)) }
@@ -29,8 +29,8 @@ RSpec.describe SovrenRest::ParseResponse do
   include_examples :resume, :parsed_resume, 'ParsedDocument'
   include_examples :resume, :scrubbed_parsed_resume, 'ScrubbedParsedDocument'
 
-  describe 'failed?' do |code|
-    shared_examples_for :not_failure do
+  describe 'failed?' do
+    shared_examples_for :not_failure do |code|
       context "when the status code is #{code}" do
         subject { parse_response }
         before { parse_response.send(:info)['Code'] = code }
@@ -53,5 +53,6 @@ RSpec.describe SovrenRest::ParseResponse do
     include_examples :failure, 'MissingParameter'
     include_examples :failure, 'InvalidParameter'
     include_examples :failure, 'AuthenticationError'
+    include_examples :failure, 'UnhandledException'
   end
 end
