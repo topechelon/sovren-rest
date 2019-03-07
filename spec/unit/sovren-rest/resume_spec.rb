@@ -1,4 +1,4 @@
-require 'sovren-rest/resume.rb'
+require 'sovren-rest.rb'
 
 RSpec.describe SovrenRest::Resume do
   context 'with all relevant information' do

@@ -1,4 +1,4 @@
-require 'sovren-rest/category/employment_position.rb'
+require 'sovren-rest.rb'
 
 RSpec.describe SovrenRest::Category::EmploymentPosition do
   context 'with all relevant information' do

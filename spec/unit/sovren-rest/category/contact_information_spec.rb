@@ -1,4 +1,4 @@
-require 'sovren-rest/category/contact_information.rb'
+require 'sovren-rest.rb'
 
 RSpec.describe SovrenRest::Category::ContactInformation do
   context 'with all relevant information' do

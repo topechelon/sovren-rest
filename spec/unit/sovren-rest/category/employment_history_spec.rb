@@ -1,4 +1,4 @@
-require 'sovren-rest/category/employment_history.rb'
+require 'sovren-rest.rb'
 
 RSpec.describe SovrenRest::Category::EmploymentHistory do
   context 'with all relevant information' do
