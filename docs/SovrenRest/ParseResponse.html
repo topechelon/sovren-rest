@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::ParseResponse - sovren-rest 0.5.1
+<title>class SovrenRest::ParseResponse - sovren-rest 0.5.2
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -212,7 +212,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">raw_response</span>)
   <span class="ruby-ivar">@response</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_response</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -248,7 +248,7 @@
 
           
           <div class="method-source-code" id="code-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">code</span>
   <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Code&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -278,7 +278,7 @@
 
           
           <div class="method-source-code" id="failed-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">failed?</span>
   <span class="ruby-constant">FAILURE_CODES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">code</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -308,7 +308,7 @@
 
           
           <div class="method-source-code" id="html-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 15</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">html</span>
   <span class="ruby-identifier">value</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;Html&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -338,7 +338,7 @@
 
           
           <div class="method-source-code" id="message-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">message</span>
   <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Message&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -368,7 +368,7 @@
 
           
           <div class="method-source-code" id="parsed_resume-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 21</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parsed_resume</span>
   <span class="ruby-identifier">build_resume</span>(<span class="ruby-string">&#39;ParsedDocument&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -399,7 +399,7 @@ removed</p>
 
           
           <div class="method-source-code" id="scrubbed_parsed_resume-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">scrubbed_parsed_resume</span>
   <span class="ruby-identifier">build_resume</span>(<span class="ruby-string">&#39;ScrubbedParsedDocument&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
