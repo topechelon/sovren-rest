@@ -2,14 +2,6 @@ module SovrenRest
   ##
   # Interprets the response body for a /parser/resume response
   class ParseResponse
-    FAILURE_CODES = %w[
-      ConversionException
-      MissingParameter
-      InvalidParameter
-      AuthenticationError
-      UnhandledException
-    ].freeze
-
     attr_reader :response
 
     def initialize(raw_response)
@@ -38,10 +30,6 @@ module SovrenRest
     # The response code returned by Sovren
     def code
       info['Code']
-    end
-
-    def failed?
-      FAILURE_CODES.include?(code)
     end
 
     ##

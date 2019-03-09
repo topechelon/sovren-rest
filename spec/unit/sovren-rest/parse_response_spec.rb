@@ -28,31 +28,4 @@ RSpec.describe SovrenRest::ParseResponse do
 
   include_examples :resume, :parsed_resume, 'ParsedDocument'
   include_examples :resume, :scrubbed_parsed_resume, 'ScrubbedParsedDocument'
-
-  describe 'failed?' do
-    shared_examples_for :not_failure do |code|
-      context "when the status code is #{code}" do
-        subject { parse_response }
-        before { parse_response.send(:info)['Code'] = code }
-        it { is_expected.not_to be_failed }
-      end
-    end
-
-    shared_examples_for :failure do |code|
-      context "when the status code is #{code}" do
-        subject { parse_response }
-        before { parse_response.send(:info)['Code'] = code }
-        it { is_expected.to be_failed }
-      end
-    end
-
-    include_examples :not_failure, 'Success'
-    include_examples :not_failure, 'WarningsFoundDuringParsing'
-    include_examples :not_failure, 'PossibleTruncationFromTimeout'
-    include_examples :failure, 'ConversionException'
-    include_examples :failure, 'MissingParameter'
-    include_examples :failure, 'InvalidParameter'
-    include_examples :failure, 'AuthenticationError'
-    include_examples :failure, 'UnhandledException'
-  end
 end

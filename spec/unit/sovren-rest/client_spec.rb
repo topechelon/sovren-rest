@@ -97,26 +97,31 @@ RSpec.describe SovrenRest::Client do
     end
 
     context 'unsuccessful post' do
-      let(:error_code) { 'ConversionException' }
-      let(:error_message) { 'Failed to convert document - ovNoText' }
-      let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
+      shared_examples_for :error_scenario do |error_code, error_class|
+        let(:error_message) { 'Failed to convert document - ovNoText' }
+        let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
 
-      before { allow(RestClient).to receive(:post).with(*expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
+        before { allow(RestClient).to receive(:post).with(*expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
 
-      it 're-raises a SovrenRest::ParsingError' do
-        expect { client.parse(input_file) }.to raise_error(SovrenRest::ParsingError)
-      end
+        it "re-raises a #{error_class.name}" do
+          expect { client.parse(input_file) }.to raise_error(error_class)
+        end
 
-      it 'sets the sovren code on the exception' do
-        expect { client.parse(input_file) }.to raise_error do |error|
-          expect(error.code).to eq(error_code)
+        it 'sets the sovren code on the exception' do
+          expect { client.parse(input_file) }.to raise_error do |error|
+            expect(error.code).to eq(error_code)
+          end
+        end
+
+        it 'adds the sovren response message to the error message' do
+          expect { client.parse(input_file) }.to raise_error do |error|
+            expect(error.message).to eq(error_message)
+          end
         end
       end
 
-      it 'adds the sovren response message to the error message' do
-        expect { client.parse(input_file) }.to raise_error do |error|
-          expect(error.message).to eq(error_message)
-        end
+      SovrenRest::ERROR_CLASSES.each do |code, error_class|
+        include_examples :error_scenario, code, error_class
       end
     end
   end

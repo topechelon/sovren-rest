@@ -27,21 +27,20 @@ module SovrenRest
     # Throws an exception if the request is not successful
     def parse(raw_file)
       raw_response = RestClient.post(*post_arguments(raw_file))
-      handle_response(raw_response)
+      SovrenRest::ParseResponse.new(raw_response.body)
     rescue RestClient::ExceptionWithResponse => e
-      handle_response(e.response)
+      handle_error(e.response)
     end
 
     private
 
-    def handle_response(raw_response)
+    def handle_error(raw_response)
       response = SovrenRest::ParseResponse.new(raw_response.body)
-      if response.failed?
-        error_message = response.message
-        raise SovrenRest::ParsingError.new(error_message, code: response.code)
-      end
 
-      response
+      error_message = response.message
+      error_class = SovrenRest::ERROR_CLASSES[response.code] || SovrenRest::ParsingError
+
+      raise error_class.new(error_message, code: response.code)
     end
 
     ##
