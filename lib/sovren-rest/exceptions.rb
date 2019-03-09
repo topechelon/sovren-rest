@@ -35,7 +35,6 @@ module SovrenRest
     'ConstraintError' => SovrenRest::ConstraintError,
     'AuthenticationError' => SovrenRest::AuthenticationError,
     'Unauthorized' => SovrenRest::Unauthorized,
-    'DataNotFound' => SovrenRest::DataNotFound,
     'DuplicateAsset' => SovrenRest::DuplicateAsset,
     'UnhandledException' => SovrenRest::UnhandledException,
     'ConversionException' => SovrenRest::ConversionException

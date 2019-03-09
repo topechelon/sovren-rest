@@ -67,55 +67,33 @@ RSpec.describe SovrenRest::Client do
         client.parse(input_file)
       end
 
-      context 'and the code is success' do
-        it 'returns the response' do
-          expect(client.parse(input_file)).to eq(response)
-        end
-      end
-
-      context 'and the code is not success' do
-        let(:error_code) { 'ConversionException' }
-        let(:error_message) { 'Could not convert document' }
-        let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
-
-        it 'raises a SovrenRest::ParsingError' do
-          expect { client.parse(input_file) }.to raise_error(SovrenRest::ParsingError)
-        end
-
-        it 'sets the sovren code on the exception' do
-          expect { client.parse(input_file) }.to raise_error do |error|
-            expect(error.code).to eq(error_code)
-          end
-        end
-
-        it 'adds the sovren response message to the error message' do
-          expect { client.parse(input_file) }.to raise_error do |error|
-            expect(error.message).to eq(error_message)
-          end
-        end
+      it 'returns the response' do
+        expect(client.parse(input_file)).to eq(response)
       end
     end
 
     context 'unsuccessful post' do
       shared_examples_for :error_scenario do |error_code, error_class|
-        let(:error_message) { 'Failed to convert document - ovNoText' }
-        let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
+        context "when a #{error_code} error is returned" do
+          let(:error_message) { 'Failed to convert document - ovNoText' }
+          let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
 
-        before { allow(RestClient).to receive(:post).with(*expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
+          before { allow(RestClient).to receive(:post).with(*expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
 
-        it "re-raises a #{error_class.name}" do
-          expect { client.parse(input_file) }.to raise_error(error_class)
-        end
-
-        it 'sets the sovren code on the exception' do
-          expect { client.parse(input_file) }.to raise_error do |error|
-            expect(error.code).to eq(error_code)
+          it "re-raises a #{error_class.name}" do
+            expect { client.parse(input_file) }.to raise_error(error_class)
           end
-        end
 
-        it 'adds the sovren response message to the error message' do
-          expect { client.parse(input_file) }.to raise_error do |error|
-            expect(error.message).to eq(error_message)
+          it 'sets the sovren code on the exception' do
+            expect { client.parse(input_file) }.to raise_error do |error|
+              expect(error.code).to eq(error_code)
+            end
+          end
+
+          it 'adds the sovren response message to the error message' do
+            expect { client.parse(input_file) }.to raise_error do |error|
+              expect(error.message).to eq(error_message)
+            end
           end
         end
       end
