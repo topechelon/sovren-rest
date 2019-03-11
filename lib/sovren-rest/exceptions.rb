@@ -23,10 +23,12 @@ module SovrenRest
   class DuplicateAsset < ParsingError; end
   class UnhandledException < ParsingError; end
   class ConversionException < ParsingError; end
+  class ConversionNoTextException < ConversionException; end
+  class ConversionTimeoutException < ConversionException; end
 
   ##
   # https://documentation.sovren.com/API/Rest#http-status-codes
-  ERROR_CLASSES = {
+  ERROR_CODE_CLASSES = {
     'MissingParameter' => SovrenRest::MissingParameter,
     'InvalidParameter' => SovrenRest::InvalidParameter,
     'InsufficientData' => SovrenRest::InsufficientData,
@@ -38,5 +40,10 @@ module SovrenRest
     'DuplicateAsset' => SovrenRest::DuplicateAsset,
     'UnhandledException' => SovrenRest::UnhandledException,
     'ConversionException' => SovrenRest::ConversionException
+  }.freeze
+
+  ERROR_MESSAGE_CLASSES = {
+    'Failed to convert document - ovNoText' => SovrenRest::ConversionNoTextException, # rubocop:disable Metrics/LineLength
+    'Failed to convert document - ovTimeout' => SovrenRest::ConversionTimeoutException # rubocop:disable Metrics/LineLength
   }.freeze
 end

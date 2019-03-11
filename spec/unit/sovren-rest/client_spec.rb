@@ -73,9 +73,8 @@ RSpec.describe SovrenRest::Client do
     end
 
     context 'unsuccessful post' do
-      shared_examples_for :error_scenario do |error_code, error_class|
+      shared_examples_for :error_scenario do |error_code, error_message, error_class|
         context "when a #{error_code} error is returned" do
-          let(:error_message) { 'Failed to convert document - ovNoText' }
           let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
 
           before { allow(RestClient).to receive(:post).with(*expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
@@ -98,8 +97,12 @@ RSpec.describe SovrenRest::Client do
         end
       end
 
-      SovrenRest::ERROR_CLASSES.each do |code, error_class|
-        include_examples :error_scenario, code, error_class
+      SovrenRest::ERROR_CODE_CLASSES.each do |code, error_class|
+        include_examples :error_scenario, code, '', error_class
+      end
+
+      SovrenRest::ERROR_MESSAGE_CLASSES.each do |message, error_class|
+        include_examples :error_scenario, '', message, error_class
       end
     end
   end
