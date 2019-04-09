@@ -1,4 +1,4 @@
-Mon, 11 Mar 2019 09:26:16 -0400
+Tue, 09 Apr 2019 12:09:07 -0400
 README.rdoc	Tue, 08 Jan 2019 13:29:54 -0500
 lib/sovren-rest.rb	Tue, 05 Mar 2019 20:53:39 -0500
 lib/sovren-rest/category/certification.rb	Mon, 14 Jan 2019 13:42:22 -0500
@@ -7,7 +7,7 @@ lib/sovren-rest/category/education_history.rb	Tue, 05 Mar 2019 20:53:39 -0500
 lib/sovren-rest/category/employment_history.rb	Mon, 14 Jan 2019 13:42:38 -0500
 lib/sovren-rest/category/employment_position.rb	Tue, 05 Mar 2019 20:53:39 -0500
 lib/sovren-rest/category/generic.rb	Tue, 05 Mar 2019 20:53:39 -0500
-lib/sovren-rest/client.rb	Mon, 11 Mar 2019 09:22:38 -0400
-lib/sovren-rest/exceptions.rb	Mon, 11 Mar 2019 09:25:19 -0400
+lib/sovren-rest/client.rb	Tue, 09 Apr 2019 11:58:03 -0400
+lib/sovren-rest/exceptions.rb	Tue, 09 Apr 2019 11:58:27 -0400
 lib/sovren-rest/parse_response.rb	Sat, 09 Mar 2019 15:41:08 -0500
 lib/sovren-rest/resume.rb	Wed, 09 Jan 2019 12:56:05 -0500

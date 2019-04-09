@@ -9,6 +9,13 @@ module SovrenRest
       @code = code
       super(response)
     end
+
+    def self.for(message, code: nil)
+      error_class = SovrenRest::ERROR_MESSAGE_CLASSES[message]
+      error_class ||= SovrenRest::ERROR_CODE_CLASSES[code]
+      error_class ||= SovrenRest::ParsingError
+      error_class.new(message, code: code)
+    end
   end
 
   class MissingParameter < ParsingError; end

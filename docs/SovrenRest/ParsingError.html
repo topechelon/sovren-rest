@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::ParsingError - sovren-rest 0.7.0
+<title>class SovrenRest::ParsingError - sovren-rest 0.8.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -70,6 +70,8 @@
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
+    
+    <li><a href="#method-c-for">::for</a>
     
     <li><a href="#method-c-new">::new</a>
     
@@ -208,6 +210,39 @@
     
      <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">for</span><span
+            class="method-args">(message, code: nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="for-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-keyword">for</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">error_class</span> = <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_MESSAGE_CLASSES</span>[<span class="ruby-identifier">message</span>]
+  <span class="ruby-identifier">error_class</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_CODE_CLASSES</span>[<span class="ruby-identifier">code</span>]
+  <span class="ruby-identifier">error_class</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParsingError</span>
+  <span class="ruby-identifier">error_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-identifier">code</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- for-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- for-method -->
 
     
       <div id="method-c-new" class="method-detail ">
