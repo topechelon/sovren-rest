@@ -36,7 +36,7 @@ module SovrenRest
 
     def handle_error(raw_response)
       response = SovrenRest::ParseResponse.new(raw_response.body)
-      raise SovrenRest::ParsingError.for(error_message, code: response.code)
+      raise SovrenRest::ParsingError.for(response.message, code: response.code)
     end
 
     ##
