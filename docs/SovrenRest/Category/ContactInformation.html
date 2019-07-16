@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::ContactInformation - sovren-rest 0.8.0
+<title>class SovrenRest::Category::ContactInformation - sovren-rest 0.8.2
 </title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
@@ -78,6 +78,8 @@
     <li><a href="#method-i-eql-3F">#eql?</a>
     
     <li><a href="#method-i-first_name">#first_name</a>
+    
+    <li><a href="#method-i-formatted_name">#formatted_name</a>
     
     <li><a href="#method-i-full_name">#full_name</a>
     
@@ -209,7 +211,7 @@
 
           
           <div class="method-source-code" id="addresses-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">addresses</span>
   <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;PostalAddress&#39;</span>] }
 <span class="ruby-keyword">end</span></pre>
@@ -239,7 +241,7 @@
 
           
           <div class="method-source-code" id="email_addresses-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">email_addresses</span>
   <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;InternetEmailAddress&#39;</span>] }
 <span class="ruby-keyword">end</span></pre>
@@ -269,7 +271,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 46</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-node">%w[first_name middle_name last_name email_addresses
                   websites phone_numbers addresses]</span>
@@ -315,6 +317,36 @@
       </div><!-- first_name-method -->
 
     
+      <div id="method-i-formatted_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">formatted_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>formatted name</p>
+          
+
+          
+          <div class="method-source-code" id="formatted_name-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">formatted_name</span>
+  <span class="ruby-identifier">person_name</span>[<span class="ruby-string">&#39;FormattedName&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- formatted_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- formatted_name-method -->
+
+    
       <div id="method-i-full_name" class="method-detail ">
         
         <div class="method-heading">
@@ -331,9 +363,11 @@
 
           
           <div class="method-source-code" id="full_name-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">full_name</span>
-  <span class="ruby-identifier">person_name</span>[<span class="ruby-string">&#39;FormattedName&#39;</span>]
+  <span class="ruby-identifier">parts</span> = [<span class="ruby-identifier">first_name</span>, <span class="ruby-identifier">middle_name</span>, <span class="ruby-identifier">last_name</span>]
+  <span class="ruby-identifier">parts</span> = <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span> <span class="ruby-identifier">part</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">part</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">zero?</span> }
+  <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- full_name-source -->
           
@@ -421,7 +455,7 @@
 
           
           <div class="method-source-code" id="phone_numbers-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">phone_numbers</span>
   <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;Telephone&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;Mobile&#39;</span>] }
 <span class="ruby-keyword">end</span></pre>
@@ -451,7 +485,7 @@
 
           
           <div class="method-source-code" id="websites-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/contact_information.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">websites</span>
   <span class="ruby-identifier">contact_method</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cm</span>[<span class="ruby-string">&#39;InternetWebAddress&#39;</span>] }
 <span class="ruby-keyword">end</span></pre>

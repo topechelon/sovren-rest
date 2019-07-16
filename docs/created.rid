@@ -1,8 +1,8 @@
-Tue, 16 Jul 2019 15:48:27 -0400
+Tue, 16 Jul 2019 16:30:55 -0400
 README.rdoc	Wed, 23 Jan 2019 12:32:03 -0500
 lib/sovren-rest.rb	Wed, 23 Jan 2019 17:30:09 -0500
 lib/sovren-rest/category/certification.rb	Wed, 23 Jan 2019 12:32:03 -0500
-lib/sovren-rest/category/contact_information.rb	Tue, 16 Jul 2019 15:03:50 -0400
+lib/sovren-rest/category/contact_information.rb	Tue, 16 Jul 2019 16:19:15 -0400
 lib/sovren-rest/category/education_history.rb	Wed, 23 Jan 2019 13:24:12 -0500
 lib/sovren-rest/category/employment_history.rb	Wed, 23 Jan 2019 12:32:03 -0500
 lib/sovren-rest/category/employment_position.rb	Wed, 23 Jan 2019 14:12:00 -0500
