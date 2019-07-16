@@ -18,9 +18,16 @@ module SovrenRest
         person_name['FamilyName']
       end
 
+      # formatted name
+      def formatted_name
+        person_name['FormattedName']
+      end
+
       # full name
       def full_name
-        person_name['FormattedName']
+        parts = [first_name, middle_name, last_name]
+        parts = parts.reject { |part| part.nil? || part.strip.length.zero? }
+        parts.join(' ')
       end
 
       # Array of Sovren email address contact methods.

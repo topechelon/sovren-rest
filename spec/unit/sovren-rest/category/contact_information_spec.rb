@@ -6,7 +6,7 @@ RSpec.describe SovrenRest::Category::ContactInformation do
       @first_name = 'Johan'
       @middle_name = 'Von'
       @last_name = 'Testingstonly'
-      @full_name = 'Johan Von Testingstonly'
+      @formatted_name = 'Johan Von Testingstonly, III'
       @phone_numbers = [
         { 'Telephone' => { 'FormattedNumber' => '330-867-5309' } },
         { 'Mobile' => { 'FormattedNumber' => '555-555-5555' } }
@@ -65,8 +65,12 @@ RSpec.describe SovrenRest::Category::ContactInformation do
       expect(@contact_info.last_name).to eq(@last_name)
     end
 
+    it 'should extract formatted_name' do
+      expect(@contact_info.formatted_name).to eq(@formatted_name)
+    end
+
     it 'should extract full_name' do
-      expect(@contact_info.full_name).to eq(@full_name)
+      expect(@contact_info.full_name).to eq('Johan Von Testingstonly')
     end
 
     it 'should extract email_addresses' do
@@ -124,6 +128,28 @@ RSpec.describe SovrenRest::Category::ContactInformation do
 
     it 'should handle missing addresses' do
       expect(@contact_info.addresses).to eq(@addresses)
+    end
+
+    context 'full_name' do
+      context 'with nil values' do
+        before :each do
+          @contact_info.instance_variable_set(:@data, 'PersonName' => { 'GivenName' => 'Test', 'FamilyName' => 'Person', 'MiddleName' => nil })
+        end
+
+        it 'ignores the missing information' do
+          expect(@contact_info.full_name).to eq('Test Person')
+        end
+      end
+
+      context 'with blank values' do
+        before :each do
+          @contact_info.instance_variable_set(:@data, 'PersonName' => { 'GivenName' => 'Test', 'FamilyName' => '      ', 'MiddleName' => 'A' })
+        end
+
+        it 'ignores the missing information' do
+          expect(@contact_info.full_name).to eq('Test A')
+        end
+      end
     end
   end
 end
