@@ -6,6 +6,7 @@ RSpec.describe SovrenRest::Category::ContactInformation do
       @first_name = 'Johan'
       @middle_name = 'Von'
       @last_name = 'Testingstonly'
+      @full_name = 'Johan Von Testingstonly'
       @phone_numbers = [
         { 'Telephone' => { 'FormattedNumber' => '330-867-5309' } },
         { 'Mobile' => { 'FormattedNumber' => '555-555-5555' } }
@@ -62,6 +63,10 @@ RSpec.describe SovrenRest::Category::ContactInformation do
 
     it 'should extract last_name' do
       expect(@contact_info.last_name).to eq(@last_name)
+    end
+
+    it 'should extract full_name' do
+      expect(@contact_info.full_name).to eq(@full_name)
     end
 
     it 'should extract email_addresses' do

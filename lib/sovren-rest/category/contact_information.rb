@@ -18,6 +18,11 @@ module SovrenRest
         person_name['FamilyName']
       end
 
+      # full name
+      def full_name
+        person_name['FormattedName']
+      end
+
       # Array of Sovren email address contact methods.
       def email_addresses
         contact_method.select { |cm| cm['InternetEmailAddress'] }
