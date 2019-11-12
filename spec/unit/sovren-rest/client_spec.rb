@@ -43,21 +43,23 @@ RSpec.describe SovrenRest::Client do
       }
     end
     let(:expected_arguments) do
-      [
-        '1.1.1.1/sovren/parser/resume',
-        expected_body,
-        expected_headers
-      ]
+      {
+        method: :post,
+        url: '1.1.1.1/sovren/parser/resume',
+        payload: expected_body,
+        headers: expected_headers,
+        timeout: 300
+      }
     end
 
     before do
-      allow(RestClient).to receive(:post).with(*expected_arguments).and_return(post_response)
+      allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(post_response)
       allow(post_response).to receive(:body).and_return(raw_post_response_body)
       allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_return(response)
     end
 
     it 'POSTS to sovren with the encoded file' do
-      expect(RestClient).to receive(:post).with(*expected_arguments).and_return(post_response)
+      expect(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(post_response)
       client.parse(input_file)
     end
 
@@ -77,7 +79,7 @@ RSpec.describe SovrenRest::Client do
         context "when a #{error_code} error is returned" do
           let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
 
-          before { allow(RestClient).to receive(:post).with(*expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
+          before { allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
 
           it "re-raises a #{error_class.name}" do
             expect { client.parse(input_file) }.to raise_error(error_class)

@@ -29,6 +29,7 @@ module SovrenRest
   class DataNotFound < ParsingError; end
   class DuplicateAsset < ParsingError; end
   class UnhandledException < ParsingError; end
+  class RestClientTimeout < ParsingError; end
   class ConversionException < ParsingError; end
   class ConversionNoTextException < ConversionException; end
   class ConversionTimeoutException < ConversionException; end
@@ -46,7 +47,8 @@ module SovrenRest
     'Unauthorized' => SovrenRest::Unauthorized,
     'DuplicateAsset' => SovrenRest::DuplicateAsset,
     'UnhandledException' => SovrenRest::UnhandledException,
-    'ConversionException' => SovrenRest::ConversionException
+    'ConversionException' => SovrenRest::ConversionException,
+    'RestClientTimeout' => SovrenRest::RestClientTimeout
   }.freeze
 
   ERROR_MESSAGE_CLASSES = {

@@ -5,6 +5,11 @@ module SovrenRest
     # Parse resume controller/action path.
     PARSE_RESUME = '/parser/resume'.freeze
 
+    # To prevent credits from being lost, RestClient should almost never kill a
+    # Sovren parse request. This timeout is exceptionally high in order to try
+    # to give Sovren all the time it needs to parse a file, no matter how slow.
+    REQUEST_TIMEOUT_SECONDS = 300
+
     ##
     # Creates a new sovren rest client with the given options.
     #
@@ -26,7 +31,7 @@ module SovrenRest
     # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse.
     # Throws an exception if the request is not successful
     def parse(raw_file)
-      raw_response = RestClient.post(*post_arguments(raw_file))
+      raw_response = RestClient::Request.execute(post_arguments(raw_file))
       SovrenRest::ParseResponse.new(raw_response.body)
     rescue RestClient::ExceptionWithResponse => e
       handle_error(e.response)
@@ -35,6 +40,14 @@ module SovrenRest
     private
 
     def handle_error(raw_response)
+      unless raw_response
+        exception_args = [
+          "Request timed out after #{REQUEST_TIMEOUT_SECONDS} seconds.",
+          code: 'RestClientTimeout'
+        ]
+        raise SovrenRest::ParsingError.for(*exception_args)
+      end
+
       response = SovrenRest::ParseResponse.new(raw_response.body)
       raise SovrenRest::ParsingError.for(response.message, code: response.code)
     end
@@ -69,12 +82,13 @@ module SovrenRest
     ##
     # Helper methods to build arguments
     def post_arguments(raw_file)
-      parse_resume_url = build_url(PARSE_RESUME)
-      [
-        parse_resume_url,
-        parse_body(raw_file).to_json,
-        headers
-      ]
+      {
+        method: :post,
+        url: build_url(PARSE_RESUME),
+        payload: parse_body(raw_file).to_json,
+        headers: headers,
+        timeout: REQUEST_TIMEOUT_SECONDS
+      }
     end
   end
 end
