@@ -34,19 +34,13 @@ module SovrenRest
     def parse(raw_file)
       response = RestClient::Request.execute(post_arguments(raw_file))
       SovrenRest::ParseResponse.new(response.body)
+    rescue RestClient::Exceptions::Timeout
+      raise SovrenRest::ClientException::RestClientTimeout
     rescue RestClient::ExceptionWithResponse => e
-      if rest_client_timeout?(e)
-        raise SovrenRest::ClientException::RestClientTimeout
-      end
-
       handle_response_error(e.response)
     end
 
     private
-
-    def rest_client_timeout?(exception)
-      exception.is_a?(RestClient::Exceptions::Timeout)
-    end
 
     def handle_response_error(rest_client_response)
       if gateway_timeout?(rest_client_response)

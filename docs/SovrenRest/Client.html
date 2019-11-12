@@ -280,11 +280,9 @@ exception if the request is not successful</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>)
   <span class="ruby-identifier">response</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
   <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Exceptions</span><span class="ruby-operator">::</span><span class="ruby-constant">Timeout</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ClientException</span><span class="ruby-operator">::</span><span class="ruby-constant">RestClientTimeout</span>
 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">ExceptionWithResponse</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">rest_client_timeout?</span>(<span class="ruby-identifier">e</span>)
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ClientException</span><span class="ruby-operator">::</span><span class="ruby-constant">RestClientTimeout</span>
-  <span class="ruby-keyword">end</span>
-
   <span class="ruby-identifier">handle_response_error</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- parse-source -->
