@@ -1,5 +1,12 @@
 module SovrenRest
   #
+  ## Errors unrelated to an officially documented Sovren response
+  class ClientException < StandardError
+    class RestClientTimeout < ClientException; end
+    class GatewayTimeout < ClientException; end
+  end
+
+  #
   ## Custom error encapsulating erroneous Sovren responses
   class ParsingError < StandardError
     attr_reader :response, :code
