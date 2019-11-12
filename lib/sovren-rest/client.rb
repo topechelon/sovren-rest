@@ -9,6 +9,7 @@ module SovrenRest
     # Sovren parse request. This timeout is exceptionally high in order to try
     # to give Sovren all the time it needs to parse a file, no matter how slow.
     REQUEST_TIMEOUT_SECONDS = 300
+    HTTP_GATEWAY_TIMEOUT = 504
 
     ##
     # Creates a new sovren rest client with the given options.
@@ -31,29 +32,35 @@ module SovrenRest
     # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse.
     # Throws an exception if the request is not successful
     def parse(raw_file)
-      raw_response = RestClient::Request.execute(post_arguments(raw_file))
-      SovrenRest::ParseResponse.new(raw_response.body)
+      response = RestClient::Request.execute(post_arguments(raw_file))
+      SovrenRest::ParseResponse.new(response.body)
     rescue RestClient::ExceptionWithResponse => e
-      handle_error(e.response)
+      if rest_client_timeout?(e)
+        raise SovrenRest::ClientException::RestClientTimeout
+      end
+
+      handle_response_error(e.response)
     end
 
     private
 
-    def handle_error(raw_response)
-      rest_client_timeout = !raw_response
-      if rest_client_timeout
-        exception_args = [
-          "Request timed out after #{REQUEST_TIMEOUT_SECONDS} seconds.",
-          code: 'RestClientTimeout'
-        ]
-        raise SovrenRest::ParsingError.for(*exception_args)
+    def rest_client_timeout?(exception)
+      exception.is_a?(RestClient::Exceptions::Timeout)
+    end
+
+    def handle_response_error(rest_client_response)
+      if gateway_timeout?(rest_client_response)
+        raise SovrenRest::ClientException::GatewayTimeout
       end
 
-      require 'byebug'
-      byebug
-
-      response = SovrenRest::ParseResponse.new(raw_response.body)
+      response = SovrenRest::ParseResponse.new(rest_client_response.body)
       raise SovrenRest::ParsingError.for(response.message, code: response.code)
+    end
+
+    def gateway_timeout?(rest_client_response)
+      return false unless rest_client_response.code == HTTP_GATEWAY_TIMEOUT
+
+      rest_client_response.body =~ /504 Gateway Time-out/
     end
 
     ##

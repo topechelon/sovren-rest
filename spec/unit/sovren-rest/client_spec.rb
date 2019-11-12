@@ -24,8 +24,8 @@ RSpec.describe SovrenRest::Client do
 
   describe 'parse' do
     let(:raw_post_response_body) { '{"Info":{"Code":"Success", "Message":"Success"}, "Value":{}}' }
-    let(:post_response) { instance_double('RestClient::Response') }
-    let(:response) { SovrenRest::ParseResponse.new(raw_post_response_body) }
+    let(:rest_client_response) { instance_double('RestClient::Response') }
+    let(:parse_response) { SovrenRest::ParseResponse.new(raw_post_response_body) }
     let(:input_file) { 'content' }
     let(:expected_body) do
       {
@@ -51,26 +51,28 @@ RSpec.describe SovrenRest::Client do
         timeout: 300
       }
     end
+    let(:http_code) { 400 }
 
     before do
-      allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(post_response)
-      allow(post_response).to receive(:body).and_return(raw_post_response_body)
-      allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_return(response)
+      allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(rest_client_response)
+      allow(rest_client_response).to receive(:body).and_return(raw_post_response_body)
+      allow(rest_client_response).to receive(:code).and_return(http_code)
+      allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_return(parse_response)
     end
 
     it 'POSTS to sovren with the encoded file' do
-      expect(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(post_response)
+      expect(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(rest_client_response)
       client.parse(input_file)
     end
 
     context 'successful post' do
       it 'initializes a SovrenRest::ParseResponse' do
-        expect(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_return(response)
+        expect(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_return(parse_response)
         client.parse(input_file)
       end
 
-      it 'returns the response' do
-        expect(client.parse(input_file)).to eq(response)
+      it 'returns the parse_response' do
+        expect(client.parse(input_file)).to eq(parse_response)
       end
     end
 
@@ -79,7 +81,7 @@ RSpec.describe SovrenRest::Client do
         context "when a #{error_code} error is returned" do
           let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
 
-          before { allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(post_response)) }
+          before { allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(rest_client_response)) }
 
           it "re-raises a #{error_class.name}" do
             expect { client.parse(input_file) }.to raise_error(error_class)
@@ -91,7 +93,7 @@ RSpec.describe SovrenRest::Client do
             end
           end
 
-          it 'adds the sovren response message to the error message' do
+          it 'adds the sovren parse_response message to the error message' do
             expect { client.parse(input_file) }.to raise_error do |error|
               expect(error.message).to eq(error_message)
             end
@@ -105,6 +107,45 @@ RSpec.describe SovrenRest::Client do
 
       SovrenRest::ERROR_MESSAGE_CLASSES.each do |message, error_class|
         include_examples :error_scenario, '', message, error_class
+      end
+
+      context 'misc exceptions' do
+        context 'when RestClient::Exceptions::Timeout is raised' do
+          before do
+            allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::Exceptions::Timeout)
+          end
+
+          it 'raises a SovrenRest::ClientException::RestClientTimeout exception' do
+            expect { client.parse(input_file) }.to raise_error(SovrenRest::ClientException::RestClientTimeout)
+          end
+        end
+
+        context 'when 504 Gateway Time-out is received' do
+          let(:gateway_timeout_html) do
+            <<-HTML
+              <html>
+                <head>
+                  <title>504 Gateway Time-out</title>
+                </head>
+                <body>
+                  <center>
+                    <h1>504 Gateway Time-out</h1>
+                  </center>
+                </body>
+              </html>
+            HTML
+          end
+          let(:http_code) { 504 }
+
+          before do
+            allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(rest_client_response))
+            allow(rest_client_response).to receive(:body).and_return(gateway_timeout_html)
+          end
+
+          it 'raises a SovrenRest::ClientException::GatewayTimeout exception' do
+            expect { client.parse(input_file) }.to raise_error(SovrenRest::ClientException::GatewayTimeout)
+          end
+        end
       end
     end
   end
