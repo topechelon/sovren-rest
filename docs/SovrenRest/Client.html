@@ -116,6 +116,12 @@
   
     <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
   
+    <li><a href="../SovrenRest/ClientException.html">SovrenRest::ClientException</a>
+  
+    <li><a href="../SovrenRest/ClientException/GatewayTimeout.html">SovrenRest::ClientException::GatewayTimeout</a>
+  
+    <li><a href="../SovrenRest/ClientException/RestClientTimeout.html">SovrenRest::ClientException::RestClientTimeout</a>
+  
     <li><a href="../SovrenRest/ConstraintError.html">SovrenRest::ConstraintError</a>
   
     <li><a href="../SovrenRest/ConversionException.html">SovrenRest::ConversionException</a>
@@ -139,8 +145,6 @@
     <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
   
     <li><a href="../SovrenRest/ParsingError.html">SovrenRest::ParsingError</a>
-  
-    <li><a href="../SovrenRest/RestClientTimeout.html">SovrenRest::RestClientTimeout</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
@@ -176,6 +180,11 @@
     <section id="constants-list" class="section">
       <h3 class="section-header">Constants</h3>
       <dl>
+      
+        <dt id="HTTP_GATEWAY_TIMEOUT">HTTP_GATEWAY_TIMEOUT
+        
+        <dd class="description">
+        
       
         <dt id="PARSE_RESUME">PARSE_RESUME
         
@@ -226,7 +235,7 @@ give Sovren all the time it needs to parse a file, no matter how slow.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>)
   <span class="ruby-ivar">@base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>]
   <span class="ruby-ivar">@account_id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:account_id</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;12345678&#39;</span>
@@ -267,12 +276,16 @@ exception if the request is not successful</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>)
-  <span class="ruby-identifier">raw_response</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
-  <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">body</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
+  <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>)
 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">ExceptionWithResponse</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-  <span class="ruby-identifier">handle_error</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">response</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">rest_client_timeout?</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ClientException</span><span class="ruby-operator">::</span><span class="ruby-constant">RestClientTimeout</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">handle_response_error</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- parse-source -->
           

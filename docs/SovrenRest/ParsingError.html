@@ -116,6 +116,12 @@
   
     <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
   
+    <li><a href="../SovrenRest/ClientException.html">SovrenRest::ClientException</a>
+  
+    <li><a href="../SovrenRest/ClientException/GatewayTimeout.html">SovrenRest::ClientException::GatewayTimeout</a>
+  
+    <li><a href="../SovrenRest/ClientException/RestClientTimeout.html">SovrenRest::ClientException::RestClientTimeout</a>
+  
     <li><a href="../SovrenRest/ConstraintError.html">SovrenRest::ConstraintError</a>
   
     <li><a href="../SovrenRest/ConversionException.html">SovrenRest::ConversionException</a>
@@ -139,8 +145,6 @@
     <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
   
     <li><a href="../SovrenRest/ParsingError.html">SovrenRest::ParsingError</a>
-  
-    <li><a href="../SovrenRest/RestClientTimeout.html">SovrenRest::RestClientTimeout</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
@@ -230,7 +234,7 @@
 
           
           <div class="method-source-code" id="for-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-keyword">for</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">error_class</span> = <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_MESSAGE_CLASSES</span>[<span class="ruby-identifier">message</span>]
   <span class="ruby-identifier">error_class</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_CODE_CLASSES</span>[<span class="ruby-identifier">code</span>]
@@ -263,7 +267,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 7</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@response</span> = <span class="ruby-identifier">response</span>
   <span class="ruby-ivar">@code</span> = <span class="ruby-identifier">code</span>
