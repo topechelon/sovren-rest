@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Client - sovren-rest 0.8.2
+<title>class SovrenRest::Client - sovren-rest 0.9.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -140,6 +140,8 @@
   
     <li><a href="../SovrenRest/ParsingError.html">SovrenRest::ParsingError</a>
   
+    <li><a href="../SovrenRest/RestClientTimeout.html">SovrenRest::RestClientTimeout</a>
+  
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
     <li><a href="../SovrenRest/Unauthorized.html">SovrenRest::Unauthorized</a>
@@ -180,6 +182,13 @@
         <dd class="description"><p>Parse resume controller/action path.</p>
         
       
+        <dt id="REQUEST_TIMEOUT_SECONDS">REQUEST_TIMEOUT_SECONDS
+        
+        <dd class="description"><p>To prevent credits from being lost, RestClient should almost never kill a
+Sovren parse request. This timeout is exceptionally high in order to try to
+give Sovren all the time it needs to parse a file, no matter how slow.</p>
+        
+      
       </dl>
     </section>
     
@@ -217,7 +226,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>)
   <span class="ruby-ivar">@base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>]
   <span class="ruby-ivar">@account_id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:account_id</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;12345678&#39;</span>
@@ -258,9 +267,9 @@ exception if the request is not successful</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>)
-  <span class="ruby-identifier">raw_response</span> = <span class="ruby-constant">RestClient</span>.<span class="ruby-identifier">post</span>(*<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
+  <span class="ruby-identifier">raw_response</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
   <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">body</span>)
 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">ExceptionWithResponse</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
   <span class="ruby-identifier">handle_error</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">response</span>)
