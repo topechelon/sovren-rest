@@ -40,13 +40,17 @@ module SovrenRest
     private
 
     def handle_error(raw_response)
-      unless raw_response
+      rest_client_timeout = !raw_response
+      if rest_client_timeout
         exception_args = [
           "Request timed out after #{REQUEST_TIMEOUT_SECONDS} seconds.",
           code: 'RestClientTimeout'
         ]
         raise SovrenRest::ParsingError.for(*exception_args)
       end
+
+      require 'byebug'
+      byebug
 
       response = SovrenRest::ParseResponse.new(raw_response.body)
       raise SovrenRest::ParsingError.for(response.message, code: response.code)
