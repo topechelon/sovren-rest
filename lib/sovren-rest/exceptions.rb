@@ -18,10 +18,33 @@ module SovrenRest
     end
 
     def self.for(message, code: nil)
-      error_class = SovrenRest::ERROR_MESSAGE_CLASSES[message]
+      error_class = error_class_for_message(message)
       error_class ||= SovrenRest::ERROR_CODE_CLASSES[code]
       error_class ||= SovrenRest::ParsingError
       error_class.new(message, code: code)
+    end
+
+    def self.contains_error_code?(error_code)
+      ->(response) { response.include?(error_code) }
+    end
+
+    def self.error_class_for_message(response_message)
+      case response_message
+      when contains_error_code?(NO_TEXT_ERROR_CODE)
+        SovrenRest::ConversionNoTextException
+      when contains_error_code?(IMAGE_ERROR_CODE)
+        SovrenRest::ConversionImageException
+      when contains_error_code?(TIMEOUT_ERROR_CODE)
+        SovrenRest::ConversionTimeoutException
+      when contains_error_code?(CORRUPT_ERROR_CODE)
+        SovrenRest::ConversionCorruptException
+      when contains_error_code?(UNSUPPORTED_FORMAT_ERROR_CODE)
+        SovrenRest::ConversionUnsupportedFormatException
+      when contains_error_code?(ENCRYPTED_ERROR_CODE)
+        SovrenRest::ConversionEncryptedException
+      when contains_error_code?(TEXT_CONVERSION_ERROR_CODE)
+        SovrenRest::ConversionToOutputTextException
+      end
     end
   end
 
@@ -39,6 +62,11 @@ module SovrenRest
   class ConversionException < ParsingError; end
   class ConversionNoTextException < ConversionException; end
   class ConversionTimeoutException < ConversionException; end
+  class ConversionImageException < ConversionException; end
+  class ConversionCorruptException < ConversionException; end
+  class ConversionUnsupportedFormatException < ConversionException; end
+  class ConversionEncryptedException < ConversionException; end
+  class ConversionToOutputTextException < ConversionException; end
 
   ##
   # https://documentation.sovren.com/API/Rest#http-status-codes
@@ -56,8 +84,12 @@ module SovrenRest
     'ConversionException' => SovrenRest::ConversionException
   }.freeze
 
-  ERROR_MESSAGE_CLASSES = {
-    'Failed to convert document - ovNoText' => SovrenRest::ConversionNoTextException, # rubocop:disable Metrics/LineLength
-    'Failed to convert document - ovTimeout' => SovrenRest::ConversionTimeoutException # rubocop:disable Metrics/LineLength
-  }.freeze
+  # https://documentation.sovren.com/#document-conversion-result-codes
+  NO_TEXT_ERROR_CODE = 'ovNoText'.freeze
+  IMAGE_ERROR_CODE = 'ovIsImage'.freeze
+  TIMEOUT_ERROR_CODE = 'ovTimeout'.freeze
+  CORRUPT_ERROR_CODE = 'ovCorrupt'.freeze
+  UNSUPPORTED_FORMAT_ERROR_CODE = 'ovUnsupportedFormat'.freeze
+  ENCRYPTED_ERROR_CODE = 'ovIsEncrypted'.freeze
+  TEXT_CONVERSION_ERROR_CODE = 'ovErrorOnOutputToText'.freeze
 end

@@ -79,7 +79,7 @@ RSpec.describe SovrenRest::Client do
     context 'unsuccessful post' do
       shared_examples_for :error_scenario do |error_code, error_message, error_class|
         context "when a #{error_code} error is returned" do
-          let(:raw_post_response_body) { "{\"Info\":{\"Code\":\"#{error_code}\", \"Message\":\"#{error_message}\"}, \"Value\":{}}" }
+          let(:raw_post_response_body) { { 'Info' => { 'Code' => error_code, 'Message' => error_message }, 'Value' => {} }.to_json }
 
           before { allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(rest_client_response)) }
 
@@ -105,9 +105,15 @@ RSpec.describe SovrenRest::Client do
         include_examples :error_scenario, code, '', error_class
       end
 
-      SovrenRest::ERROR_MESSAGE_CLASSES.each do |message, error_class|
-        include_examples :error_scenario, '', message, error_class
-      end
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovNoText): No usable text was able to be extracted.', SovrenRest::ConversionNoTextException
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovTimeout): The timeout was reached during conversion.', SovrenRest::ConversionTimeoutException
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovIsImage): The document is just an image file. You will need to OCR the file to extract the text.', SovrenRest::ConversionImageException
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovCorrupt): The input document was recognized but is either corrupt or cannot be converted because the details of the file cannot be understood.', SovrenRest::ConversionCorruptException
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovUnsupportedFormat): We encountered an input/output format combination that we cannot convert with the current converters, using the subset that you enabled using the EnabledModules property.', SovrenRest::ConversionUnsupportedFormatException
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovIsEncrypted): The document is encrypted and cannot be opened except using a password, which we obviously do not have!', SovrenRest::ConversionEncryptedException
+      include_examples :error_scenario, 'ConversionException', 'Possible document conversion issues (ovErrorOnOutputToText): An internal exception occurred while converting to TEXT.Enable //Trace listener for //TraceSource named "DocumentConverter" to capture details about the error.', SovrenRest::ConversionToOutputTextException
+      include_examples :error_scenario, 'ConversionException', 'ovSomethingElse', SovrenRest::ConversionException
+      include_examples :error_scenario, 'foo', 'ovSomethingElse', SovrenRest::ParsingError
 
       context 'misc exceptions' do
         context 'when RestClient::Exceptions::Timeout is raised' do
