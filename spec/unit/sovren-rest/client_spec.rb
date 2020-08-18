@@ -95,6 +95,16 @@ RSpec.describe SovrenRest::Client do
       it 'includes RevisionDate in the request' do
         expect(subject).to eq(parse_response)
       end
+
+      context 'when revision_date is an unsupported type' do
+        let(:revision_date) { '2020-05-20' }
+
+        it 'raises an exception' do
+          expect do
+            subject
+          end.to raise_error('Unsupported Date Type - "2020-05-20"')
+        end
+      end
     end
 
     context 'unsuccessful post' do

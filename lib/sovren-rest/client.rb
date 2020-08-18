@@ -78,18 +78,20 @@ module SovrenRest
       }
 
       if filemeta.key?(:revision_date)
-        body['RevisionDate'] = format_timestamp(filemeta[:revision_date])
+        body['RevisionDate'] = format_timestamp(filemeta.delete(:revision_date))
       end
 
       body
     end
 
     def format_timestamp(date)
-      return if date.nil? || !date.respond_to?(:strftime)
+      return if date.nil?
 
       # Sovren requires date to be in YYYY-MM-DD format
       # https://docs.sovren.com/API/Rest/Parsing#parse-resume
-      date.strftime('%Y-%m-%d')
+      return date.strftime('%Y-%m-%d') if date.respond_to?(:strftime)
+
+      raise "Unsupported Date Type - #{date.inspect}"
     end
 
     ##
