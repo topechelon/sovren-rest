@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Client - sovren-rest 0.9.0
+<title>class SovrenRest::Client - sovren-rest 1.0.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -124,11 +124,21 @@
   
     <li><a href="../SovrenRest/ConstraintError.html">SovrenRest::ConstraintError</a>
   
+    <li><a href="../SovrenRest/ConversionCorruptException.html">SovrenRest::ConversionCorruptException</a>
+  
+    <li><a href="../SovrenRest/ConversionEncryptedException.html">SovrenRest::ConversionEncryptedException</a>
+  
     <li><a href="../SovrenRest/ConversionException.html">SovrenRest::ConversionException</a>
+  
+    <li><a href="../SovrenRest/ConversionImageException.html">SovrenRest::ConversionImageException</a>
   
     <li><a href="../SovrenRest/ConversionNoTextException.html">SovrenRest::ConversionNoTextException</a>
   
     <li><a href="../SovrenRest/ConversionTimeoutException.html">SovrenRest::ConversionTimeoutException</a>
+  
+    <li><a href="../SovrenRest/ConversionToOutputTextException.html">SovrenRest::ConversionToOutputTextException</a>
+  
+    <li><a href="../SovrenRest/ConversionUnsupportedFormatException.html">SovrenRest::ConversionUnsupportedFormatException</a>
   
     <li><a href="../SovrenRest/CoordinatesNotFound.html">SovrenRest::CoordinatesNotFound</a>
   
@@ -262,7 +272,7 @@ give Sovren all the time it needs to parse a file, no matter how slow.</p>
         
         <div class="method-heading">
           <span class="method-name">parse</span><span
-            class="method-args">(raw_file)</span>
+            class="method-args">(raw_file, filemeta: {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -277,8 +287,8 @@ exception if the request is not successful</p>
           
           <div class="method-source-code" id="parse-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/client.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>)
-  <span class="ruby-identifier">response</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>))
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_file</span>, <span class="ruby-identifier">filemeta</span><span class="ruby-operator">:</span> {})
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">post_arguments</span>(<span class="ruby-identifier">raw_file</span>, <span class="ruby-identifier">filemeta</span>))
   <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>)
 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Exceptions</span><span class="ruby-operator">::</span><span class="ruby-constant">Timeout</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ClientException</span><span class="ruby-operator">::</span><span class="ruby-constant">RestClientTimeout</span>
