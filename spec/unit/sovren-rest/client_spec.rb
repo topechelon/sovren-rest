@@ -52,6 +52,9 @@ RSpec.describe SovrenRest::Client do
       }
     end
     let(:http_code) { 400 }
+    let(:parse_arguments) { [input_file] }
+
+    subject { client.parse(*parse_arguments) }
 
     before do
       allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(rest_client_response)
@@ -62,17 +65,35 @@ RSpec.describe SovrenRest::Client do
 
     it 'POSTS to sovren with the encoded file' do
       expect(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(rest_client_response)
-      client.parse(input_file)
+      subject
     end
 
     context 'successful post' do
       it 'initializes a SovrenRest::ParseResponse' do
         expect(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_return(parse_response)
-        client.parse(input_file)
+        subject
       end
 
       it 'returns the parse_response' do
-        expect(client.parse(input_file)).to eq(parse_response)
+        expect(subject).to eq(parse_response)
+      end
+    end
+
+    context 'when revision_date file meta is given' do
+      let(:revision_date) { Time.at(1_590_000_000) } # 2020-05-20 14:40:00 -0400
+      let(:parse_arguments) { [input_file, filemeta: { revision_date: revision_date }] }
+
+      let(:expected_body) do
+        {
+          'DocumentAsBase64String' => Base64.encode64(input_file),
+          'OutputHtml' => 'true',
+          'Configuration' => default_configuration,
+          'RevisionDate' => '2020-05-20'
+        }.to_json
+      end
+
+      it 'includes RevisionDate in the request' do
+        expect(subject).to eq(parse_response)
       end
     end
 
@@ -84,17 +105,17 @@ RSpec.describe SovrenRest::Client do
           before { allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(rest_client_response)) }
 
           it "re-raises a #{error_class.name}" do
-            expect { client.parse(input_file) }.to raise_error(error_class)
+            expect { subject }.to raise_error(error_class)
           end
 
           it 'sets the sovren code on the exception' do
-            expect { client.parse(input_file) }.to raise_error do |error|
+            expect { subject }.to raise_error do |error|
               expect(error.code).to eq(error_code)
             end
           end
 
           it 'adds the sovren parse_response message to the error message' do
-            expect { client.parse(input_file) }.to raise_error do |error|
+            expect { subject }.to raise_error do |error|
               expect(error.message).to eq(error_message)
             end
           end
@@ -122,7 +143,7 @@ RSpec.describe SovrenRest::Client do
           end
 
           it 'raises a SovrenRest::ClientException::RestClientTimeout exception' do
-            expect { client.parse(input_file) }.to raise_error(SovrenRest::ClientException::RestClientTimeout)
+            expect { subject }.to raise_error(SovrenRest::ClientException::RestClientTimeout)
           end
         end
 
@@ -149,7 +170,7 @@ RSpec.describe SovrenRest::Client do
           end
 
           it 'raises a SovrenRest::ClientException::GatewayTimeout exception' do
-            expect { client.parse(input_file) }.to raise_error(SovrenRest::ClientException::GatewayTimeout)
+            expect { subject }.to raise_error(SovrenRest::ClientException::GatewayTimeout)
           end
         end
       end

@@ -31,8 +31,8 @@ module SovrenRest
     ##
     # Parses a raw resume PDF file and returns a SovrenRest::ParseResponse.
     # Throws an exception if the request is not successful
-    def parse(raw_file)
-      response = RestClient::Request.execute(post_arguments(raw_file))
+    def parse(raw_file, filemeta: {})
+      response = RestClient::Request.execute(post_arguments(raw_file, filemeta))
       SovrenRest::ParseResponse.new(response.body)
     rescue RestClient::Exceptions::Timeout
       raise SovrenRest::ClientException::RestClientTimeout
@@ -70,12 +70,26 @@ module SovrenRest
 
     ##
     # Builds up body of message for remote call.
-    def parse_body(input_file)
-      {
+    def parse_body(input_file, filemeta)
+      body = {
         'DocumentAsBase64String' => Base64.encode64(input_file),
         'OutputHtml' => 'true',
         'Configuration' => @configuration
       }
+
+      if filemeta.key?(:revision_date)
+        body['RevisionDate'] = format_timestamp(filemeta[:revision_date])
+      end
+
+      body
+    end
+
+    def format_timestamp(date)
+      return if date.nil? || !date.respond_to?(:strftime)
+
+      # Sovren requires date to be in YYYY-MM-DD format
+      # https://docs.sovren.com/API/Rest/Parsing#parse-resume
+      date.strftime('%Y-%m-%d')
     end
 
     ##
@@ -86,11 +100,11 @@ module SovrenRest
 
     ##
     # Helper methods to build arguments
-    def post_arguments(raw_file)
+    def post_arguments(raw_file, filemeta)
       {
         method: :post,
         url: build_url(PARSE_RESUME),
-        payload: parse_body(raw_file).to_json,
+        payload: parse_body(raw_file, filemeta).to_json,
         headers: headers,
         timeout: REQUEST_TIMEOUT_SECONDS
       }
