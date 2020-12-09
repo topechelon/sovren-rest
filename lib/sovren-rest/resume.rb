@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'category/generic'
 require_relative 'category/certification'
 require_relative 'category/contact_information'
@@ -53,7 +55,7 @@ module SovrenRest
 
     # Sovren-specific resume metadata.
     def metadata
-      user_area.dig('sov:ResumeUserArea') || {}
+      user_area['sov:ResumeUserArea'] || {}
     end
 
     def eql?(other)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SovrenRest
   ##
   # Interprets the response body for a /parser/resume response
@@ -11,7 +13,7 @@ module SovrenRest
     ##
     # HTML representation of the resume.
     def html
-      value.dig('Html')
+      value['Html']
     end
 
     ##

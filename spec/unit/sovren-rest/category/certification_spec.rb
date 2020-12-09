@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sovren-rest'
 
 RSpec.describe SovrenRest::Category::Certification do

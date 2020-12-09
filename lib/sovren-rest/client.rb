@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module SovrenRest
   ##
   # Represents the client that executes calls against a remote host.
   class Client
     # Parse resume controller/action path.
-    PARSE_RESUME = '/parser/resume'.freeze
+    PARSE_RESUME = '/parser/resume'
 
     # To prevent credits from being lost, RestClient should almost never kill a
     # Sovren parse request. This timeout is exceptionally high in order to try

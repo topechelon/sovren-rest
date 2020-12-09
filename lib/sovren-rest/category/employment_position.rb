@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SovrenRest
   module Category
     ##
@@ -20,7 +22,7 @@ module SovrenRest
 
       # Country code.
       def country
-        location.dig('CountryCode')
+        location['CountryCode']
       end
 
       # State name.
@@ -30,7 +32,7 @@ module SovrenRest
 
       # City name.
       def city
-        location.dig('Municipality')
+        location['Municipality']
       end
 
       # Description/summary of the position.
@@ -71,7 +73,7 @@ module SovrenRest
       def location
         org_info = data['OrgInfo'] || []
         find_location = org_info.find { |d| d['PositionLocation'] } || {}
-        find_location.dig('PositionLocation') || {}
+        find_location['PositionLocation'] || {}
       end
     end
   end
