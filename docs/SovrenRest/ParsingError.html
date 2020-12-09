@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::ParsingError - sovren-rest 0.9.0
+<title>class SovrenRest::ParsingError - sovren-rest 1.0.0
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -71,6 +71,10 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-c-contains_error_code-3F">::contains_error_code?</a>
+    
+    <li><a href="#method-c-error_class_for_message">::error_class_for_message</a>
+    
     <li><a href="#method-c-for">::for</a>
     
     <li><a href="#method-c-new">::new</a>
@@ -124,11 +128,21 @@
   
     <li><a href="../SovrenRest/ConstraintError.html">SovrenRest::ConstraintError</a>
   
+    <li><a href="../SovrenRest/ConversionCorruptException.html">SovrenRest::ConversionCorruptException</a>
+  
+    <li><a href="../SovrenRest/ConversionEncryptedException.html">SovrenRest::ConversionEncryptedException</a>
+  
     <li><a href="../SovrenRest/ConversionException.html">SovrenRest::ConversionException</a>
+  
+    <li><a href="../SovrenRest/ConversionImageException.html">SovrenRest::ConversionImageException</a>
   
     <li><a href="../SovrenRest/ConversionNoTextException.html">SovrenRest::ConversionNoTextException</a>
   
     <li><a href="../SovrenRest/ConversionTimeoutException.html">SovrenRest::ConversionTimeoutException</a>
+  
+    <li><a href="../SovrenRest/ConversionToOutputTextException.html">SovrenRest::ConversionToOutputTextException</a>
+  
+    <li><a href="../SovrenRest/ConversionUnsupportedFormatException.html">SovrenRest::ConversionUnsupportedFormatException</a>
   
     <li><a href="../SovrenRest/CoordinatesNotFound.html">SovrenRest::CoordinatesNotFound</a>
   
@@ -218,6 +232,81 @@
       <h3 class="section-header">Public Class Methods</h3>
 
     
+      <div id="method-c-contains_error_code-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contains_error_code?</span><span
+            class="method-args">(error_code)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="contains_error_code-3F-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-identifier">error_code</span>)
+  <span class="ruby-operator">-</span><span class="ruby-operator">&gt;</span>(<span class="ruby-identifier">response</span>) { <span class="ruby-identifier">response</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">error_code</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- contains_error_code-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- contains_error_code-3F-method -->
+
+    
+      <div id="method-c-error_class_for_message" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">error_class_for_message</span><span
+            class="method-args">(response_message)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="error_class_for_message-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">error_class_for_message</span>(<span class="ruby-identifier">response_message</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">response_message</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">NO_TEXT_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionNoTextException</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">IMAGE_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionImageException</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">TIMEOUT_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionTimeoutException</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">CORRUPT_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionCorruptException</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">UNSUPPORTED_FORMAT_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionUnsupportedFormatException</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">ENCRYPTED_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionEncryptedException</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-identifier">contains_error_code?</span>(<span class="ruby-constant">TEXT_CONVERSION_ERROR_CODE</span>)
+    <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ConversionToOutputTextException</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- error_class_for_message-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- error_class_for_message-method -->
+
+    
       <div id="method-c-for" class="method-detail ">
         
         <div class="method-heading">
@@ -236,7 +325,7 @@
           <div class="method-source-code" id="for-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-keyword">for</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">error_class</span> = <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_MESSAGE_CLASSES</span>[<span class="ruby-identifier">message</span>]
+  <span class="ruby-identifier">error_class</span> = <span class="ruby-identifier">error_class_for_message</span>(<span class="ruby-identifier">message</span>)
   <span class="ruby-identifier">error_class</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_CODE_CLASSES</span>[<span class="ruby-identifier">code</span>]
   <span class="ruby-identifier">error_class</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">SovrenRest</span><span class="ruby-operator">::</span><span class="ruby-constant">ParsingError</span>
   <span class="ruby-identifier">error_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">:</span> <span class="ruby-identifier">code</span>)
