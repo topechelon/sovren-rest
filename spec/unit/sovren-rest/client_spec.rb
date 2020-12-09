@@ -83,7 +83,7 @@ RSpec.describe SovrenRest::Client do
 
     context 'when revision_date file meta is given' do
       let(:revision_date) { Time.at(1_590_000_000) } # 2020-05-20 14:40:00 -0400
-      let(:parse_arguments) { [input_file, filemeta: { revision_date: revision_date }] }
+      let(:parse_arguments) { [input_file, { filemeta: { revision_date: revision_date } }] }
 
       let(:expected_body) do
         {

@@ -77,9 +77,7 @@ module SovrenRest
         'Configuration' => @configuration
       }
 
-      if filemeta.key?(:revision_date)
-        body['RevisionDate'] = format_timestamp(filemeta.delete(:revision_date))
-      end
+      body['RevisionDate'] = format_timestamp(filemeta.delete(:revision_date)) if filemeta.key?(:revision_date)
 
       body
     end
