@@ -3,6 +3,7 @@ module SovrenRest
   ## Errors unrelated to an officially documented Sovren response
   class ClientException < StandardError
     class RestClientTimeout < ClientException; end
+
     class GatewayTimeout < ClientException; end
   end
 
@@ -49,23 +50,41 @@ module SovrenRest
   end
 
   class MissingParameter < ParsingError; end
+
   class InvalidParameter < ParsingError; end
+
   class InsufficientData < ParsingError; end
+
   class DataNotFound < ParsingError; end
+
   class CoordinatesNotFound < ParsingError; end
+
   class ConstraintError < ParsingError; end
+
   class AuthenticationError < ParsingError; end
+
   class Unauthorized < ParsingError; end
+
   class DataNotFound < ParsingError; end
+
   class DuplicateAsset < ParsingError; end
+
   class UnhandledException < ParsingError; end
+
   class ConversionException < ParsingError; end
+
   class ConversionNoTextException < ConversionException; end
+
   class ConversionTimeoutException < ConversionException; end
+
   class ConversionImageException < ConversionException; end
+
   class ConversionCorruptException < ConversionException; end
+
   class ConversionUnsupportedFormatException < ConversionException; end
+
   class ConversionEncryptedException < ConversionException; end
+
   class ConversionToOutputTextException < ConversionException; end
 
   ##

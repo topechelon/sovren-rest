@@ -1,4 +1,4 @@
-require 'sovren-rest.rb'
+require 'sovren-rest'
 
 RSpec.describe SovrenRest::ParseResponse do
   let(:file_content) { File.read(File.expand_path('../files/response.json', __dir__)) }

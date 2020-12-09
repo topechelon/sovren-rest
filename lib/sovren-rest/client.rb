@@ -43,9 +43,7 @@ module SovrenRest
     private
 
     def handle_response_error(rest_client_response)
-      if gateway_timeout?(rest_client_response)
-        raise SovrenRest::ClientException::GatewayTimeout
-      end
+      raise SovrenRest::ClientException::GatewayTimeout if gateway_timeout?(rest_client_response)
 
       response = SovrenRest::ParseResponse.new(rest_client_response.body)
       raise SovrenRest::ParsingError.for(response.message, code: response.code)

@@ -1,4 +1,4 @@
-require 'sovren-rest.rb'
+require 'sovren-rest'
 
 RSpec.describe SovrenRest::Category::EducationHistory do
   context 'with all relevant information' do
