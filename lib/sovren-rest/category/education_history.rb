@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SovrenRest
   module Category
     ##
@@ -5,7 +7,7 @@ module SovrenRest
     class EducationHistory < Generic
       # HROpenStandards school type.
       def school_type
-        data.dig('@schoolType')
+        data['@schoolType']
       end
 
       # Name of the school or institutution.

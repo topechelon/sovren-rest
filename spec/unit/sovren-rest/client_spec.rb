@@ -1,4 +1,6 @@
-require 'sovren-rest.rb'
+# frozen_string_literal: true
+
+require 'sovren-rest'
 require 'base64'
 require 'rest-client'
 

@@ -1,4 +1,6 @@
-require 'sovren-rest.rb'
+# frozen_string_literal: true
+
+require 'sovren-rest'
 
 RSpec.describe SovrenRest::ParseResponse do
   let(:file_content) { File.read(File.expand_path('../files/response.json', __dir__)) }

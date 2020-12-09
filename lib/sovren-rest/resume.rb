@@ -1,8 +1,10 @@
-require_relative 'category/generic.rb'
-require_relative 'category/certification.rb'
-require_relative 'category/contact_information.rb'
-require_relative 'category/education_history.rb'
-require_relative 'category/employment_history.rb'
+# frozen_string_literal: true
+
+require_relative 'category/generic'
+require_relative 'category/certification'
+require_relative 'category/contact_information'
+require_relative 'category/education_history'
+require_relative 'category/employment_history'
 
 module SovrenRest
   ##
@@ -53,7 +55,7 @@ module SovrenRest
 
     # Sovren-specific resume metadata.
     def metadata
-      user_area.dig('sov:ResumeUserArea') || {}
+      user_area['sov:ResumeUserArea'] || {}
     end
 
     def eql?(other)

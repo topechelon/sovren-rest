@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module SovrenRest
   ##
   # Represents the client that executes calls against a remote host.
   class Client
     # Parse resume controller/action path.
-    PARSE_RESUME = '/parser/resume'.freeze
+    PARSE_RESUME = '/parser/resume'
 
     # To prevent credits from being lost, RestClient should almost never kill a
     # Sovren parse request. This timeout is exceptionally high in order to try
@@ -43,9 +45,7 @@ module SovrenRest
     private
 
     def handle_response_error(rest_client_response)
-      if gateway_timeout?(rest_client_response)
-        raise SovrenRest::ClientException::GatewayTimeout
-      end
+      raise SovrenRest::ClientException::GatewayTimeout if gateway_timeout?(rest_client_response)
 
       response = SovrenRest::ParseResponse.new(rest_client_response.body)
       raise SovrenRest::ParsingError.for(response.message, code: response.code)

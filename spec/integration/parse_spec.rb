@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 require 'sovren-rest'
 
 RSpec.describe 'SovrenRest::Integration::ClientParse' do
   before :all do
-    unless ENV.key?('SOVREN_HOST')
-      raise 'Environment variable \'SOVREN_HOST\' is missing'
-    end
+    raise 'Environment variable \'SOVREN_HOST\' is missing' unless ENV.key?('SOVREN_HOST')
 
     @host = ENV.fetch('SOVREN_HOST')
     @config = ENV.fetch('SOVREN_CFG', '')

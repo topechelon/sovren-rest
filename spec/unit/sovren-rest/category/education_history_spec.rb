@@ -1,4 +1,6 @@
-require 'sovren-rest.rb'
+# frozen_string_literal: true
+
+require 'sovren-rest'
 
 RSpec.describe SovrenRest::Category::EducationHistory do
   context 'with all relevant information' do
