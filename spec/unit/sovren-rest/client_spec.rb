@@ -9,6 +9,7 @@ RSpec.describe SovrenRest::Client do
   let(:default_account_id) { '12345678' }
   let(:default_service_key) { 'thiscanbeanything,whyrequireit?' }
   let(:default_configuration) { '' }
+  let(:default_addl_headers) { {} }
 
   describe 'initialization' do
     it 'defaults the account ID if not specified' do
@@ -21,6 +22,10 @@ RSpec.describe SovrenRest::Client do
 
     it 'defaults the configuration if not specified' do
       expect(client.instance_variable_get(:@configuration)).to eq(default_configuration)
+    end
+
+    it 'defaults the addl_headers if not specified' do
+      expect(client.instance_variable_get(:@addl_headers)).to eq(default_addl_headers)
     end
   end
 
@@ -78,6 +83,27 @@ RSpec.describe SovrenRest::Client do
 
       it 'returns the parse_response' do
         expect(subject).to eq(parse_response)
+      end
+    end
+
+    context 'when additional headers are supplied' do
+      let(:expected_headers) do
+        {
+          'x-api-key' => '123456',
+          'Content-Type' => 'application/json',
+          'Accept' => 'application/json',
+          'Sovren-AccountId' => default_account_id,
+          'Sovren-ServiceKey' => default_service_key
+        }
+      end
+
+      before do
+        client.instance_variable_set(:@addl_headers, { 'x-api-key' => '123456', 'Content-Type' => 'text/plain' })
+      end
+
+      it 'POSTS to sovren with the encoded file and additional headers' do
+        expect(RestClient::Request).to receive(:execute).with(expected_arguments).and_return(rest_client_response)
+        subject
       end
     end
 
