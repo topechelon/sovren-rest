@@ -9,7 +9,7 @@ RSpec.describe SovrenRest::Client do
   let(:default_account_id) { '12345678' }
   let(:default_service_key) { 'thiscanbeanything,whyrequireit?' }
   let(:default_configuration) { '' }
-  let(:default_addl_headers) { {} }
+  let(:default_additional_parse_request_headers) { {} }
 
   describe 'initialization' do
     it 'defaults the account ID if not specified' do
@@ -24,8 +24,8 @@ RSpec.describe SovrenRest::Client do
       expect(client.instance_variable_get(:@configuration)).to eq(default_configuration)
     end
 
-    it 'defaults the addl_headers if not specified' do
-      expect(client.instance_variable_get(:@addl_headers)).to eq(default_addl_headers)
+    it 'defaults the additional_parse_request_headers if not specified' do
+      expect(client.instance_variable_get(:@additional_parse_request_headers)).to eq(default_additional_parse_request_headers)
     end
   end
 
@@ -98,7 +98,7 @@ RSpec.describe SovrenRest::Client do
       end
 
       before do
-        client.instance_variable_set(:@addl_headers, { 'x-api-key' => '123456', 'Content-Type' => 'text/plain' })
+        client.instance_variable_set(:@additional_parse_request_headers, { 'x-api-key' => '123456', 'Content-Type' => 'text/plain' })
       end
 
       it 'POSTS to sovren with the encoded file and additional headers' do

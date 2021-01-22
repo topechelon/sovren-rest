@@ -18,18 +18,18 @@ module SovrenRest
     #
     #   options =>
     #   {
-    #     base_url      #  Endpoint to Sovren rest service
-    #     account_id    #  Sovren account ID. If self hosted, not required
-    #     service_key   #  Sovren service key. If self hosted, not required
-    #     configuration #  Sovren parser configuration string. Optional
-    #     addl_headers  #  Additional headers for the remote call. Optional
+    #     base_url                          #  Endpoint to Sovren rest service
+    #     account_id                        #  Sovren account ID. If self hosted, not required
+    #     service_key                       #  Sovren service key. If self hosted, not required
+    #     configuration                     #  Sovren parser configuration string. Optional
+    #     additional_parse_request_headers  #  Additional headers for the remote call. Optional
     #   }
     def initialize(options)
       @base_url = options[:base_url]
       @account_id = options[:account_id] || '12345678'
       @service_key = options[:service_key] || 'thiscanbeanything,whyrequireit?'
       @configuration = options[:configuration] || ''
-      @addl_headers = options[:addl_headers] || {}
+      @additional_parse_request_headers = options[:additional_parse_request_headers] || {}
     end
 
     ##
@@ -69,7 +69,7 @@ module SovrenRest
         'Sovren-ServiceKey' => @service_key
       }
 
-      @addl_headers.merge(base_headers)
+      @additional_parse_request_headers.merge(base_headers)
     end
 
     ##
