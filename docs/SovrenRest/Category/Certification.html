@@ -4,8 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::Certification - sovren-rest 1.0.0
-</title>
+<title>class SovrenRest::Category::Certification - sovren-rest 1.1.0</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -215,7 +214,7 @@
 
           
           <div class="method-source-code" id="description-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">description</span>
   <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;Description&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -245,7 +244,7 @@
 
           
           <div class="method-source-code" id="effective_dates-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 17</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">effective_dates</span>
   <span class="ruby-identifier">date</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;EffectiveDate&#39;</span>, <span class="ruby-string">&#39;FirstIssuedDate&#39;</span>) <span class="ruby-operator">||</span> {}
   <span class="ruby-identifier">date</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">compact</span>
@@ -276,7 +275,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">name</span> <span class="ruby-identifier">description</span> <span class="ruby-identifier">effective_dates</span>]
   <span class="ruby-identifier">properties</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">property</span><span class="ruby-operator">|</span> <span class="ruby-identifier">compare_values</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">property</span>) }
@@ -307,7 +306,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 7</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/certification.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
   <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;Name&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
