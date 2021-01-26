@@ -4,8 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Resume - sovren-rest 1.0.0
-</title>
+<title>class SovrenRest::Resume - sovren-rest 1.1.0</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -241,7 +240,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
@@ -278,7 +277,7 @@ href="Category/Certification.html">SovrenRest::Category::Certification</a></p>
 
           
           <div class="method-source-code" id="certifications-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 46</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">certifications</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[LicensesAndCertifications LicenseOrCertification]</span>
   <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> []
@@ -313,7 +312,7 @@ href="Category/ContactInformation.html">SovrenRest::Category::ContactInformation
 
           
           <div class="method-source-code" id="contact_information-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 21</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">contact_information</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[ContactInfo]</span>
   <span class="ruby-identifier">contact_info</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> {}
@@ -346,7 +345,7 @@ href="Category/EducationHistory.html">SovrenRest::Category::EducationHistory</a>
 
           
           <div class="method-source-code" id="education_history-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">education_history</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[EducationHistory SchoolOrInstitution]</span>
   <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> []
@@ -381,7 +380,7 @@ href="Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</
 
           
           <div class="method-source-code" id="employment_history-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">employment_history</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-node">%w[EmploymentHistory EmployerOrg]</span>
   <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">xml_resume</span>.<span class="ruby-identifier">dig</span>(*<span class="ruby-identifier">path</span>) <span class="ruby-operator">||</span> []
@@ -415,7 +414,7 @@ href="Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">contact_information</span> <span class="ruby-identifier">employment_history</span>
                   <span class="ruby-identifier">education_history</span> <span class="ruby-identifier">certifications</span> <span class="ruby-identifier">metadata</span>]
@@ -447,9 +446,9 @@ href="Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</
 
           
           <div class="method-source-code" id="metadata-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/resume.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">metadata</span>
-  <span class="ruby-identifier">user_area</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;sov:ResumeUserArea&#39;</span>) <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">user_area</span>[<span class="ruby-string">&#39;sov:ResumeUserArea&#39;</span>] <span class="ruby-operator">||</span> {}
 <span class="ruby-keyword">end</span></pre>
           </div><!-- metadata-source -->
           

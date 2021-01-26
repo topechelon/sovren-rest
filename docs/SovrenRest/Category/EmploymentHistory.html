@@ -4,8 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::Category::EmploymentHistory - sovren-rest 1.0.0
-</title>
+<title>class SovrenRest::Category::EmploymentHistory - sovren-rest 1.1.0</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -219,7 +218,7 @@
 
           
           <div class="method-source-code" id="city-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">city</span>
   <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;City&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -249,7 +248,7 @@
 
           
           <div class="method-source-code" id="company_name-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">company_name</span>
   <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;EmployerOrgName&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -279,7 +278,7 @@
 
           
           <div class="method-source-code" id="employment_positions-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">employment_positions</span>
   <span class="ruby-identifier">employment_positions</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;PositionHistory&#39;</span>] <span class="ruby-operator">||</span> []
   <span class="ruby-ivar">@employment_positions</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">employment_positions</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">position</span><span class="ruby-operator">|</span>
@@ -312,7 +311,7 @@
 
           
           <div class="method-source-code" id="eql-3F-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">properties</span> = <span class="ruby-operator">%</span>[<span class="ruby-identifier">company_name</span> <span class="ruby-identifier">metadata</span>]
   <span class="ruby-identifier">properties</span>.<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">property</span><span class="ruby-operator">|</span> <span class="ruby-identifier">compare_values</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">property</span>) }
@@ -343,7 +342,7 @@
 
           
           <div class="method-source-code" id="metadata-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">metadata</span>
   <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;UserArea&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -373,7 +372,7 @@
 
           
           <div class="method-source-code" id="state-source">
-            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/sovren-rest/category/employment_history.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">state</span>
   <span class="ruby-identifier">data</span>[<span class="ruby-string">&#39;State&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
