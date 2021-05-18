@@ -7,6 +7,8 @@ module SovrenRest
     class RestClientTimeout < ClientException; end
 
     class GatewayTimeout < ClientException; end
+
+    class ResponseParseError < ClientException; end
   end
 
   #
