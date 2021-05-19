@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module SovrenRest::Category - sovren-rest 1.1.1</title>
+<title>class SovrenRest::ResponseParseError - sovren-rest 1.1.1</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
 
 
-<body id="top" class="module">
+<body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,12 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/sovren-rest/category/certification.rb
-    <li>lib/sovren-rest/category/contact_information.rb
-    <li>lib/sovren-rest/category/education_history.rb
-    <li>lib/sovren-rest/category/employment_history.rb
-    <li>lib/sovren-rest/category/employment_position.rb
-    <li>lib/sovren-rest/category/generic.rb
+    <li>lib/sovren-rest/exceptions.rb
   </ul>
 </nav>
 
@@ -61,9 +56,25 @@
 
   <div id="class-metadata">
     
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">StandardError
+  
+</nav>
+
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-c-new">::new</a>
     
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -157,10 +168,12 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module SovrenRest::Category</h1>
+  <h1 class="class">class SovrenRest::ResponseParseError</h1>
 
   <div id="description" class="description">
     
+<p>Errors parsing the json response from Sovren</p>
+
   </div><!-- description -->
 
   
@@ -174,9 +187,66 @@
     
 
     
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-response" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">response</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(response)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">response</span>)
+  <span class="ruby-ivar">@response</span> = <span class="ruby-identifier">response</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-string">&#39;Error while parsing RestClient response&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->
