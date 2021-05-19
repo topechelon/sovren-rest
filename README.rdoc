@@ -14,5 +14,5 @@ Ruby gem for interfacing with a Sovren 9.0 REST api.
 
 == Copyright
 
-Copyright (c) 2020 Top Echelon Software. See LICENSE.txt for
+Copyright (c) 2021 Top Echelon Software. See LICENSE.txt for
 further details.

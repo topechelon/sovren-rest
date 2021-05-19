@@ -17,11 +17,11 @@ Juwelier::Tasks.new do |gem|
   # gem is a Gem::Specification... see
   # http://guides.rubygems.org/specification-reference/ for more options
   gem.name = 'sovren-rest'
-  gem.homepage = 'http://github.com/SynergyDataSystems/sovren-rest'
+  gem.homepage = 'https://github.com/topechelon/sovren-rest'
   gem.license = 'MIT'
   gem.summary = %(Sovren 9.0 Rest)
   gem.description = %(Interfaces with the Sovren 9.0 REST API)
-  gem.email = 'tendevsv3@patriotsoftware.com'
+  gem.email = 'devs@topechelon.com'
   gem.authors = ['TEN Devs V3']
 
   # dependencies defined in Gemfile
