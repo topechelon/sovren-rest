@@ -8,7 +8,7 @@ module SovrenRest
 
     class GatewayTimeout < ClientException; end
   end
-  
+
   #
   ## Errors parsing the json response from Sovren
   class ResponseParseError < StandardError

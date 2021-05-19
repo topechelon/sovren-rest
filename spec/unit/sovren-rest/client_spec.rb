@@ -217,7 +217,7 @@ RSpec.describe SovrenRest::Client do
           let(:response_parse_error) { SovrenRest::ClientException::ResponseParseError.new(raw_post_response_body) }
 
           before do
-            allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_raise(json_parse_error) }
+            allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_raise(json_parse_error)
           end
 
           it 'raises a SovrenRest::ClientException::ResponseParseError exception' do
