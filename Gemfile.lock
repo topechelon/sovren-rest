@@ -115,10 +115,10 @@ GEM
     unicode-display_width (1.7.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 1.0)
+  bundler (~> 2.0)
   byebug
   json
   juwelier (~> 2.1.0)
@@ -130,4 +130,4 @@ DEPENDENCIES
   simplecov-rcov
 
 BUNDLED WITH
-   2.2.11
+   2.2.17
