@@ -7,8 +7,15 @@ module SovrenRest
     class RestClientTimeout < ClientException; end
 
     class GatewayTimeout < ClientException; end
+  end
 
-    class ResponseParseError < ClientException; end
+  class ResponseParseError < StandardError
+    attr_reader :response
+
+    def initialize(response)
+      @response = response
+      super('Error while parsing RestClient response')
+    end
   end
 
   #
