@@ -213,14 +213,16 @@ RSpec.describe SovrenRest::Client do
         end
 
         context 'when response body cannot be parsed' do
-          let(:json_parse_error) { JSON::ParseError.new }
+          let(:raw_post_response_body_text) { 'Unknown Non-JSON Error' }
 
           before do
-            allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_raise(json_parse_error)
+            allow(RestClient::Request).to receive(:execute).with(expected_arguments).and_raise(RestClient::InternalServerError.new(rest_client_response))
+            allow(rest_client_response).to receive(:body).and_return(raw_post_response_body_text)
+            allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body_text).and_raise(JSON::ParserError.new)
           end
 
-          it 'raises a SovrenRest::ClientException::ResponseParseError exception' do
-            expect { subject }.to raise_error(SovrenRest::ClientException::ResponseParseError)
+          it 'raises a SovrenRest::ResponseParseError exception' do
+            expect { subject }.to raise_error(SovrenRest::ResponseParseError)
           end
         end
       end
