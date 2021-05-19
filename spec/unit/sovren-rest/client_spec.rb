@@ -211,6 +211,18 @@ RSpec.describe SovrenRest::Client do
             expect { subject }.to raise_error(SovrenRest::ClientException::GatewayTimeout)
           end
         end
+
+        context 'when response body cannot be parsed' do
+          let(:json_parse_error) { JSON::ParseError.new }
+
+          before do
+            allow(SovrenRest::ParseResponse).to receive(:new).with(raw_post_response_body).and_raise(json_parse_error)
+          end
+
+          it 'raises a SovrenRest::ClientException::ResponseParseError exception' do
+            expect { subject }.to raise_error(SovrenRest::ClientException::ResponseParseError)
+          end
+        end
       end
     end
   end

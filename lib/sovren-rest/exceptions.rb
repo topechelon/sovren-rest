@@ -10,6 +10,17 @@ module SovrenRest
   end
 
   #
+  ## Errors parsing the json response from Sovren
+  class ResponseParseError < StandardError
+    attr_reader :response
+
+    def initialize(response)
+      @response = response
+      super('Error while parsing RestClient response')
+    end
+  end
+
+  #
   ## Custom error encapsulating erroneous Sovren responses
   class ParsingError < StandardError
     attr_reader :response, :code
