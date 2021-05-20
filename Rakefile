@@ -68,6 +68,7 @@ task all: ['rubocop:lint', 'rspec:test', 'rspec:integration']
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
+  system('rm -rf docs')
   version = File.exist?('VERSION') ? File.read('VERSION') : ''
 
   rdoc.rdoc_dir = 'docs'
