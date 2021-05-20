@@ -118,7 +118,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.0)
+  bundler (~> 1.0)
   byebug
   json
   juwelier (~> 2.1.0)
@@ -130,4 +130,4 @@ DEPENDENCIES
   simplecov-rcov
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
