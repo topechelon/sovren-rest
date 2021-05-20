@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.authors = ["TEN Devs V3".freeze]
   s.date = "2021-01-21"
   s.description = "Interfaces with the Sovren 9.0 REST API".freeze
-  s.email = "tendevsv3@patriotsoftware.com".freeze
+  s.email = "devs@topechelon.com".freeze
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -132,7 +132,7 @@ Gem::Specification.new do |s|
     "spec/unit/sovren-rest/parse_response_spec.rb",
     "spec/unit/sovren-rest/resume_spec.rb"
   ]
-  s.homepage = "http://github.com/SynergyDataSystems/sovren-rest".freeze
+  s.homepage = "https://github.com/topechelon/sovren-rest".freeze
   s.licenses = ["MIT".freeze]
   s.rubygems_version = "3.1.2".freeze
   s.summary = "Sovren 9.0 Rest".freeze

@@ -51,6 +51,8 @@ module SovrenRest
 
       response = SovrenRest::ParseResponse.new(rest_client_response.body)
       raise SovrenRest::ParsingError.for(response.message, code: response.code)
+    rescue JSON::ParserError
+      raise SovrenRest::ResponseParseError, rest_client_response
     end
 
     def gateway_timeout?(rest_client_response)

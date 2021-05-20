@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SovrenRest::RestClientTimeout - sovren-rest 0.9.0
+<title>class SovrenRest::ResponseParseError - sovren-rest 1.1.2
 </title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
@@ -60,12 +60,22 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link"><a href="ParsingError.html">SovrenRest::ParsingError</a>
+  <p class="link">StandardError
   
 </nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-c-new">::new</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -104,13 +114,29 @@
   
     <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
   
+    <li><a href="../SovrenRest/ClientException.html">SovrenRest::ClientException</a>
+  
+    <li><a href="../SovrenRest/ClientException/GatewayTimeout.html">SovrenRest::ClientException::GatewayTimeout</a>
+  
+    <li><a href="../SovrenRest/ClientException/RestClientTimeout.html">SovrenRest::ClientException::RestClientTimeout</a>
+  
     <li><a href="../SovrenRest/ConstraintError.html">SovrenRest::ConstraintError</a>
   
+    <li><a href="../SovrenRest/ConversionCorruptException.html">SovrenRest::ConversionCorruptException</a>
+  
+    <li><a href="../SovrenRest/ConversionEncryptedException.html">SovrenRest::ConversionEncryptedException</a>
+  
     <li><a href="../SovrenRest/ConversionException.html">SovrenRest::ConversionException</a>
+  
+    <li><a href="../SovrenRest/ConversionImageException.html">SovrenRest::ConversionImageException</a>
   
     <li><a href="../SovrenRest/ConversionNoTextException.html">SovrenRest::ConversionNoTextException</a>
   
     <li><a href="../SovrenRest/ConversionTimeoutException.html">SovrenRest::ConversionTimeoutException</a>
+  
+    <li><a href="../SovrenRest/ConversionToOutputTextException.html">SovrenRest::ConversionToOutputTextException</a>
+  
+    <li><a href="../SovrenRest/ConversionUnsupportedFormatException.html">SovrenRest::ConversionUnsupportedFormatException</a>
   
     <li><a href="../SovrenRest/CoordinatesNotFound.html">SovrenRest::CoordinatesNotFound</a>
   
@@ -128,7 +154,7 @@
   
     <li><a href="../SovrenRest/ParsingError.html">SovrenRest::ParsingError</a>
   
-    <li><a href="../SovrenRest/RestClientTimeout.html">SovrenRest::RestClientTimeout</a>
+    <li><a href="../SovrenRest/ResponseParseError.html">SovrenRest::ResponseParseError</a>
   
     <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
   
@@ -143,10 +169,12 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class SovrenRest::RestClientTimeout</h1>
+  <h1 class="class">class SovrenRest::ResponseParseError</h1>
 
   <div id="description" class="description">
     
+<p>Errors parsing the json response from Sovren</p>
+
   </div><!-- description -->
 
   
@@ -160,9 +188,66 @@
     
 
     
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-response" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">response</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(response)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/sovren-rest/exceptions.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">response</span>)
+  <span class="ruby-ivar">@response</span> = <span class="ruby-identifier">response</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-string">&#39;Error while parsing RestClient response&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->
