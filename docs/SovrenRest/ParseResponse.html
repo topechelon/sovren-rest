@@ -2,207 +2,109 @@
 
 <html>
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta charset="UTF-8">
 
-<title>class SovrenRest::ParseResponse - sovren-rest 1.1.2
+<title>class SovrenRest::ParseResponse - sovren-rest 1.1.3
 </title>
-
-<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="../index.html">Home</a>
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
     <a href="../table_of_contents.html#classes">Classes</a>
     <a href="../table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
-
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
-  </form>
-
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/sovren-rest/parse_response.rb
-  </ul>
-</nav>
-
-    
   </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
   <p class="link">Object
-  
-</nav>
+</div>
 
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
 
-  <ul class="link-list">
-    
-    <li><a href="#method-c-new">::new</a>
-    
-    <li><a href="#method-i-code">#code</a>
-    
-    <li><a href="#method-i-html">#html</a>
-    
-    <li><a href="#method-i-message">#message</a>
-    
-    <li><a href="#method-i-parsed_resume">#parsed_resume</a>
-    
-    <li><a href="#method-i-scrubbed_parsed_resume">#scrubbed_parsed_resume</a>
-    
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-c-new">::new</a>
+    <li ><a href="#method-i-code">#code</a>
+    <li ><a href="#method-i-html">#html</a>
+    <li ><a href="#method-i-message">#message</a>
+    <li ><a href="#method-i-parsed_resume">#parsed_resume</a>
+    <li ><a href="#method-i-scrubbed_parsed_resume">#scrubbed_parsed_resume</a>
   </ul>
-</nav>
-
-  </div>
-
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="../README_rdoc.html">README</a>
-  
-  </ul>
-</nav>
-
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
-
-  <ul class="link-list">
-  
-    <li><a href="../SovrenRest.html">SovrenRest</a>
-  
-    <li><a href="../SovrenRest/AuthenticationError.html">SovrenRest::AuthenticationError</a>
-  
-    <li><a href="../SovrenRest/Category.html">SovrenRest::Category</a>
-  
-    <li><a href="../SovrenRest/Category/Certification.html">SovrenRest::Category::Certification</a>
-  
-    <li><a href="../SovrenRest/Category/ContactInformation.html">SovrenRest::Category::ContactInformation</a>
-  
-    <li><a href="../SovrenRest/Category/EducationHistory.html">SovrenRest::Category::EducationHistory</a>
-  
-    <li><a href="../SovrenRest/Category/EmploymentHistory.html">SovrenRest::Category::EmploymentHistory</a>
-  
-    <li><a href="../SovrenRest/Category/EmploymentPosition.html">SovrenRest::Category::EmploymentPosition</a>
-  
-    <li><a href="../SovrenRest/Category/Generic.html">SovrenRest::Category::Generic</a>
-  
-    <li><a href="../SovrenRest/Client.html">SovrenRest::Client</a>
-  
-    <li><a href="../SovrenRest/ClientException.html">SovrenRest::ClientException</a>
-  
-    <li><a href="../SovrenRest/ClientException/GatewayTimeout.html">SovrenRest::ClientException::GatewayTimeout</a>
-  
-    <li><a href="../SovrenRest/ClientException/RestClientTimeout.html">SovrenRest::ClientException::RestClientTimeout</a>
-  
-    <li><a href="../SovrenRest/ConstraintError.html">SovrenRest::ConstraintError</a>
-  
-    <li><a href="../SovrenRest/ConversionCorruptException.html">SovrenRest::ConversionCorruptException</a>
-  
-    <li><a href="../SovrenRest/ConversionEncryptedException.html">SovrenRest::ConversionEncryptedException</a>
-  
-    <li><a href="../SovrenRest/ConversionException.html">SovrenRest::ConversionException</a>
-  
-    <li><a href="../SovrenRest/ConversionImageException.html">SovrenRest::ConversionImageException</a>
-  
-    <li><a href="../SovrenRest/ConversionNoTextException.html">SovrenRest::ConversionNoTextException</a>
-  
-    <li><a href="../SovrenRest/ConversionTimeoutException.html">SovrenRest::ConversionTimeoutException</a>
-  
-    <li><a href="../SovrenRest/ConversionToOutputTextException.html">SovrenRest::ConversionToOutputTextException</a>
-  
-    <li><a href="../SovrenRest/ConversionUnsupportedFormatException.html">SovrenRest::ConversionUnsupportedFormatException</a>
-  
-    <li><a href="../SovrenRest/CoordinatesNotFound.html">SovrenRest::CoordinatesNotFound</a>
-  
-    <li><a href="../SovrenRest/DataNotFound.html">SovrenRest::DataNotFound</a>
-  
-    <li><a href="../SovrenRest/DuplicateAsset.html">SovrenRest::DuplicateAsset</a>
-  
-    <li><a href="../SovrenRest/InsufficientData.html">SovrenRest::InsufficientData</a>
-  
-    <li><a href="../SovrenRest/InvalidParameter.html">SovrenRest::InvalidParameter</a>
-  
-    <li><a href="../SovrenRest/MissingParameter.html">SovrenRest::MissingParameter</a>
-  
-    <li><a href="../SovrenRest/ParseResponse.html">SovrenRest::ParseResponse</a>
-  
-    <li><a href="../SovrenRest/ParsingError.html">SovrenRest::ParsingError</a>
-  
-    <li><a href="../SovrenRest/ResponseParseError.html">SovrenRest::ResponseParseError</a>
-  
-    <li><a href="../SovrenRest/Resume.html">SovrenRest::Resume</a>
-  
-    <li><a href="../SovrenRest/Unauthorized.html">SovrenRest::Unauthorized</a>
-  
-    <li><a href="../SovrenRest/UnhandledException.html">SovrenRest::UnhandledException</a>
-  
-  </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation">
-  <h1 class="class">class SovrenRest::ParseResponse</h1>
+<main role="main" aria-labelledby="class-SovrenRest::ParseResponse">
+  <h1 id="class-SovrenRest::ParseResponse" class="class">
+    class SovrenRest::ParseResponse
+  </h1>
 
-  <div id="description" class="description">
+  <section class="description">
     
 <p>Interprets the response body for a /parser/resume response</p>
 
-  </div><!-- description -->
+  </section>
 
-  
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
 
-      
       <div id="attribute-i-response" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">response</span><span
@@ -211,217 +113,158 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
-    </section><!-- attribute-method-details -->
-    
+    </section>
 
-    <!-- Methods -->
-    
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
 
-    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(raw_response)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 9</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">raw_response</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">raw_response</span>)
   <span class="ruby-ivar">@response</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_response</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
+          </div>
         </div>
 
-        
 
-        
-      </div><!-- new-method -->
+      </div>
 
-    
-    </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+    </section>
 
-    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
       <div id="method-i-code" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">code</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
-        
 
         <div class="method-description">
-          
           <p>The response code returned by Sovren</p>
-          
 
-          
           <div class="method-source-code" id="code-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">code</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">code</span>
   <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Code&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- code-source -->
-          
+          </div>
         </div>
 
-        
 
-        
-      </div><!-- code-method -->
+      </div>
 
-    
       <div id="method-i-html" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">html</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
-        
 
         <div class="method-description">
-          
           <p>HTML representation of the resume.</p>
-          
 
-          
           <div class="method-source-code" id="html-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 15</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">html</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">html</span>
   <span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;Html&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- html-source -->
-          
+          </div>
         </div>
 
-        
 
-        
-      </div><!-- html-method -->
+      </div>
 
-    
       <div id="method-i-message" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">message</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
-        
 
         <div class="method-description">
-          
           <p>The success or error message returned by Sovren</p>
-          
 
-          
           <div class="method-source-code" id="message-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">message</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">message</span>
   <span class="ruby-identifier">info</span>[<span class="ruby-string">&#39;Message&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- message-source -->
-          
+          </div>
         </div>
 
-        
 
-        
-      </div><!-- message-method -->
+      </div>
 
-    
       <div id="method-i-parsed_resume" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">parsed_resume</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
-        
 
         <div class="method-description">
-          
-          <p><a href="Resume.html">SovrenRest::Resume</a> containing all parse data</p>
-          
+          <p><a href="Resume.html"><code>SovrenRest::Resume</code></a> containing all parse data</p>
 
-          
           <div class="method-source-code" id="parsed_resume-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 21</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">parsed_resume</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parsed_resume</span>
   <span class="ruby-identifier">build_resume</span>(<span class="ruby-string">&#39;ParsedDocument&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- parsed_resume-source -->
-          
+          </div>
         </div>
 
-        
 
-        
-      </div><!-- parsed_resume-method -->
+      </div>
 
-    
       <div id="method-i-scrubbed_parsed_resume" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">scrubbed_parsed_resume</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
-        
 
         <div class="method-description">
-          
-          <p><a href="Resume.html">SovrenRest::Resume</a> containing parse data with PII
-removed</p>
-          
+          <p><a href="Resume.html"><code>SovrenRest::Resume</code></a> containing parse data with PII removed</p>
 
-          
           <div class="method-source-code" id="scrubbed_parsed_resume-source">
             <pre><span class="ruby-comment"># File lib/sovren-rest/parse_response.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">scrubbed_parsed_resume</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scrubbed_parsed_resume</span>
   <span class="ruby-identifier">build_resume</span>(<span class="ruby-string">&#39;ScrubbedParsedDocument&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- scrubbed_parsed_resume-source -->
-          
+          </div>
         </div>
 
-        
 
-        
-      </div><!-- scrubbed_parsed_resume-method -->
+      </div>
 
-    
-    </section><!-- public-instance-method-details -->
-  
-  </section><!-- 5Buntitled-5D -->
+    </section>
 
-</div><!-- documentation -->
+  </section>
+</main>
 
 
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

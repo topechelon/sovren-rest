@@ -13,7 +13,7 @@ group :development do
   gem 'bundler', '~> 1.0'
   gem 'byebug'
   gem 'juwelier', '~> 2.1.0'
-  gem 'rdoc', '~> 3.12'
+  gem 'rdoc'
   gem 'rspec'
   gem 'rubocop'
   gem 'simplecov', '>= 0'
