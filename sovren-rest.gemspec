@@ -76,9 +76,9 @@ Gem::Specification.new do |s|
   if s.respond_to? :add_runtime_dependency then
     s.add_runtime_dependency(%q<json>.freeze, [">= 0"])
     s.add_runtime_dependency(%q<rest-client>.freeze, [">= 0"])
-    s.add_development_dependency(%q<bundler>.freeze, ["~> 1.0"])
+    s.add_development_dependency(%q<bundler>.freeze, [">= 2.2.10"])
     s.add_development_dependency(%q<byebug>.freeze, [">= 0"])
-    s.add_development_dependency(%q<juwelier>.freeze, ["~> 2.1.0"])
+    s.add_development_dependency(%q<juwelier>.freeze, ["~> 2.4.7"])
     s.add_development_dependency(%q<rdoc>.freeze, [">= 0"])
     s.add_development_dependency(%q<rspec>.freeze, [">= 0"])
     s.add_development_dependency(%q<rubocop>.freeze, [">= 0"])
@@ -87,9 +87,9 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<json>.freeze, [">= 0"])
     s.add_dependency(%q<rest-client>.freeze, [">= 0"])
-    s.add_dependency(%q<bundler>.freeze, ["~> 1.0"])
+    s.add_dependency(%q<bundler>.freeze, [">= 2.2.10"])
     s.add_dependency(%q<byebug>.freeze, [">= 0"])
-    s.add_dependency(%q<juwelier>.freeze, ["~> 2.1.0"])
+    s.add_dependency(%q<juwelier>.freeze, ["~> 2.4.7"])
     s.add_dependency(%q<rdoc>.freeze, [">= 0"])
     s.add_dependency(%q<rspec>.freeze, [">= 0"])
     s.add_dependency(%q<rubocop>.freeze, [">= 0"])
