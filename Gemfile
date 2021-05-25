@@ -10,9 +10,9 @@ gem 'rest-client'
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem 'bundler', '~> 1.0'
+  gem 'bundler', '~> 2.2.17'
   gem 'byebug'
-  gem 'juwelier', '~> 2.1.0'
+  gem 'juwelier', '~> 2.4.7'
   gem 'rdoc'
   gem 'rspec'
   gem 'rubocop'
