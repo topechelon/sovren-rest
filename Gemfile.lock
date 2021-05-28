@@ -125,7 +125,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.0)
+  bundler (>= 2.2.18)
   byebug
   json
   juwelier (~> 2.1.0)
