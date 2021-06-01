@@ -12,7 +12,7 @@ RSpec.describe 'SovrenRest::Integration::ClientParse' do
     @client = SovrenRest::Client.new(base_url: @host, configuration: @config)
   end
 
-  it 'should parse a resume successfully' do
+  xit 'should parse a resume successfully' do
     @client.parse(@file)
   end
 end
