@@ -48,7 +48,7 @@ end
 
 namespace :rubocop do
   require 'rubocop/rake_task'
-  RuboCop::RakeTask.new(:lint) {}
+  RuboCop::RakeTask.new(:lint)
 
   RuboCop::RakeTask.new(:fix) do |t|
     t.options = ['-a']
