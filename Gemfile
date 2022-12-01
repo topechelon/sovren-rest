@@ -12,7 +12,7 @@ gem 'rest-client'
 group :development do
   gem 'bundler', '~> 2.2.18'
   gem 'byebug'
-  gem 'juwelier', '~> 2.1.0'
+  gem 'juwelier', '~> 2.4.9'
   gem 'rdoc'
   gem 'rspec'
   gem 'rubocop'
